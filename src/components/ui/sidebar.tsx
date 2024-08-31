@@ -12,7 +12,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./tooltip";
-import { Ellipsis } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowRightIcon,
+  ChevronRightCircle,
+  Ellipsis,
+} from "lucide-react";
 import Typography from "./typography";
 import { Avatar, AvatarImage } from "./avatar";
 
@@ -79,7 +84,7 @@ const SidebarMenu = ({ isOpen }: any) => {
                               </span>
                               <Typography.p
                                 className={cn(
-                                  "max-w-[200px] truncate",
+                                  "flex flex-grow max-w-[200px] truncate",
                                   isOpen === false
                                     ? "-translate-x-96 opacity-0"
                                     : "translate-x-0 opacity-100"
@@ -87,6 +92,13 @@ const SidebarMenu = ({ isOpen }: any) => {
                               >
                                 {label}
                               </Typography.p>
+                              <ArrowRightIcon
+                                className={
+                                  active ? "block opacity-60" : "hidden"
+                                }
+                                height={14}
+                                width={14}
+                              />
                             </Link>
                           </Button>
                         </TooltipTrigger>
