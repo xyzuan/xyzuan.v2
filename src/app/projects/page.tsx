@@ -1,10 +1,11 @@
 import Typography from "@/components/ui/typography";
 import ProjectCard from "./components/project-card";
 import BackButton from "@/components/ui/back-button";
+import BlurFade from "@/components/magicui/blur-fade";
 
 const Projects = () => {
   return (
-    <main>
+    <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
         <BackButton />
         <Typography.h3>Projects</Typography.h3>
@@ -13,13 +14,15 @@ const Projects = () => {
         </Typography.p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, idx) => {
+          return (
+            <BlurFade delay={0.25 + idx * 0.05} inView>
+              <ProjectCard />
+            </BlurFade>
+          );
+        })}
       </div>
-    </main>
+    </BlurFade>
   );
 };
 

@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import React from "react";
 
 const ProjectCard = () => {
