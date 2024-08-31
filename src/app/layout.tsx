@@ -5,6 +5,8 @@ import Sidebar from "@/components/ui/sidebar";
 import { BottomNav } from "@/components/ui/bottom-nav";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
+import GridPattern from "@/components/magicui/animated-grid-pattern";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,19 @@ export default function RootLayout({
       <body className={`${inter.className} flex justify-center p-8 md:p-24`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TooltipProvider>
-            <div className="flex md:gap-6 max-w-6xl">
+            <div className="fixed z-0 top-[-680px] h-screen w-screen items-center justify-center overflow-hidden">
+              <GridPattern
+                numSquares={30}
+                maxOpacity={0.1}
+                duration={18}
+                repeatDelay={1}
+                className={cn(
+                  "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+                  "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+                )}
+              />
+            </div>
+            <div className="flex md:gap-6 max-w-6xl z-20">
               <aside>
                 <Sidebar />
               </aside>
