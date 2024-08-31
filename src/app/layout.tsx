@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex justify-center p-8 md:p-24`}>
-        <div className="flex gap-6 max-w-6xl">
+        <div className="flex md:gap-6 max-w-6xl">
           <aside>
             <Sidebar />
           </aside>

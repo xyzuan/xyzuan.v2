@@ -18,7 +18,7 @@ import { Avatar, AvatarImage } from "./avatar";
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-col px-3 overflow-y-auto min-w-56 sticky top-24">
+    <div className="hidden flex-col px-3 overflow-y-auto min-w-56 top-24 sticky md:flex">
       <div className="mb-3">
         <Avatar className="w-24 h-24 mb-3">
           <AvatarImage src="https://avatars.githubusercontent.com/u/57469823?v=4" />
