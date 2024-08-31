@@ -42,7 +42,9 @@ export default function RootLayout({
               <aside>
                 <Sidebar />
               </aside>
-              <main className="mb-16 md:mb-0">{children}</main>
+              <main className="mb-16 md:mb-0 w-screen p-8 md:p-0">
+                {children}
+              </main>
             </div>
             <BottomNav />
           </TooltipProvider>
