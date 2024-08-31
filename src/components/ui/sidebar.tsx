@@ -30,7 +30,6 @@ const Sidebar = () => {
 const SidebarMenu = ({ isOpen }: any) => {
   const pathname = usePathname();
   const menuList = getMenuList(pathname);
-  const { theme, setTheme } = useTheme();
 
   return (
     <nav>
@@ -53,6 +52,7 @@ const SidebarMenu = ({ isOpen }: any) => {
                 ({ href, label, icon: Icon, active, submenus }, index) => {
                   return (
                     <Button
+                      key={index}
                       variant={active ? "secondary" : "ghost"}
                       className="w-full justify-start h-10 mb-1"
                       asChild

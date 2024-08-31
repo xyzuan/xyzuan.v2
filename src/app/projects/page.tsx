@@ -16,7 +16,7 @@ const Projects = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, idx) => {
           return (
-            <BlurFade delay={0.25 + idx * 0.05} inView>
+            <BlurFade key={idx} delay={0.25 + idx * 0.05} inView>
               <ProjectCard />
             </BlurFade>
           );
