@@ -1,6 +1,6 @@
 import React from "react";
-import { Badge } from "./badge";
-import Typography from "./typography";
+import { Badge } from "../../components/ui/badge";
+import Typography from "../../components/ui/typography";
 
 const SkillBadge = ({ children }: React.PropsWithChildren) => {
   return (

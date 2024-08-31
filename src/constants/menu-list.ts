@@ -36,7 +36,7 @@ export function getMenuList(pathname: string): Group[] {
         {
           href: "/",
           label: "Home",
-          active: pathname.includes("/"),
+          active: pathname.endsWith("/"),
           icon: Home,
           submenus: [],
         },
@@ -48,9 +48,9 @@ export function getMenuList(pathname: string): Group[] {
           submenus: [],
         },
         {
-          href: "/project",
-          label: "Project",
-          active: pathname.includes("/project"),
+          href: "/projects",
+          label: "Projects",
+          active: pathname.includes("/projects"),
           icon: Coffee,
           submenus: [],
         },

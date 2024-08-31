@@ -1,5 +1,10 @@
-import { Avatar, AvatarImage } from "./avatar";
-import { Card, CardDescription, CardHeader, CardTitle } from "./card";
+import { Avatar, AvatarImage } from "../../components/ui/avatar";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
 
 const WorkCard = ({ title, instance, date, location }: any) => {
   return (

@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
-import WorkCard from "@/components/ui/work-card";
+import WorkCard from "@/app/components/work-card";
 
 const WorkExperience = () => {
   return (
