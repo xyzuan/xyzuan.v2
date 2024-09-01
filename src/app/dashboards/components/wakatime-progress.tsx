@@ -1,5 +1,7 @@
+"use client";
+
 import { cn } from "@/commons/libs/utils";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface WakatimeProgressProps {
   data: { name: string; percent?: number };
@@ -8,21 +10,20 @@ interface WakatimeProgressProps {
 
 const WakatimeProgress = ({ data, className }: WakatimeProgressProps) => {
   const { name, percent = 0 } = data;
-  console.log(data);
 
-  // const progressVariants: Variants = {
-  //   initial: { width: 0 },
-  //   animate: {
-  //     width: `${percent}%`,
-  //     transition: { delay: 0.8 },
-  //   },
-  // };
+  const progressVariants: Variants = {
+    initial: { width: 0 },
+    animate: {
+      width: `${percent}%`,
+      transition: { delay: 0.8 },
+    },
+  };
 
   return (
     <div className="flex items-center justify-between gap-3">
       <div className="w-24">{name}</div>
       <div className="relative flex h-3 flex-1 justify-center rounded-full bg-neutral-200 dark:bg-neutral-800">
-        {/* <motion.span
+        <motion.span
           initial="initial"
           animate="animate"
           variants={progressVariants}
@@ -32,7 +33,7 @@ const WakatimeProgress = ({ data, className }: WakatimeProgressProps) => {
           )}
         >
           &ensp;
-        </motion.span> */}
+        </motion.span>
       </div>
       <div className="w-8 text-right text-neutral-600 dark:text-neutral-100">
         {percent.toFixed(0)}%

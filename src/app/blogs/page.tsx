@@ -2,8 +2,9 @@ import Typography from "@/components/ui/typography";
 
 import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
+import BlogFeaturedSection from "./components/blog-featured-section";
 
-const BlogsPage = () => {
+const BlogsPage = async () => {
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
@@ -11,6 +12,7 @@ const BlogsPage = () => {
         <Typography.h3>Blogs</Typography.h3>
         <Typography.p>Currently Work in Proggress</Typography.p>
       </div>
+      <BlogFeaturedSection />
     </BlurFade>
   );
 };

@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.umm.ac.id",
       },
+      {
+        protocol: "https",
+        hostname: "media.dev.to",
+      },
     ],
   },
 };
