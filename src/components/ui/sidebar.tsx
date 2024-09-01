@@ -9,16 +9,22 @@ import { usePathname } from "next/navigation";
 import { getMenuList } from "@/commons/constants/menu-list";
 import { ArrowRightIcon, Ellipsis, MoonIcon, SunIcon } from "lucide-react";
 import Typography from "./typography";
-import { Avatar, AvatarImage } from "./avatar";
+import { Avatar } from "./avatar";
 import SidebarTheming from "./sidebar-theming";
-import AnimatedShinyText from "../magicui/animated-shiny-text";
+import Image from "./image";
 
 const Sidebar = () => {
   return (
     <div className="hidden flex-col px-3 overflow-y-auto w-64 top-24 sticky md:flex">
       <div className="mb-3">
         <Avatar className="w-24 h-24 mb-3">
-          <AvatarImage src="https://avatars.githubusercontent.com/u/57469823?v=4" />
+          <Image
+            height={162}
+            width={162}
+            alt="xyzuan"
+            src="https://avatars.githubusercontent.com/u/57469823?v=4"
+          />
+          {/* <AvatarImage src="https://avatars.githubusercontent.com/u/57469823?v=4" /> */}
         </Avatar>
         <Typography.h4>Jody Yuantoro</Typography.h4>
         <Typography.p>@xyzuan</Typography.p>

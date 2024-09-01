@@ -42,7 +42,7 @@ const ProjectCard = ({ img, title, desc }: ProjectCardProps) => {
         </div>
       </div>
       <CardHeader className="space-y-2 p-5">
-        <CardTitle className="cursor-pointer  text-lg text-neutral-700 transition-all duration-300 dark:text-neutral-300 dark:group-hover:text-white lg:group-hover:text-white">
+        <CardTitle className="cursor-pointer text-lg text-neutral-700 transition-all duration-300 dark:text-neutral-300 dark:group-hover:text-white lg:group-hover:text-black">
           {title}
         </CardTitle>
         <CardDescription className="text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-400">
