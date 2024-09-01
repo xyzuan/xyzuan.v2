@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { BlogItem, BlogProps } from "@/commons/types/blog";
+import { BlogItem } from "@/commons/types/blog";
 import axios from "axios";
 
 const BASE_URL = "https://dev.to/api/";
