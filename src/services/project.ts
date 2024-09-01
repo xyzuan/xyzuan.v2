@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PROJECT_ENDPOINT = "https://xyzuan.my.id/api/portfolios";
+const PROJECT_ENDPOINT = "https://api.xyzuan.my.id/v2/portfolio";
 
 type Project = {
   id: number;
@@ -12,28 +12,19 @@ type Project = {
 
 type ProjectsResponse = {
   status: number;
-  data: {
-    projects: Project[];
-  };
+  data: Project[];
 };
 
 export const getAllProjects = async (): Promise<ProjectsResponse> => {
   const response = await axios.get(PROJECT_ENDPOINT, {});
-
   const status = response.status;
 
   if (status >= 400) {
-    return { status, data: { projects: [] } };
+    return { status, data: [] };
   }
-
-  const getData = response.data;
-
-  const data = {
-    projects: getData.portfolios as Project[],
-  };
 
   return {
     status,
-    data,
+    data: response.data.data as Project[],
   };
 };

@@ -27,7 +27,10 @@ const WorkCard = ({ logo, title, instance, date, location }: any) => {
   const [isShowResponsibility, setIsShowResponsibility] =
     useState<boolean>(false);
   return (
-    <Card>
+    <Card
+      className="group relative cursor-pointer hover:border-white/45 transition-colors"
+      onClick={() => setIsShowResponsibility(!isShowResponsibility)}
+    >
       <CardHeader className="flex flex-row gap-6 items-center pb-0">
         <Image
           alt="title"
@@ -46,18 +49,6 @@ const WorkCard = ({ logo, title, instance, date, location }: any) => {
         </div>
       </CardHeader>
       <CardContent className="pt-0">
-        <button
-          onClick={() => setIsShowResponsibility(!isShowResponsibility)}
-          className="-ml-1 mt-5 flex items-center gap-1 text-sm text-neutral-500"
-        >
-          <ChevronRight
-            size={18}
-            className={cn({
-              "rotate-90 transition-all duration-300": isShowResponsibility,
-            })}
-          />
-          {isShowResponsibility ? "Hide" : "Show"} Responsibilities
-        </button>
         <AnimatePresence>
           {isShowResponsibility && (
             <motion.ul

@@ -41,7 +41,6 @@ export const STACKS: stacksProps = {
   Redux: <SiRedux size={iconSize} color="#A855F7" />, // purple-500
   "Node.js": <SiNodedotjs size={iconSize} color="#16A34A" />, // green-600
   Webpack: <SiWebpack size={iconSize} color="#3B82F6" />, // blue-500
-  "Styled Components": <SiStyledcomponents size={iconSize} color="#EC4899" />, // pink-500
   PWA: <SiPwa size={iconSize} color="#D97706" />, // amber-600
   Nginx: <SiNginx size={iconSize} color="#22C55E" />, // green-500
   Jest: <SiJest size={iconSize} color="#DC2626" />, // red-600

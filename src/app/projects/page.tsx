@@ -17,10 +17,11 @@ const ProjectsPage = async () => {
         </Typography.p>
       </div>
       <div className="grid gap-5 px-1 pt-2 sm:grid-cols-2">
-        {projects?.data?.projects.map((value, idx) => {
+        {projects?.data?.map((value, idx) => {
           return (
             <BlurFade key={value.id} delay={0.25 + idx * 0.05} inView>
               <ProjectCard
+                id={value.id}
                 title={value.title}
                 img={value.img}
                 desc={value.content}
