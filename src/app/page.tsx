@@ -2,7 +2,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import About from "./components/about";
 import Header from "./components/header";
 import Skill from "./components/skill";
-import WorkExperience from "./components/work-experience";
+import WorkExperienceEducation from "./components/work-experience-education";
 import Services from "./components/services";
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
       <Header />
       <About />
       <Skill />
-      <WorkExperience />
+      <WorkExperienceEducation />
       <Services />
     </BlurFade>
   );
