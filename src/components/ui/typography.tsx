@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/commons/libs/utils";
 import React from "react";
 
 const Typography = () => {

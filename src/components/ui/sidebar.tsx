@@ -2,14 +2,14 @@
 
 import React from "react";
 import Link from "next/link";
+
+import { cn } from "@/commons/libs/utils";
 import { Button } from "./button";
-import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { getMenuList } from "@/constants/menu-list";
+import { getMenuList } from "@/commons/constants/menu-list";
 import { ArrowRightIcon, Ellipsis, MoonIcon, SunIcon } from "lucide-react";
 import Typography from "./typography";
 import { Avatar, AvatarImage } from "./avatar";
-import { useTheme } from "next-themes";
 import SidebarTheming from "./sidebar-theming";
 
 const Sidebar = () => {

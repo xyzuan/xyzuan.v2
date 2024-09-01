@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GithubOverviewItem from "./github-overview-item";
 
 interface GithubOverviewProps {

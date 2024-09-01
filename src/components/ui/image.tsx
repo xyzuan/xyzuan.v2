@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/commons/libs/utils";
 import clsx from "clsx";
 import NextImage, { ImageProps as NextImageProps } from "next/image";
 import { useState } from "react";

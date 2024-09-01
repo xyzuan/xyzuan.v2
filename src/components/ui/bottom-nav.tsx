@@ -2,14 +2,14 @@
 
 import React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Dock, DockIcon } from "@/components/magicui/dock";
-import { getMenuList } from "@/constants/menu-list";
+import { cn } from "@/commons/libs/utils";
+import { getMenuList } from "@/commons/constants/menu-list";
 import { usePathname } from "next/navigation";
 import { buttonVariants } from "./button";
 import { ModeToggle } from "./mode-toggle";

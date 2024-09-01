@@ -6,12 +6,24 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Typography from "@/components/ui/typography";
 import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
+import { fetchGithubData } from "@/services/github";
+import { GITHUB_ACCOUNTS } from "@/commons/constants/github";
+import { getALLTimeSinceToday, getReadStats } from "@/services/wakatime";
 import GithubCalendar from "./components/github-calendar";
 import GithubOverview from "./components/github-overview";
-import { fetchGithubData } from "@/services/github";
-import { GITHUB_ACCOUNTS } from "@/constants/github";
+import WakatimeOverview from "./components/wakatime-overview";
+import WakatimeCodingActive from "./components/wakatime-active";
+import { ClockIcon } from "lucide-react";
 
 const Dashboards = async () => {
+  const readStatsResponse = await getReadStats();
+  const allTimeSinceTodayResponse = await getALLTimeSinceToday();
+
+  const wakatime = {
+    ...readStatsResponse.data,
+    all_time_since_today: allTimeSinceTodayResponse.data,
+  };
+
   const github = await fetchGithubData(
     GITHUB_ACCOUNTS[0].username,
     GITHUB_ACCOUNTS[0].token
@@ -28,6 +40,15 @@ const Dashboards = async () => {
         </Typography.p>
       </div>
       <div className="space-y-3">
+        <Typography.h4 className="flex gap-3 items-center font-normal">
+          <ClockIcon height={24} width={24} />
+          Weekly Statistic
+        </Typography.h4>
+        <Typography.p>My WakaTime last 7 days stats.</Typography.p>
+        <WakatimeOverview data={wakatime} />
+        {/* <WakatimeCodingActive data={wakatime} /> */}
+      </div>
+      <div className="space-y-3 mt-6">
         <Typography.h4 className="flex gap-3 items-center font-normal">
           <GitHubLogoIcon height={24} width={24} />
           Contributions

@@ -6,8 +6,8 @@ import { BottomNav } from "@/components/ui/bottom-nav";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import GridPattern from "@/components/magicui/animated-grid-pattern";
-import { cn } from "@/lib/utils";
 import BlurFade from "@/components/magicui/blur-fade";
+import { cn } from "@/commons/libs/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 

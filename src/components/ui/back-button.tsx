@@ -1,8 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Typography from "./typography";
-import { cn } from "@/lib/utils";
 import { ArrowLeft, ChevronLeft } from "lucide-react";
+import { cn } from "@/commons/libs/utils";
 
 const BackButton = ({
   className,

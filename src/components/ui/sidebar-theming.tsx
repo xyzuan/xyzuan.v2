@@ -1,9 +1,9 @@
 "use client";
 
+import { cn } from "@/commons/libs/utils";
 import React, { useEffect, useState } from "react";
 import Typography from "./typography";
 import { MoonIcon, SunIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Switch } from "./switch";
 import { useTheme } from "next-themes";
 
