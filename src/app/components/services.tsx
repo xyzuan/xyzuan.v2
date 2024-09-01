@@ -13,7 +13,7 @@ const Services = () => {
   return (
     <div className="space-y-5">
       <div className="space-y-3">
-        <Typography.h3>What I've been working on</Typography.h3>
+        <Typography.h3>What I&apos;ve been working on</Typography.h3>
         <Typography.p className="leading-[1.8] text-neutral-800 dark:text-neutral-300 md:leading-loose">
           I assist brands, companies, institutions, and startups in creating
           exceptional digital experiences for their businesses through strategic
