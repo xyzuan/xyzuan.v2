@@ -3,6 +3,7 @@ import About from "./components/about";
 import Header from "./components/header";
 import Skill from "./components/skill";
 import WorkExperience from "./components/work-experience";
+import Services from "./components/services";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <About />
       <Skill />
       <WorkExperience />
+      <Services />
     </BlurFade>
   );
 };
