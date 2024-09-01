@@ -13,6 +13,7 @@ import GithubCalendar from "./components/github-calendar";
 import GithubOverview from "./components/github-overview";
 import WakatimeOverview from "./components/wakatime-overview";
 import { ClockIcon } from "lucide-react";
+import WakatimeActive from "./components/wakatime-active";
 
 const Dashboards = async () => {
   const readStatsResponse = await getReadStats();
@@ -45,7 +46,7 @@ const Dashboards = async () => {
         </Typography.h4>
         <Typography.p>My WakaTime last 7 days stats.</Typography.p>
         <WakatimeOverview data={wakatime} />
-        {/* <WakatimeCodingActive data={wakatime} /> */}
+        <WakatimeActive data={wakatime} />
       </div>
       <div className="space-y-3 mt-6">
         <Typography.h4 className="flex gap-3 items-center font-normal">

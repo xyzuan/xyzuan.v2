@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/commons/libs/utils";
-import clsx from "clsx";
 import NextImage, { ImageProps as NextImageProps } from "next/image";
 import { useState } from "react";
 
@@ -15,7 +14,7 @@ const Image = (props: ImageProps) => {
 
   return (
     <div
-      className={clsx(
+      className={cn(
         "overflow-hidden",
         isLoading ? "animate-pulse" : "",
         rounded
@@ -33,9 +32,8 @@ const Image = (props: ImageProps) => {
         src={src}
         alt={alt}
         loading="lazy"
-        // priority={true}
         quality={100}
-        onLoadingComplete={() => setLoading(false)}
+        onLoad={() => setLoading(false)}
         {...rest}
       />
     </div>

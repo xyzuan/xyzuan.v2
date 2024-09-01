@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import SkillBadge from "@/app/components/skill-badge";
 import Typography from "@/components/ui/typography";
 

@@ -9,34 +9,53 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "@/components/ui/image";
+import Typography from "@/components/ui/typography";
+import { PinIcon, ViewIcon } from "lucide-react";
 import React from "react";
 
-const ProjectCard = () => {
+interface ProjectCardProps {
+  img: string;
+  title: string;
+  desc: string;
+}
+
+const ProjectCard = ({ img, title, desc }: ProjectCardProps) => {
   return (
-    <Card>
-      <AspectRatio ratio={16 / 9}>
+    <Card className="group relative cursor-pointer border border-neutral-200 dark:border-neutral-900 lg:hover:scale-[102%]">
+      {/* {is_featured && ( */}
+      <div className="absolute right-0 top-0 z-[2] flex items-center gap-1 rounded-bl-xl rounded-tr-xl bg-black px-2 py-1 text-[13px] font-medium text-white dark:bg-white dark:text-black">
+        <PinIcon size={15} />
+        <span>Featured</span>
+      </div>
+      {/* )} */}
+      <div className="relative">
         <Image
-          src="https://res.cloudinary.com/myxyzuan/image/upload/v1724932280/x1ynfs2vi0nfixagh9lc.png"
-          alt="Image"
-          width={800}
-          height={400}
-          className="rounded-md object-cover w-full h-full"
+          src={img}
+          width={400}
+          height={200}
+          alt={title}
+          className="h-48 w-full rounded-t-xl object-cover"
         />
-      </AspectRatio>
-      <CardHeader>
-        <CardTitle>FoodCare Mobile Apps</CardTitle>
-        <CardDescription>
-          is an application to help donors who wish to voluntarily donate their
-          excess food to people who need sufficient food as a source of protein
-          and their daily nutrition.
-        </CardDescription>
-      </CardHeader>
-      <CardFooter>
-        <div className="flex gap-1">
-          <Badge>Flutter</Badge>
-          <Badge>ExpressJS</Badge>
+        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-1 rounded-t-xl bg-black text-sm font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-80">
+          <span>View Project</span>
+          <ViewIcon size={20} />
         </div>
-      </CardFooter>
+      </div>
+      <CardHeader className="space-y-2 p-5">
+        <CardTitle className="cursor-pointer  text-lg text-neutral-700 transition-all duration-300 dark:text-neutral-300 dark:group-hover:text-white lg:group-hover:text-white">
+          {title}
+        </CardTitle>
+        <CardDescription className="text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-400">
+          {desc}
+        </CardDescription>
+        {/* <div className='flex flex-wrap items-center gap-3 pt-2'>
+            {stacksArray?.map((stack: string, index: number) => (
+              <div key={index}>
+                <Tooltip title={stack}>{STACKS[stack]}</Tooltip>
+              </div>
+            ))}
+          </div> */}
+      </CardHeader>
     </Card>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/commons/libs/utils";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -67,7 +67,7 @@ const GithubCalendar = ({ data }: GithubCalendarProps) => {
           {months.map((month) => (
             <li
               key={month.firstDay}
-              className={clsx(`${month.totalWeeks < 2 ? "invisible" : ""}`)}
+              className={cn(`${month.totalWeeks < 2 ? "invisible" : ""}`)}
               style={{ minWidth: 14.3 * month.totalWeeks }}
             >
               {month.name}
@@ -143,7 +143,7 @@ const GithubCalendar = ({ data }: GithubCalendarProps) => {
         </div>
 
         <div
-          className={clsx(
+          className={cn(
             `${selectContribution?.date ? "opacity-100" : "opacity-0"}`,
             "rounded bg-neutral-200 px-2 text-sm dark:bg-neutral-700"
           )}

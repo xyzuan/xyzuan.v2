@@ -1,11 +1,3 @@
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
 import WorkCard from "@/app/components/work-card";
 

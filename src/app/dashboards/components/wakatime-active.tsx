@@ -1,5 +1,6 @@
 import { cn } from "@/commons/libs/utils";
 import WakatimeProgress from "./wakatime-progress";
+import Typography from "@/components/ui/typography";
 // import WakatimeProgress from "./wakatime-progress";
 
 interface ItemProps {
@@ -86,10 +87,10 @@ const WakatimeActive = ({ data }: WakatimeActiveProps) => {
             "relative flex flex-1 flex-col gap-2 rounded-lg p-[2px]"
           )}
         >
-          <div className="h-full w-full rounded-lg bg-neutral-50 p-2 dark:bg-dark">
-            <p className="absolute -top-3 left-3 bg-neutral-50 px-2 dark:bg-dark">
+          <div className="h-full w-full rounded-lg bg-background p-2">
+            <Typography.p className="absolute -top-3 left-3 bg-background px-2 dark:bg-dark">
               {item?.title}
-            </p>
+            </Typography.p>
 
             <ul className="flex flex-col gap-1 px-4 py-3">
               {item?.data?.map((subItem) => (
