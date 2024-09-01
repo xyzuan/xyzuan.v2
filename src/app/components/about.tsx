@@ -1,9 +1,24 @@
+import { cn } from "@/commons/libs/utils";
+import AnimatedShinyText from "@/components/magicui/animated-shiny-text";
+import { Button } from "@/components/ui/button";
 import Typography from "@/components/ui/typography";
+import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
 const About = () => {
   return (
     <div className="flex flex-col h-fit gap-6">
-      <Typography.h3>About</Typography.h3>
+      <div className="flex justify-between items-end">
+        <Typography.h3>About</Typography.h3>
+        <Link href="https://xyzuan.my.id/assets/Jody%20Yuantoro_ATS_CV_v2.pdf">
+          <Button variant="outline">
+            <AnimatedShinyText className="inline-flex items-center transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+              <span>✨ Download My Resume</span>
+              <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+            </AnimatedShinyText>
+          </Button>
+        </Link>
+      </div>
       <Typography.p>
         As a Software Engineer with expertise in web and mobile development, I
         am creating innovative and user-friendly solutions that solve real-world

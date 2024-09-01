@@ -11,6 +11,7 @@ import { ArrowRightIcon, Ellipsis, MoonIcon, SunIcon } from "lucide-react";
 import Typography from "./typography";
 import { Avatar, AvatarImage } from "./avatar";
 import SidebarTheming from "./sidebar-theming";
+import AnimatedShinyText from "../magicui/animated-shiny-text";
 
 const Sidebar = () => {
   return (
