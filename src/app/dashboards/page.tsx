@@ -12,7 +12,6 @@ import { getALLTimeSinceToday, getReadStats } from "@/services/wakatime";
 import GithubCalendar from "./components/github-calendar";
 import GithubOverview from "./components/github-overview";
 import WakatimeOverview from "./components/wakatime-overview";
-import WakatimeCodingActive from "./components/wakatime-active";
 import { ClockIcon } from "lucide-react";
 
 const Dashboards = async () => {

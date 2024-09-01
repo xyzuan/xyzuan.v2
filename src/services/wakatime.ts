@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 
 const API_KEY = process.env.WAKATIME_API_KEY;
-
 const STATS_ENDPOINT = "https://wakatime.com/api/v1/users/current/stats";
 const ALL_TIME_SINCE_TODAY =
   "https://wakatime.com/api/v1/users/current/all_time_since_today";
@@ -59,7 +57,7 @@ export const getReadStats = async (): Promise<{
 
 export const getALLTimeSinceToday = async (): Promise<{
   status: number;
-  data: any;
+  data: object;
 }> => {
   const response = await axios.get(ALL_TIME_SINCE_TODAY, {
     headers: {
