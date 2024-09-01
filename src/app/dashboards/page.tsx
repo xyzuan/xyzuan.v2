@@ -1,30 +1,21 @@
-"use client";
+"use server";
+
+import Link from "next/link";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import Typography from "@/components/ui/typography";
-
 import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
+import GithubCalendar from "./components/github-calendar";
+import GithubOverview from "./components/github-overview";
 import { fetchGithubData } from "@/services/github";
 import { GITHUB_ACCOUNTS } from "@/constants/github";
-import { useEffect, useState } from "react";
-import GithubOverview from "./components/github-overview";
-import GithubCalendar from "./components/github-calendar";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
 
-const Dashboards = () => {
-  const [contributionsCalendar, setContributionsCalendar] = useState();
-
-  useEffect(() => {
-    fetchGithubData(GITHUB_ACCOUNTS[0].username, GITHUB_ACCOUNTS[0].token).then(
-      (data) => {
-        console.log(data);
-        setContributionsCalendar(
-          data?.data?.contributionsCollection?.contributionCalendar
-        );
-      }
-    );
-  }, []);
+const Dashboards = async () => {
+  const github = await fetchGithubData(
+    GITHUB_ACCOUNTS[0].username,
+    GITHUB_ACCOUNTS[0].token
+  );
 
   return (
     <BlurFade delay={0.25 * 0.05} inView>
@@ -49,8 +40,12 @@ const Dashboards = () => {
             <Typography.p>{`@${GITHUB_ACCOUNTS[0].username}`}</Typography.p>
           </Link>
         </div>
-        <GithubOverview data={contributionsCalendar} />
-        <GithubCalendar data={contributionsCalendar} />
+        <GithubOverview
+          data={github?.data?.contributionsCollection?.contributionCalendar}
+        />
+        <GithubCalendar
+          data={github?.data?.contributionsCollection?.contributionCalendar}
+        />
       </div>
     </BlurFade>
   );
