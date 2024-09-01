@@ -1,17 +1,17 @@
 "use client";
 
-import { memo, ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 import Marquee from "@/components/magicui/marquee";
 import Typography from "@/components/ui/typography";
 import { STACKS } from "@/commons/constants/stacks";
 
-const Tag = memo(({ icon, title }: { icon: ReactNode; title: string }) => (
+const Tag = ({ icon, title }: { icon: ReactNode; title: string }) => (
   <div className="flex w-max items-center gap-2 rounded-full border border-neutral-300 bg-neutral-50 px-5 py-2 text-[15px] shadow-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-50">
     {icon}
     <span>{title}</span>
   </div>
-));
+);
 
 const Skill = () => {
   const [shuffledSkills, setShuffledSkills] = useState<
