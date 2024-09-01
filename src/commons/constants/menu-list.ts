@@ -1,26 +1,18 @@
 import {
-  Book,
   Code,
   Coffee,
   Home,
   LayoutDashboard,
-  LayoutGrid,
   LucideIcon,
+  RocketIcon,
   Rss,
 } from "lucide-react";
-
-type Submenu = {
-  href: string;
-  label: string;
-  active: boolean;
-};
 
 type Menu = {
   href: string;
   label: string;
   active: boolean;
   icon: LucideIcon;
-  submenus: Submenu[];
 };
 
 type Group = {
@@ -38,28 +30,30 @@ export function getMenuList(pathname: string): Group[] {
           label: "Home",
           active: pathname.endsWith("/"),
           icon: Home,
-          submenus: [],
         },
         {
           href: "/dashboards",
           label: "Dashboards",
           active: pathname.includes("/dashboards"),
           icon: LayoutDashboard,
-          submenus: [],
         },
         {
           href: "/projects",
           label: "Projects",
           active: pathname.includes("/projects"),
           icon: Coffee,
-          submenus: [],
         },
         {
           href: "/blogs",
           label: "Blogs",
           active: pathname.includes("/blogs"),
           icon: Rss,
-          submenus: [],
+        },
+        {
+          href: "/contacts",
+          label: "Contacts",
+          active: pathname.includes("/contacts"),
+          icon: RocketIcon,
         },
       ],
     },
@@ -71,7 +65,6 @@ export function getMenuList(pathname: string): Group[] {
           label: "JS Playground",
           active: pathname.includes("/jsplay"),
           icon: Code,
-          submenus: [],
         },
       ],
     },

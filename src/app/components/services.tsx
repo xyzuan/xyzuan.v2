@@ -1,3 +1,5 @@
+"use client";
+
 import { MagicCard } from "@/components/magicui/magic-card";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,9 +9,11 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
+import { useTheme } from "next-themes";
 import { BiRocket as RocketIcon } from "react-icons/bi";
 
 const Services = () => {
+  const { theme } = useTheme();
   return (
     <div className="space-y-5">
       <div className="space-y-3">
@@ -20,7 +24,7 @@ const Services = () => {
           development services.
         </Typography.p>
       </div>
-      <MagicCard>
+      <MagicCard gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}>
         <CardHeader>
           <div className="flex items-center gap-2">
             <RocketIcon size={24} />
@@ -34,12 +38,7 @@ const Services = () => {
           </Typography.p>
         </CardContent>
         <CardFooter>
-          <Button
-            data-umami-event="Click Contact Button"
-            // onClick={() => Router.("/contact")}
-          >
-            Contact me
-          </Button>
+          <Button data-umami-event="Click Contact Button">Contact me</Button>
         </CardFooter>
       </MagicCard>
     </div>

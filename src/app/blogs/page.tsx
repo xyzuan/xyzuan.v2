@@ -3,7 +3,7 @@ import Typography from "@/components/ui/typography";
 import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
 
-const Blogs = () => {
+const BlogsPage = () => {
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
@@ -15,4 +15,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default BlogsPage;

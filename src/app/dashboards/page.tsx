@@ -15,7 +15,7 @@ import WakatimeOverview from "./components/wakatime-overview";
 import { ClockIcon } from "lucide-react";
 import WakatimeActive from "./components/wakatime-active";
 
-const Dashboards = async () => {
+const DashboardsPage = async () => {
   const readStatsResponse = await getReadStats();
   const allTimeSinceTodayResponse = await getALLTimeSinceToday();
 
@@ -72,4 +72,4 @@ const Dashboards = async () => {
   );
 };
 
-export default Dashboards;
+export default DashboardsPage;

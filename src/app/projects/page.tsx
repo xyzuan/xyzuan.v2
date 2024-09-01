@@ -4,7 +4,7 @@ import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
 import { getAllProjects } from "@/services/project";
 
-const Projects = async () => {
+const ProjectsPage = async () => {
   const projects = await getAllProjects();
 
   return (
@@ -33,4 +33,4 @@ const Projects = async () => {
   );
 };
 
-export default Projects;
+export default ProjectsPage;

@@ -5,7 +5,7 @@ import Skill from "./components/skill";
 import WorkExperience from "./components/work-experience";
 import Services from "./components/services";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <Header />
@@ -17,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

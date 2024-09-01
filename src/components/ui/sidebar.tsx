@@ -49,39 +49,37 @@ const SidebarMenu = ({ isOpen }: any) => {
               ) : (
                 <p className="pb-2"></p>
               )}
-              {menus.map(
-                ({ href, label, icon: Icon, active, submenus }, index) => {
-                  return (
-                    <Button
-                      key={index}
-                      variant={active ? "secondary" : "ghost"}
-                      className="w-full justify-start h-10 mb-1"
-                      asChild
-                    >
-                      <Link href={href}>
-                        <span className={cn(isOpen === false ? "" : "mr-4")}>
-                          <Icon size={18} />
-                        </span>
-                        <Typography.p
-                          className={cn(
-                            "flex flex-grow max-w-[200px] truncate",
-                            isOpen === false
-                              ? "-translate-x-96 opacity-0"
-                              : "translate-x-0 opacity-100"
-                          )}
-                        >
-                          {label}
-                        </Typography.p>
-                        <ArrowRightIcon
-                          className={active ? "block opacity-60" : "hidden"}
-                          height={14}
-                          width={14}
-                        />
-                      </Link>
-                    </Button>
-                  );
-                }
-              )}
+              {menus.map(({ href, label, icon: Icon, active }, index) => {
+                return (
+                  <Button
+                    key={index}
+                    variant={active ? "secondary" : "ghost"}
+                    className="w-full justify-start h-10 mb-1"
+                    asChild
+                  >
+                    <Link href={href}>
+                      <span className={cn(isOpen === false ? "" : "mr-4")}>
+                        <Icon size={18} />
+                      </span>
+                      <Typography.p
+                        className={cn(
+                          "flex flex-grow max-w-[200px] truncate",
+                          isOpen === false
+                            ? "-translate-x-96 opacity-0"
+                            : "translate-x-0 opacity-100"
+                        )}
+                      >
+                        {label}
+                      </Typography.p>
+                      <ArrowRightIcon
+                        className={active ? "block opacity-60" : "hidden"}
+                        height={14}
+                        width={14}
+                      />
+                    </Link>
+                  </Button>
+                );
+              })}
             </li>
           ))}
           <SidebarTheming key="theme-settings" />
