@@ -1,8 +1,6 @@
 import { STACKS } from "@/commons/constants/stacks";
-import { Badge } from "@/components/ui/badge";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
