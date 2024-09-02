@@ -26,8 +26,7 @@ export function BottomNav({ forceDisableSidebar }: BottomNavProps) {
   return (
     <div
       className={cn(
-        "pointer-events-none fixed inset-x-0 bottom-12 z-30 mx-auto flex md:hidden origin-bottom h-full max-h-14",
-        forceDisableSidebar && "md:flex"
+        "pointer-events-none fixed inset-x-0 bottom-12 z-30 mx-auto flex md:hidden origin-bottom h-full max-h-14"
       )}
     >
       <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>

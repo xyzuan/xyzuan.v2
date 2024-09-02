@@ -6,8 +6,6 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 import type { Metadata } from "next";
 
-import BaseLayout from "@/components/ui/base-layout";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,9 +22,7 @@ export default function RootLayout({
     <html suppressHydrationWarning={true} lang="en">
       <body className={`${inter.className} flex justify-center p-8 md:p-24`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TooltipProvider>
-            <BaseLayout>{children}</BaseLayout>
-          </TooltipProvider>
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -10,6 +10,7 @@ import {
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
 import diff from "react-syntax-highlighter/dist/cjs/languages/prism/diff";
+import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
 import javascript from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
@@ -17,6 +18,7 @@ import { a11yDark as themeColor } from "react-syntax-highlighter/dist/cjs/styles
 import { useCopyToClipboard } from "usehooks-ts";
 
 const languages = {
+  bash: "bash",
   javascript: "javascript",
   typescript: "typescript",
   diff: "diff",
@@ -24,6 +26,7 @@ const languages = {
   css: "css",
 };
 
+SyntaxHighlighter.registerLanguage(languages.bash, bash);
 SyntaxHighlighter.registerLanguage(languages.javascript, javascript);
 SyntaxHighlighter.registerLanguage(languages.typescript, typescript);
 SyntaxHighlighter.registerLanguage(languages.diff, diff);

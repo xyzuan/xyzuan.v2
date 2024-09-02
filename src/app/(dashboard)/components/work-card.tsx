@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
+} from "../../../components/ui/card";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/commons/libs/utils";

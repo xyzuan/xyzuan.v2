@@ -32,7 +32,6 @@ const DashboardsPage = async () => {
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
-        <BackButton />
         <Typography.h3>Dashboard</Typography.h3>
         <Typography.p>
           This is my personal dashboard, built with Next.js API routes deployed

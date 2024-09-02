@@ -10,7 +10,6 @@ const ProjectsPage = async () => {
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
-        <BackButton />
         <Typography.h3>Projects</Typography.h3>
         <Typography.p>
           Several projects that I have worked on, both private and open source.

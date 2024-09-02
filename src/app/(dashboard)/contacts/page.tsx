@@ -13,7 +13,6 @@ const ContactsPage = () => {
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
-        <BackButton />
         <Typography.h3>Contacts</Typography.h3>
         <Typography.p>
           Feel free to get in touch and let&apos;s have a discussion about how
