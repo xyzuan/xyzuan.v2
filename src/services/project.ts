@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const PROJECT_ENDPOINT = "https://api.xyzuan.my.id/v2/portfolio";
+import { PROJECT_ENDPOINT } from "@/commons/constants/project";
 
 type Project = {
   id: number;
@@ -16,15 +14,17 @@ type ProjectsResponse = {
 };
 
 export const getAllProjects = async (): Promise<ProjectsResponse> => {
-  const response = await axios.get(PROJECT_ENDPOINT, {});
+  const response = await fetch(PROJECT_ENDPOINT, {
+    method: "GET",
+    next: {
+      revalidate: 60,
+    },
+  });
   const status = response.status;
 
   if (status >= 400) {
     return { status, data: [] };
   }
 
-  return {
-    status,
-    data: response.data.data as Project[],
-  };
+  return await response.json();
 };

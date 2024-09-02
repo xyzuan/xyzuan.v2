@@ -1,52 +1,29 @@
-import { GITHUB_ACCOUNTS } from "@/commons/constants/github";
-import axios from "axios";
-
-const GITHUB_USER_ENDPOINT = "https://api.github.com/graphql";
-const GITHUB_USER_QUERY = `query($username: String!) {
-  user(login: $username) {
-    contributionsCollection {
-      contributionCalendar {
-        colors
-        totalContributions
-        months {
-          firstDay
-          name
-          totalWeeks
-        }
-        weeks {
-          contributionDays {
-            color
-            contributionCount
-            date
-          }
-          firstDay
-        }
-      }
-    }
-  }
-}`;
+import {
+  GITHUB_ACCOUNTS,
+  GITHUB_USER_ENDPOINT,
+  GITHUB_USER_QUERY,
+} from "@/commons/constants/github";
 
 export const fetchGithubData = async (
   username: string,
   token: string | undefined
 ) => {
-  const response = await axios.post(
-    GITHUB_USER_ENDPOINT,
-    {
+  const response = await fetch(GITHUB_USER_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `bearer ${token}`,
+    },
+    body: JSON.stringify({
       query: GITHUB_USER_QUERY,
       variables: {
         username: username,
       },
-    },
-    {
-      headers: {
-        Authorization: `bearer ${token}`,
-      },
-    }
-  );
+    }),
+  });
 
   const status: number = response.status;
-  const responseJson = response.data;
+  const responseJson = await response.json();
 
   if (status > 400) {
     return { status, data: {} };

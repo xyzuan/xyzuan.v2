@@ -15,8 +15,6 @@ import WakatimeOverview from "./components/wakatime-overview";
 import { ClockIcon } from "lucide-react";
 import WakatimeActive from "./components/wakatime-active";
 
-export const revalidate = 3600;
-
 const DashboardsPage = async () => {
   const readStatsResponse = await getReadStats();
   const allTimeSinceTodayResponse = await getALLTimeSinceToday();

@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const WORKS_ENDPOINT = "https://xyzuan.my.id/api/works";
+import { WORKS_ENDPOINT } from "@/commons/constants/work";
 
 type Work = {
   id: number;
@@ -20,7 +18,12 @@ type WorksResponse = {
 };
 
 export const getAllWorks = async (): Promise<WorksResponse> => {
-  const response = await axios.get(WORKS_ENDPOINT, {});
+  const response = await fetch(WORKS_ENDPOINT, {
+    method: "GET",
+    next: {
+      revalidate: 60,
+    },
+  });
 
   const status = response.status;
 
@@ -28,7 +31,7 @@ export const getAllWorks = async (): Promise<WorksResponse> => {
     return { status, data: { work: [] } };
   }
 
-  const getData = response.data;
+  const getData = await response.json();
 
   const data = {
     work: getData.works as Work[],

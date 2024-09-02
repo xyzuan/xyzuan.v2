@@ -4,51 +4,53 @@ import {
   BlogItem,
   CommentItemProps,
 } from "@/commons/types/blog";
-import axios from "axios";
 
 type BlogParamsProps = {
   params: { content: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 export async function getBlogData(): Promise<BlogItem[]> {
-  const response = await axios.get(DEVTO_BLOG_API);
+  const response = await fetch(DEVTO_BLOG_API, {
+    method: "GET",
+  });
   if (response?.status !== 200) return {} as BlogItem[];
-  return response.data;
+  return await response.json();
 }
 
 export async function getBlogDetail({
   searchParams,
 }: BlogParamsProps): Promise<BlogDetailProps> {
   const URL = `https://dev.to/api/articles/${searchParams.id}`;
-  const response = await axios.get(URL, {
+  const response = await fetch(URL, {
+    method: "GET",
     headers: {
-      "api-key": process.env.DEVTO_KEY,
+      "api-key": process.env.DEVTO_KEY ?? "",
     },
   });
   if (response.status !== 200) return {} as BlogDetailProps;
-  return response.data;
+  return await response.json();
 }
 
 export async function getComments(postId: string): Promise<CommentItemProps[]> {
   const DEV_TO_URL = `https://dev.to/api/comments/?a_id=${postId}`;
-  const response = await axios.get(DEV_TO_URL, {
+  const response = await fetch(DEV_TO_URL, {
     headers: {
-      "api-key": process.env.DEVTO_KEY,
+      "api-key": process.env.DEVTO_KEY ?? "",
     },
   });
   if (response?.status !== 200) return [];
-  return response.data;
+  return await response.json();
 }
 
 export async function getBlogViews(searchParams: string) {
   const URL = `https://dev.to/api/articles/me/all`;
-  const response = await axios.get(URL, {
+  const response = await fetch(URL, {
     headers: {
-      "api-key": process.env.DEVTO_KEY,
+      "api-key": process.env.DEVTO_KEY ?? "",
     },
   });
   if (response.status !== 200) return 0;
-  const data = response.data;
+  const data = await response.json();
 
   const findArticle = data?.find(
     (blog: BlogItem) => blog.id === parseInt(searchParams)

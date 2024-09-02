@@ -1,17 +1,17 @@
-import axios from "axios";
-
-const API_KEY = process.env.WAKATIME_API_KEY;
-const STATS_ENDPOINT = "https://wakatime.com/api/v1/users/current/stats";
-const ALL_TIME_SINCE_TODAY =
-  "https://wakatime.com/api/v1/users/current/all_time_since_today";
+import {
+  ALL_TIME_SINCE_TODAY,
+  STATS_ENDPOINT,
+} from "@/commons/constants/wakatime";
 
 export const getReadStats = async (): Promise<{
   status: number;
   data: any;
 }> => {
-  const response = await axios.get(`${STATS_ENDPOINT}/last_7_days`, {
+  const response = await fetch(`${STATS_ENDPOINT}/last_7_days`, {
+    next: { revalidate: 60 },
+    method: "GET",
     headers: {
-      Authorization: `Basic ${API_KEY}`,
+      Authorization: `Basic ${process.env.WAKATIME_API_KEY}`,
     },
   });
 
@@ -19,7 +19,7 @@ export const getReadStats = async (): Promise<{
 
   if (status >= 400) return { status, data: [] };
 
-  const getData = response.data;
+  const getData = await response.json();
 
   const start_date = getData?.data?.start;
   const end_date = getData?.data?.end;
@@ -59,9 +59,10 @@ export const getALLTimeSinceToday = async (): Promise<{
   status: number;
   data: object;
 }> => {
-  const response = await axios.get(ALL_TIME_SINCE_TODAY, {
+  const response = await fetch(ALL_TIME_SINCE_TODAY, {
+    method: "GET",
     headers: {
-      Authorization: `Basic ${API_KEY}`,
+      Authorization: `Basic ${process.env.WAKATIME_API_KEY}`,
     },
   });
 
@@ -69,7 +70,7 @@ export const getALLTimeSinceToday = async (): Promise<{
 
   if (status >= 400) return { status, data: {} };
 
-  const getData = response.data;
+  const getData = await response.json();
 
   const data = {
     text: getData?.data?.text,
