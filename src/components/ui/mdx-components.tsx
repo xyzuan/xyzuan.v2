@@ -45,7 +45,12 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
           />
         ),
         img: (props) => (
-          <img className="duration-700 ease-in-out rounded-xl m" {...props} />
+          <div className="flex w-full justify-center">
+            <img
+              className="transition-all duration-700 ease-in-out hover:scale-105 rounded-xl my-8 align-middle "
+              {...props}
+            />
+          </div>
         ),
         code: (props) => <CodeBlock {...props} />,
         blockquote: (props) => <Typography.quote {...props} />,

@@ -69,7 +69,7 @@ const BlogCard = ({
               <Badge
                 key={idx}
                 variant="outline"
-                className="rounded-full  px-2.5 py-1 font-mono text-xs"
+                className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs"
               >
                 <span className="mr-1 font-semibold">#</span>
                 {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
