@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CodeBlock from "./code-block";
 import Typography from "./typography";
-import Image from "./image";
 
 interface MarkdownRendererProps {
   children: string;

@@ -6,32 +6,34 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import Image from "@/components/ui/image";
 import { Separator } from "@/components/ui/separator";
-import { Tooltip } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import Typography from "@/components/ui/typography";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { EyeIcon, FlameIcon, ViewIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { BiComment } from "react-icons/bi";
 import { BsArrowRight as MoreIcon } from "react-icons/bs";
 import { TbCalendarBolt as DateIcon } from "react-icons/tb";
 
-interface BlogCardProps extends BlogItem {
-  view?: string;
-  isExcerpt?: boolean;
-  isCarousel?: boolean;
-}
-
 const BlogCard = ({
   id,
+  user,
   title,
   cover_image,
   published_at,
   description,
   slug,
   comments_count,
+  public_reactions_count,
+  page_views_count,
   tag_list,
-}: BlogCardProps) => {
+}: BlogItem) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const newSlug = formatBlogSlug(slug);
@@ -69,7 +71,7 @@ const BlogCard = ({
               <Badge
                 key={idx}
                 variant="outline"
-                className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs"
+                className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs backdrop-blur-2xl"
               >
                 <span className="mr-1 font-semibold">#</span>
                 {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
@@ -97,14 +99,19 @@ const BlogCard = ({
             <Separator className="my-3 opacity-55" />
             <div className="flex justify-between gap-4 px-0.5 text-neutral-400">
               <Tooltip>
-                <Image
-                  src="https://avatars.githubusercontent.com/u/57469823?v=4"
-                  alt="Jody Yuantoro"
-                  width={25}
-                  height={25}
-                  rounded="rounded-full"
-                  className="rotate-3 border border-neutral-500"
-                />
+                <TooltipTrigger asChild>
+                  <Image
+                    src={user.profile_image_90}
+                    alt={user.name}
+                    width={25}
+                    height={25}
+                    rounded="rounded-full"
+                    className="rotate-3 border border-neutral-500"
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <Typography.p>{user.name}</Typography.p>
+                </TooltipContent>
               </Tooltip>
 
               <motion.div
@@ -117,9 +124,21 @@ const BlogCard = ({
                 )}
               >
                 <div className="flex items-center gap-1">
+                  <EyeIcon size={14} />
+                  <span className="ml-0.5 text-xs font-medium">
+                    {page_views_count.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1">
                   <BiComment size={14} />
                   <span className="ml-0.5 text-xs font-medium">
-                    {comments_count.toLocaleString()} COMMENTS
+                    {comments_count.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <FlameIcon size={14} />
+                  <span className="ml-0.5 text-xs font-medium">
+                    {public_reactions_count.toLocaleString()}
                   </span>
                 </div>
               </motion.div>
