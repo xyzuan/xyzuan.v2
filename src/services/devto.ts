@@ -12,6 +12,9 @@ type BlogParamsProps = {
 export async function getBlogData(): Promise<BlogItem[]> {
   const response = await fetch(DEVTO_BLOG_API, {
     method: "GET",
+    next: {
+      revalidate: 60,
+    },
   });
   if (response?.status !== 200) return {} as BlogItem[];
   return await response.json();
@@ -25,6 +28,9 @@ export async function getBlogDetail({
     method: "GET",
     headers: {
       "api-key": process.env.DEVTO_KEY ?? "",
+    },
+    next: {
+      revalidate: 60,
     },
   });
   if (response.status !== 200) return {} as BlogDetailProps;

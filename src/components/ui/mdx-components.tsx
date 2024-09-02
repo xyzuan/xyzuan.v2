@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CodeBlock from "./code-block";
 import Typography from "./typography";
+import Image from "./image";
 
 interface MarkdownRendererProps {
   children: string;
@@ -42,6 +43,9 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
             className="list-decimal space-y-3 pb-5 pl-10 font-sans"
             {...props}
           />
+        ),
+        img: (props) => (
+          <img className="duration-700 ease-in-out rounded-xl m" {...props} />
         ),
         code: (props) => <CodeBlock {...props} />,
         blockquote: (props) => <Typography.quote {...props} />,

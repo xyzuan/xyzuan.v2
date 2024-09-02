@@ -1,18 +1,18 @@
-import Typography from "@/components/ui/typography";
-
-import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
-import BlogFeaturedSection from "./components/blog-featured-section";
+import BlogFeaturedSection from "./components/blog-item-section";
+import { getBlogData } from "@/services/devto";
+import { BlogItem } from "@/commons/types/blog";
+import BlogCard from "./components/blog-card";
+import BlogFeaturedHero from "./components/blog-featured-hero";
+import BlogItemSection from "./components/blog-item-section";
 
 const BlogsPage = async () => {
+  const blogs = await getBlogData();
+
   return (
     <BlurFade delay={0.25 * 0.05} inView>
-      <div className="mb-6">
-        <BackButton />
-        <Typography.h3>Blogs</Typography.h3>
-        <Typography.p>Currently Work in Proggress</Typography.p>
-      </div>
-      <BlogFeaturedSection />
+      <BlogFeaturedHero blogs={blogs} />
+      <BlogItemSection blogs={blogs} />
     </BlurFade>
   );
 };

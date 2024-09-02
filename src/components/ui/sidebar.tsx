@@ -24,7 +24,6 @@ const Sidebar = () => {
             alt="xyzuan"
             src="https://avatars.githubusercontent.com/u/57469823?v=4"
           />
-          {/* <AvatarImage src="https://avatars.githubusercontent.com/u/57469823?v=4" /> */}
         </Avatar>
         <Typography.h4>Jody Yuantoro</Typography.h4>
         <Typography.p>@xyzuan</Typography.p>

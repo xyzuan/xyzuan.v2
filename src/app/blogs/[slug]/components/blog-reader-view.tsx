@@ -6,6 +6,7 @@ import Link from "next/link";
 import MDXComponent from "@/components/ui/mdx-components";
 import BlogCommentList from "./blog-comment-list";
 import Typography from "@/components/ui/typography";
+import { Badge } from "@/components/ui/badge";
 
 interface BlogReaderViewProps {
   content: BlogDetailProps;
@@ -55,12 +56,7 @@ const BlogReaderView = ({
           <Typography.h3 className="text-lg font-medium">Tags:</Typography.h3>
           <div className="flex flex-wrap gap-2 pt-2">
             {tags?.map((stack: string, index: number) => (
-              <span
-                key={index}
-                className="rounded-full bg-neutral-200 px-4 py-1 text-[14px] font-medium text-neutral-600 dark:bg-neutral-700 dark:text-neutral-200"
-              >
-                {stack}
-              </span>
+              <Badge key={index}>{stack}</Badge>
             ))}
           </div>
         </div>
