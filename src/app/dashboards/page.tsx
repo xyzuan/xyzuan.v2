@@ -14,8 +14,10 @@ import GithubOverview from "./components/github-overview";
 import WakatimeOverview from "./components/wakatime-overview";
 import { ClockIcon } from "lucide-react";
 import WakatimeActive from "./components/wakatime-active";
+import { revalidatePath } from "next/cache";
 
 const DashboardsPage = async () => {
+  revalidatePath("/dashboards");
   const readStatsResponse = await getReadStats();
   const allTimeSinceTodayResponse = await getALLTimeSinceToday();
 
