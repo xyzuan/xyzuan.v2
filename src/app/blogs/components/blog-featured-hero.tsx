@@ -94,12 +94,6 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
                     {formatDate(currentFeatured?.published_timestamp)}
                   </span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <ViewIcon size={15} />
-                  <span className="ml-0.5 text-[13px]">
-                    {currentFeatured?.total_views_count} Views
-                  </span>
-                </div>
               </div>
             </div>
             <div className="flex gap-2">
@@ -128,7 +122,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
               onClick={() => setCurrentFeaturedIndex(index)}
               className={clsx(
                 "relative mb-2 h-16 w-16 cursor-pointer overflow-hidden border-2 bg-black transition-all duration-300 hover:scale-105",
-                index === currentFeaturedIndex && "scale-105 border-sky-300"
+                index === currentFeaturedIndex && "scale-105 border-white"
               )}
               style={{ borderRadius: "50%" }}
             >
