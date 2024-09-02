@@ -1,6 +1,6 @@
 "use client";
 
-import { formatDate, formatExcerpt } from "@/commons/helpers";
+import { formatDate } from "@/commons/helpers";
 import { BlogProps } from "@/commons/types/blog";
 import Image from "@/components/ui/image";
 import clsx from "clsx";
@@ -66,7 +66,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
           alt={currentFeatured?.title}
           fill={true}
           sizes="100vw, 100vh"
-          className="h-full w-full transform object-cover transition-transform duration-300"
+          className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 transition-opacity duration-300"></div>
       </div>
@@ -80,16 +80,13 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
           <div className="flex flex-col justify-end gap-6">
             <div className="flex flex-col space-y-2 text-white">
               <Link
-                href={`/blog/${currentFeatured?.slug}?id=${currentFeatured?.id}`}
+                href={`/blogs/${currentFeatured?.slug}?id=${currentFeatured?.id}`}
               >
                 <h3 className="group relative flex w-fit cursor-pointer  text-2xl font-bold leading-normal">
                   {currentFeatured?.title}
                   <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-white transition-transform group-hover:scale-x-100"></span>
                 </h3>
               </Link>
-              {/* <p className="hidden sm:block">
-                {formatExcerpt(currentFeatured?.excerpt?.rendered)}
-              </p> */}
               <div className="flex gap-x-5 pt-1 text-neutral-400">
                 <div className="flex items-center gap-1 ">
                   <DateIcon size={16} />
@@ -100,7 +97,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
                 <div className="flex items-center gap-1">
                   <ViewIcon size={15} />
                   <span className="ml-0.5 text-[13px]">
-                    {currentFeatured?.page_views_count} Views
+                    {currentFeatured?.total_views_count} Views
                   </span>
                 </div>
               </div>
@@ -124,7 +121,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
           </div>
         </div>
 
-        {/* <div className="hidden flex-col items-center justify-center space-y-5 border-l border-solid border-[#ffffff1a] px-8 sm:flex">
+        <div className="hidden flex-col items-center justify-center space-y-5 border-l border-solid border-[#ffffff1a] px-8 sm:flex">
           {featuredData?.map((item, index: number) => (
             <button
               key={item.id}
@@ -136,15 +133,15 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
               style={{ borderRadius: "50%" }}
             >
               <Image
-                src={item.featured_image_url || defaultImage}
-                alt={item?.title?.rendered}
+                src={item?.cover_image || defaultImage}
+                alt={item?.title}
                 fill={true}
                 sizes="100vw, 100vh"
                 className="object-cover"
               />
             </button>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -1,133 +1,58 @@
-import { BlogItem } from "@/commons/types/blog";
+import { DEVTO_BLOG_API } from "@/commons/constants/blog";
+import {
+  BlogDetailProps,
+  BlogItem,
+  CommentItemProps,
+} from "@/commons/types/blog";
 import axios from "axios";
 
-const BASE_URL = "https://dev.to/api/";
-const BLOG_URL = `${BASE_URL}articles/`;
-const COMMENT_URL = `${BASE_URL}comments`;
-const USERNAME = "xyzuan";
-
-const DEVTO_KEY = process.env.DEVTO_KEY as string;
-
 type BlogParamsProps = {
-  page?: number;
-  per_page?: number;
+  params: { content: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
+export async function getBlogData(): Promise<BlogItem[]> {
+  const response = await axios.get(DEVTO_BLOG_API);
+  if (response?.status !== 200) return {} as BlogItem[];
+  return response.data;
+}
 
-export const getBlogData = async ({
-  page = 1,
-  per_page = 6,
-}: BlogParamsProps): Promise<{ status: number; data: any }> => {
-  const params = new URLSearchParams({
-    username: USERNAME,
-    page: page.toString(),
-    per_page: per_page.toString(),
-  });
-
-  const response = await axios.get(`${BLOG_URL}me?${params.toString()}`, {
+export async function getBlogDetail({
+  searchParams,
+}: BlogParamsProps): Promise<BlogDetailProps> {
+  const URL = `https://dev.to/api/articles/${searchParams.id}`;
+  const response = await axios.get(URL, {
     headers: {
-      "api-key": DEVTO_KEY,
+      "api-key": process.env.DEVTO_KEY,
     },
   });
+  if (response.status !== 200) return {} as BlogDetailProps;
+  return response.data;
+}
 
-  const status = response?.status;
-
-  if (status >= 400) {
-    return { status, data: {} };
-  }
-
-  const getData = response.data;
-
-  const data = {
-    posts: getData,
-    page: page,
-    per_page: per_page,
-    has_next: getData?.length === per_page,
-  };
-
-  return {
-    status,
-    data,
-  };
-};
-
-export const getBlogDetail = async ({
-  id,
-}: {
-  id: number;
-}): Promise<{ status: number; data: any }> => {
-  const params = new URLSearchParams({ username: USERNAME });
-
-  const response = await axios.get(`${BLOG_URL}/${id}?${params.toString()}`, {
+export async function getComments(postId: string): Promise<CommentItemProps[]> {
+  const DEV_TO_URL = `https://dev.to/api/comments/?a_id=${postId}`;
+  const response = await axios.get(DEV_TO_URL, {
     headers: {
-      "api-key": DEVTO_KEY,
+      "api-key": process.env.DEVTO_KEY,
     },
   });
+  if (response?.status !== 200) return [];
+  return response.data;
+}
 
-  const status = response?.status;
-
-  if (status >= 400) {
-    return { status, data: {} };
-  }
-
+export async function getBlogViews(searchParams: string) {
+  const URL = `https://dev.to/api/articles/me/all`;
+  const response = await axios.get(URL, {
+    headers: {
+      "api-key": process.env.DEVTO_KEY,
+    },
+  });
+  if (response.status !== 200) return 0;
   const data = response.data;
 
-  return {
-    status,
-    data,
-  };
-};
-
-export const getBlogComment = async ({
-  post_id,
-}: {
-  post_id: string;
-}): Promise<{ status: number; data: any }> => {
-  const response = await axios.get(`${COMMENT_URL}/?a_id=${post_id}`, {
-    headers: {
-      "api-key": DEVTO_KEY,
-    },
-  });
-
-  const status = response?.status;
-
-  if (status >= 400) {
-    return { status, data: {} };
-  }
-
-  const data = response.data;
-
-  return {
-    status,
-    data,
-  };
-};
-
-export const getBlogViews = async ({
-  id,
-}: {
-  id: number;
-}): Promise<{ status: number; data: any }> => {
-  const response = await axios.get(`${BLOG_URL}me/all`, {
-    headers: {
-      "api-key": DEVTO_KEY,
-    },
-  });
-
-  const status = response?.status;
-
-  if (status >= 400) {
-    return { status, data: {} };
-  }
-
-  const data = response.data;
-
-  const findArticle = data?.find((blog: BlogItem) => blog.id === id);
-  const page_views_count = findArticle?.page_views_count;
-
-  return {
-    status,
-    data: {
-      page_views_count,
-    },
-  };
-};
+  const findArticle = data?.find(
+    (blog: BlogItem) => blog.id === parseInt(searchParams)
+  );
+  const page_views_count: number = findArticle?.page_views_count;
+  return page_views_count;
+}

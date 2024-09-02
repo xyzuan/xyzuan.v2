@@ -1,36 +1,12 @@
 import { getBlogData } from "@/services/devto";
 import BlogFeaturedHero from "./blog-featured-hero";
-import { BlogItem } from "@/commons/types/blog";
+import { revalidatePath } from "next/cache";
 
 const BlogFeaturedSection = async () => {
-  const blogs = await getBlogData({
-    page: 1,
-    per_page: 4,
-  });
+  revalidatePath("/blogs");
+  const blogs = await getBlogData();
 
-  // const { data, isLoading } = useSWR(
-  //   `/api/blog?page=1&per_page=4&categories=11`,
-  //   fetcher,
-  //   {
-  //     revalidateOnFocus: false,
-  //     refreshInterval: 0,
-  //   },
-  // );
-
-  const featuredData: BlogItem[] =
-    blogs?.status && blogs?.data?.posts && Array.isArray(blogs?.data?.posts)
-      ? blogs.data.posts
-      : [];
-
-  return (
-    <>
-      {/* {!isLoading ? ( */}
-      <BlogFeaturedHero blogs={featuredData} />
-      {/* ) : ( */}
-      {/* <BlogFeaturedHeroSkeleton /> */}
-      {/* )} */}
-    </>
-  );
+  return <BlogFeaturedHero blogs={blogs} />;
 };
 
 export default BlogFeaturedSection;
