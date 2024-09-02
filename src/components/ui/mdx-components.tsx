@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CodeBlock from "./code-block";
+import Typography from "./typography";
 
 interface MarkdownRendererProps {
   children: string;
@@ -29,19 +30,10 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
             {...props}
           />
         ),
-        p: (props) => <div {...props} className="font-sans" />,
-        h2: (props) => (
-          <h2
-            className="font-sans text-xl font-medium dark:text-neutral-300"
-            {...props}
-          />
-        ),
-        h3: (props) => (
-          <h3
-            className="pt-4 text-[18px] font-medium leading-snug dark:text-neutral-300"
-            {...props}
-          />
-        ),
+        p: (props) => <Typography.p {...props} />,
+        h1: (props) => <Typography.h1 {...props} />,
+        h2: (props) => <Typography.h2 {...props} />,
+        h3: (props) => <Typography.h3 {...props} />,
         ul: (props) => (
           <ul className="list-disc space-y-3 pb-5 pl-10 font-sans" {...props} />
         ),
@@ -52,13 +44,7 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
           />
         ),
         code: (props) => <CodeBlock {...props} />,
-        blockquote: (props) => (
-          <blockquote
-            className="text-md rounded-lg border-l-[5px] border-neutral-700 border-l-cyan-500 bg-neutral-100 py-3 pl-6 text-cyan-800 dark:bg-neutral-800 dark:text-cyan-200"
-            {...props}
-          />
-        ),
-        table: (props) => <Table {...props} />,
+        blockquote: (props) => <Typography.quote {...props} />,
         th: (props) => (
           <th className="border px-3 py-1 text-left dark:border-neutral-600">
             {props.children}
