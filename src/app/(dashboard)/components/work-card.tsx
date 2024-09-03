@@ -9,23 +9,20 @@ import {
   CardTitle,
 } from "../../../components/ui/card";
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
-import { cn } from "@/commons/libs/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { WorkCardProps } from "@/types/works.types";
 
-const WORK_DESC = [
-  "Create a StingEO Micro Frontend in Combat Management System with real-time camera stream with",
-  "RTSP to WebRTC with Module Federation & Webpack",
-  "Integrating Cesium OpenLayer for 3D map",
-  "Integrating Len UAV simulation models with Cesium",
-  "Create a Publish & Subscribe data stream with rustDDS for a Tauri App to communicate with other client",
-  "Create a drawing measure feature layer features (Point, Line String, Polygon, and Circle) in OpenLayer & OLCesium",
-  "Implement Military Symbols MIL-STD2525D and handle symbols filter from LayerSource",
-];
-
-const WorkCard = ({ logo, title, instance, date, location }: any) => {
+const WorkCard = ({
+  logo,
+  title,
+  instance,
+  date,
+  location,
+  responsibilities,
+}: WorkCardProps) => {
   const [isShowResponsibility, setIsShowResponsibility] =
     useState<boolean>(false);
+
   return (
     <Card
       className="group relative cursor-pointer hover:border-white/45 transition-colors"
@@ -58,9 +55,9 @@ const WorkCard = ({ logo, title, instance, date, location }: any) => {
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              {WORK_DESC.map((item) => (
-                <motion.li key={item} layout>
-                  {item}
+              {responsibilities.map((item) => (
+                <motion.li key={item.id} layout>
+                  {item.description}
                 </motion.li>
               ))}
             </motion.ul>

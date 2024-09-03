@@ -23,7 +23,7 @@ const WorkExperienceEducation = async () => {
       <div className="col-span-1">
         <Typography.h3>Work & Experience</Typography.h3>
         <div className="grid grid-cols-1 mt-6 gap-6">
-          {works?.data?.work.map((value, idx) => {
+          {works?.data?.map((value, idx) => {
             return (
               <BlurFade key={value.id} delay={0.25 + idx * 0.05} inView>
                 <WorkCard
@@ -31,6 +31,7 @@ const WorkExperienceEducation = async () => {
                   title={value.jobTitle}
                   instance={value.instance}
                   location={value.address}
+                  responsibilities={value.responsibilities}
                   date={value.date}
                 />
               </BlurFade>
