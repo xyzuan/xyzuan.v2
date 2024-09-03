@@ -1,1 +1,1 @@
-export const WORKS_ENDPOINT = "https://xyzuan.my.id/api/works";
+export const WORKS_ENDPOINT = "https://v1.xyzuan.my.id/api/works";
