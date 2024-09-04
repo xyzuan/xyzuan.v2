@@ -29,6 +29,7 @@ const ContactsPage = () => {
         <Typography.h4 className="mt-6 mb-3">
           Find me on social media
         </Typography.h4>
+
         <BentoGrid className="mt-6">
           {contacts.map((feature, idx) => (
             <ContactCard key={idx} {...feature} />
