@@ -14,5 +14,5 @@ export const METADATA = {
   },
   exTitle: "| xyzuan",
   profile:
-    "https://asset.cloudinary.com/myxyzuan/ea97b2ff83f906e2f4b1927718f08234",
+    "https://res.cloudinary.com/myxyzuan/image/upload/v1725468377/sds_vvryr4.png",
 };
