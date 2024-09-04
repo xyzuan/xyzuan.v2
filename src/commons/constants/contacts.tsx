@@ -1,41 +1,40 @@
-import { SiGithub, SiGmail, SiInstagram, SiLinkedin } from "react-icons/si";
+import { SiGithub, SiInstagram, SiLinkedin, SiTelegram } from "react-icons/si";
 
 const contacts = [
   {
-    Icon: SiGmail,
-    name: "Email",
-    description: "jodyyuan@xyzuan.my.id",
-    href: "mailto:jodyyuan@xyzuan.my.id",
-    cta: "Email me",
-    className: "col-span-3 lg:col-span-1",
-    background: <></>,
-  },
-  {
-    Icon: SiLinkedin,
-    name: "Linkedin",
-    description: "Jody Yuantoro",
-    href: "https://www.linkedin.com/in/xyzuan/",
-    cta: "Connect me in Linkedin",
-    className: "col-span-3 lg:col-span-2",
-    background: <></>,
-  },
-  {
-    Icon: SiGithub,
-    name: "Github",
-    description: "@xyzuan",
+    icon: <SiGithub size={42} />,
+    title: "Explore the code",
+    description: "Explore the source code for all my projects on GitHub.",
     href: "https://github.com/xyzuan",
-    cta: "Follow & Discover my Recently Projects",
+    cta: "Go to Github",
+    className: "col-span-3 lg:col-span-1",
+  },
+
+  {
+    icon: <SiLinkedin size={42} />,
+    title: "Let`s connect",
+    description:
+      "Connect for collaboration or explore my professional experience.",
+    href: "https://www.linkedin.com/in/xyzuan/",
+    cta: "Go to Linkedin",
     className: "col-span-3 lg:col-span-2",
-    background: <></>,
   },
   {
-    Icon: SiInstagram,
-    name: "Instagram",
+    icon: <SiTelegram size={42} />,
+    title: "Chat with the community",
+    description:
+      "Join over 1,000+ others developers on xyz-playground Community.",
+    href: "https://t.me/xyz-playground",
+    cta: "Go to Telegram",
+    className: "col-span-3 lg:col-span-2",
+  },
+  {
+    icon: <SiInstagram size={42} />,
+    title: "Instagram",
     description: "@jodyyuan",
     className: "col-span-3 lg:col-span-1",
     href: "https://www.instagram.com/jodyyuan",
-    cta: "Follow & Discover my Personal Feed",
-    background: <></>,
+    cta: "Go to Instagram",
   },
 ];
 
