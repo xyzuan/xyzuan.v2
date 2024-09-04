@@ -1,5 +1,4 @@
 import {
-  Code,
   Coffee,
   Home,
   LayoutDashboard,
