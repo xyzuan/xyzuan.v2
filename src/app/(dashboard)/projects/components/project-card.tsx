@@ -11,16 +11,23 @@ import { ChevronRight, PinIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-const ProjectCard = ({ id, img, title, desc, stacks }: ProjectCardProps) => {
+const ProjectCard = ({
+  id,
+  img,
+  title,
+  desc,
+  stacks,
+  isFeatured,
+}: ProjectCardProps) => {
   return (
     <Link href={`/projects/${id}`}>
       <Card className="group relative cursor-pointer border border-neutral-200 dark:border-neutral-900 lg:hover:scale-[102%]">
-        {/* {is_featured && ( */}
-        <div className="absolute right-3 top-3 z-[2] flex items-center gap-1 rounded-full bg-black px-2 py-1 text-[13px] font-medium text-white dark:bg-white dark:text-black">
-          <PinIcon size={15} />
-          <span>Featured</span>
-        </div>
-        {/* )} */}
+        {isFeatured && (
+          <div className="absolute right-3 top-3 z-[2] flex items-center gap-1 rounded-full bg-black px-2 py-1 text-[13px] font-medium text-white dark:bg-white dark:text-black">
+            <PinIcon size={15} />
+            <span>Featured</span>
+          </div>
+        )}
         <div className="relative">
           <Image
             src={img}

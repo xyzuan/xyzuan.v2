@@ -5,6 +5,7 @@ export type Project = {
   stacks: ProjectStack[];
   content: string;
   href: string;
+  isFeatured: boolean;
 };
 
 export type ProjectCardProps = {
@@ -12,6 +13,7 @@ export type ProjectCardProps = {
   img: string;
   title: string;
   desc: string;
+  isFeatured: boolean;
   stacks: ProjectStack[];
 };
 

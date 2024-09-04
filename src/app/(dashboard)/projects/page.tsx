@@ -17,7 +17,6 @@ const ProjectsPage = async () => {
       </div>
       <div className="grid gap-5 px-1 pt-2 sm:grid-cols-2">
         {projects?.data?.map((value, idx) => {
-          console.log(value);
           return (
             <BlurFade key={value.id} delay={0.25 + idx * 0.05} inView>
               <ProjectCard
@@ -26,6 +25,7 @@ const ProjectsPage = async () => {
                 img={value.img}
                 desc={value.content}
                 stacks={value.stacks}
+                isFeatured={value.isFeatured}
               />
             </BlurFade>
           );
