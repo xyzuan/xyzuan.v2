@@ -7,7 +7,7 @@ import { cn } from "@/commons/libs/utils";
 import { Button } from "./button";
 import { usePathname } from "next/navigation";
 import { getMenuList } from "@/commons/constants/menu-list";
-import { ArrowRightIcon, Ellipsis, MoonIcon, SunIcon } from "lucide-react";
+import { ArrowRightIcon, Ellipsis } from "lucide-react";
 import Typography from "./typography";
 import { Avatar } from "./avatar";
 import SidebarTheming from "./sidebar-theming";

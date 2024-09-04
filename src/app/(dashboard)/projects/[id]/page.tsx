@@ -8,8 +8,7 @@ const DetailProjectPage = () => {
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
         <BackButton />
-        <Typography.h3>Blogs</Typography.h3>
-        <Typography.p>Currently Work in Proggress</Typography.p>
+        <Typography.h3>Currently Work in Proggress</Typography.h3>
       </div>
     </BlurFade>
   );
