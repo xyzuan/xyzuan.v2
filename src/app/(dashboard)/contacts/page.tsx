@@ -1,11 +1,20 @@
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import { Metadata } from "next";
+import { METADATA } from "@/commons/constants/metadata";
+import { BentoGrid } from "@/components/magicui/bento-grid";
 import BlurFade from "@/components/magicui/blur-fade";
 import Typography from "@/components/ui/typography";
 import contacts from "@/commons/constants/contacts";
-import WorkCard from "../components/work-card";
-import BlogCard from "../blogs/components/blog-card";
-import { CardContent } from "@/components/ui/card";
 import ContactCard from "./components/contact-card";
+
+export const metadata: Metadata = {
+  title: `Contacs ${METADATA.exTitle}`,
+  description: "Reach Jody Yuantoro contacts",
+  keywords:
+    "fronend developer, software engineer, react js, javascript, typescript, contact",
+  alternates: {
+    canonical: `${process.env.DOMAIN}/contacts`,
+  },
+};
 
 const ContactsPage = () => {
   return (

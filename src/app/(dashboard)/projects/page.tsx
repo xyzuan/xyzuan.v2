@@ -1,9 +1,19 @@
+import { Metadata } from "next";
+import { METADATA } from "@/commons/constants/metadata";
+
 import Typography from "@/components/ui/typography";
 import ProjectCard from "./components/project-card";
-import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
 import { getAllProjects } from "@/services/project";
 
+export const metadata: Metadata = {
+  title: `Projects ${METADATA.exTitle}`,
+  description: "Software Engineer portfolio ideas",
+  keywords: "portfolio frontend developer",
+  alternates: {
+    canonical: `${process.env.DOMAIN}/projects`,
+  },
+};
 const ProjectsPage = async () => {
   const projects = await getAllProjects();
 

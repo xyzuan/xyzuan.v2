@@ -1,10 +1,11 @@
 "use server";
 
 import Link from "next/link";
+import { Metadata } from "next";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { METADATA } from "@/commons/constants/metadata";
 
 import Typography from "@/components/ui/typography";
-import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
 import { fetchGithubData } from "@/services/github";
 import { GITHUB_ACCOUNTS } from "@/commons/constants/github";
@@ -14,6 +15,14 @@ import GithubOverview from "./components/github-overview";
 import WakatimeOverview from "./components/wakatime-overview";
 import { ClockIcon } from "lucide-react";
 import WakatimeActive from "./components/wakatime-active";
+
+export const metadata: Metadata = {
+  title: `Dashboard ${METADATA.exTitle}`,
+  description: "My activity dashboard as software engineer",
+  alternates: {
+    canonical: `${process.env.DOMAIN}/dashboard`,
+  },
+};
 
 const DashboardsPage = async () => {
   const readStatsResponse = await getReadStats();
