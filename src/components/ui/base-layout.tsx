@@ -1,8 +1,8 @@
-import React from "react";
 import GridPattern from "../magicui/animated-grid-pattern";
 import { cn } from "@/commons/libs/utils";
 import { BottomNav } from "./bottom-nav";
 import Sidebar from "./sidebar";
+import PageLoader from "./page-loader";
 
 type BaseLayoutProps = {
   children: React.ReactNode;
@@ -15,6 +15,7 @@ const BaseLayout = ({
 }: BaseLayoutProps) => {
   return (
     <>
+      <PageLoader />
       <div className="fixed z-0 top-[-680px] h-screen w-screen items-center justify-center overflow-hidden">
         <GridPattern
           numSquares={30}
