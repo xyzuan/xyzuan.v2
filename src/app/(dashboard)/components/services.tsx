@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { BiRocket as RocketIcon } from "react-icons/bi";
 
 const Services = () => {
@@ -38,7 +39,9 @@ const Services = () => {
           </Typography.p>
         </CardContent>
         <CardFooter>
-          <Button data-umami-event="Click Contact Button">Contact me</Button>
+          <Link href="/contacts">
+            <Button data-umami-event="Click Contact Button">Contact me</Button>
+          </Link>
         </CardFooter>
       </MagicCard>
     </div>
