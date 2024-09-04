@@ -15,7 +15,12 @@ const PageLoader = () => {
       showSpinner={false}
       easing="ease"
       speed={200}
-      shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+      // shadow=""
+      shadow={
+        theme === "dark"
+          ? "0 0 30px #FFFFFF,0 0 90px #FFFFFF"
+          : "0 0 30px #000000,0 0 90px #000000"
+      }
     />
   );
 };
