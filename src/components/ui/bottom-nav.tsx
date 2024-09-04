@@ -59,33 +59,6 @@ export function BottomNav({ forceDisableSidebar }: BottomNavProps) {
             </DockIcon>
           );
         })}
-        {/* <Separator orientation="vertical" className="h-full py-2" /> */}
-        {menuList[1].menus.map(({ href, label, icon: Icon, active }, index) => {
-          return (
-            <DockIcon key={label}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={href}
-                    className={cn(
-                      buttonVariants({
-                        variant: "ghost",
-                        size: "icon",
-                      }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <Icon className="size-4" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <Typography.p>{label}</Typography.p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          );
-        })}
-        {/* <Separator orientation="vertical" className="h-full py-2" /> */}
         <ModeToggle />
       </Dock>
     </div>

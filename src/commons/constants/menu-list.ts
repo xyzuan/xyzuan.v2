@@ -57,16 +57,5 @@ export function getMenuList(pathname: string): Group[] {
         },
       ],
     },
-    {
-      groupLabel: "Apps",
-      menus: [
-        {
-          href: "/jsplay",
-          label: "JS Playground",
-          active: pathname.includes("/jsplay"),
-          icon: Code,
-        },
-      ],
-    },
   ];
 }

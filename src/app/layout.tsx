@@ -1,12 +1,12 @@
 import "./globals.css";
 
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 import type { Metadata } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
+const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jody Yuantoro",
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning={true} lang="en">
-      <body className={`${inter.className} flex justify-center p-8 md:p-24`}>
+      <body className={`${manrope.className} flex justify-center p-8 md:p-24`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>

@@ -8,6 +8,7 @@ import { Button } from "./button";
 import { usePathname } from "next/navigation";
 import { getMenuList } from "@/commons/constants/menu-list";
 import { ArrowRightIcon, Ellipsis } from "lucide-react";
+import { MdVerified as VerifiedIcon } from "react-icons/md";
 import Typography from "./typography";
 import { Avatar } from "./avatar";
 import SidebarTheming from "./sidebar-theming";
@@ -25,8 +26,13 @@ const Sidebar = () => {
             src="https://avatars.githubusercontent.com/u/57469823?v=4"
           />
         </Avatar>
-        <Typography.h4>Jody Yuantoro</Typography.h4>
-        <Typography.p>@xyzuan</Typography.p>
+        <Typography.h4 className="flex items-center">
+          Jody Yuantoro
+          <span>
+            <VerifiedIcon size={18} className="text-blue-400 ml-2" />
+          </span>
+        </Typography.h4>
+        <Typography.p className="text-primary/55">@xyzuan</Typography.p>
       </div>
       <SidebarMenu />
     </div>
