@@ -1,4 +1,5 @@
 import { STACKS } from "@/commons/constants/stacks";
+import { ProjectCardProps } from "@/commons/types/project.types";
 import {
   Card,
   CardDescription,
@@ -10,22 +11,7 @@ import { ChevronRight, PinIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-const stacksArray = [
-  "JavaScript",
-  "TypeScript",
-  "TailwindCSS",
-  "Next.js",
-  "Node.js",
-];
-
-type ProjectCardProps = {
-  id: number;
-  img: string;
-  title: string;
-  desc: string;
-};
-
-const ProjectCard = ({ id, img, title, desc }: ProjectCardProps) => {
+const ProjectCard = ({ id, img, title, desc, stacks }: ProjectCardProps) => {
   return (
     <Link href={`/projects/${id}`}>
       <Card className="group relative cursor-pointer border border-neutral-200 dark:border-neutral-900 lg:hover:scale-[102%]">
@@ -56,9 +42,9 @@ const ProjectCard = ({ id, img, title, desc }: ProjectCardProps) => {
             {desc}
           </CardDescription>
           <div className="flex flex-wrap items-center gap-3 pt-2 ">
-            {stacksArray?.map((stack: string, index: number) => (
-              <div key={index}>{STACKS[stack]}</div>
-            ))}
+            {stacks?.map((item) => {
+              return <div key={item.id}>{STACKS[item.description]}</div>;
+            })}
           </div>
         </CardHeader>
       </Card>

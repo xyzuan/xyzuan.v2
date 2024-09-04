@@ -1,7 +1,7 @@
 "use client";
 
 import { formatBlogSlug, formatDate, formatExcerpt } from "@/commons/helpers";
-import { BlogItem } from "@/commons/types/blog";
+import { BlogItem } from "@/commons/types/blogs.types";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import Image from "@/components/ui/image";

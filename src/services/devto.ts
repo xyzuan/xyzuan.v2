@@ -2,7 +2,7 @@ import {
   BlogDetailProps,
   BlogItem,
   CommentItemProps,
-} from "@/commons/types/blog";
+} from "@/commons/types/blogs.types";
 
 type BlogParamsProps = {
   params: { content: string };

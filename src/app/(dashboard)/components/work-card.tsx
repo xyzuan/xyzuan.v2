@@ -10,7 +10,7 @@ import {
 } from "../../../components/ui/card";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { WorkCardProps } from "@/types/works.types";
+import { WorkCardProps } from "@/commons/types/works.types";
 
 const WorkCard = ({
   logo,

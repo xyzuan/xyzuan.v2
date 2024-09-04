@@ -1,7 +1,7 @@
 "use client";
 
 import { formatDate } from "@/commons/helpers";
-import { BlogProps } from "@/commons/types/blog";
+import { BlogProps } from "@/commons/types/blogs.types";
 import Image from "@/components/ui/image";
 import clsx from "clsx";
 import Link from "next/link";

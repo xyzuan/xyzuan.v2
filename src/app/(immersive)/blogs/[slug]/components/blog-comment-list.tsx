@@ -1,4 +1,4 @@
-import { CommentItemProps } from "@/commons/types/blog";
+import { CommentItemProps } from "@/commons/types/blogs.types";
 import BlogCommentItem from "./blog-comment-item";
 import EmptyState from "@/components/ui/emppty-state";
 

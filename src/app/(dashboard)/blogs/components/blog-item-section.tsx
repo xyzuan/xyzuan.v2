@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import BlogCard from "./blog-card";
-import { BlogItem, BlogProps } from "@/commons/types/blog";
+import { BlogItem, BlogProps } from "@/commons/types/blogs.types";
 import Typography from "@/components/ui/typography";
 
 const BlogItemSection = ({ blogs }: BlogProps) => {

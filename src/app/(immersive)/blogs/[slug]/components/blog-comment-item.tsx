@@ -1,7 +1,7 @@
 "use client";
 
 import { formatDate } from "@/commons/helpers";
-import { CommentItemProps } from "@/commons/types/blog";
+import { CommentItemProps } from "@/commons/types/blogs.types";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "@/components/ui/image";
 import { useEffect, useRef } from "react";

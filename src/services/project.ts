@@ -1,17 +1,5 @@
 import { PROJECT_ENDPOINT } from "@/commons/constants/project";
-
-type Project = {
-  id: number;
-  img: string;
-  title: string;
-  content: string;
-  href: string;
-};
-
-type ProjectsResponse = {
-  status: number;
-  data: Project[];
-};
+import { ProjectsResponse } from "@/commons/types/project.types";
 
 export const getAllProjects = async (): Promise<ProjectsResponse> => {
   const response = await fetch(PROJECT_ENDPOINT, {

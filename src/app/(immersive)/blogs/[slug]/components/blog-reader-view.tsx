@@ -1,4 +1,4 @@
-import { BlogDetailProps, CommentItemProps } from "@/commons/types/blog";
+import { BlogDetailProps, CommentItemProps } from "@/commons/types/blogs.types";
 import BlogReaderHeader from "./blog-reader-header";
 import Image from "@/components/ui/image";
 import { Separator } from "@/components/ui/separator";

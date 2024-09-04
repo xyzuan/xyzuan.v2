@@ -1,5 +1,5 @@
 import { WORKS_ENDPOINT } from "@/commons/constants/work";
-import { WorksResponse } from "@/types/works.types";
+import { WorksResponse } from "@/commons/types/works.types";
 
 export const getAllWorks = async (): Promise<WorksResponse> => {
   const response = await fetch(WORKS_ENDPOINT, {
