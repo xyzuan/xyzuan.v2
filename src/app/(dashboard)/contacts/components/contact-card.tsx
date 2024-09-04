@@ -22,6 +22,7 @@ const ContactCard = ({
   icon,
   cta,
 }: ContactCardProps) => {
+  console.log(cn("flex items-end lg:col-span-1"));
   return (
     <Card className={cn("flex items-end", className)}>
       <CardContent>

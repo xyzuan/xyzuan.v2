@@ -24,14 +24,14 @@ const contacts = [
     title: "Chat with the community",
     description:
       "Join over 1,000+ others developers on xyz-playground Community.",
-    href: "https://t.me/xyz-playground",
+    href: "https://t.me/xyz_playground",
     cta: "Go to Telegram",
     className: "col-span-3 lg:col-span-2",
   },
   {
     icon: <SiInstagram size={42} />,
     title: "Instagram",
-    description: "@jodyyuan",
+    description: "Follow my Instagram Account",
     className: "col-span-3 lg:col-span-1",
     href: "https://www.instagram.com/jodyyuan",
     cta: "Go to Instagram",

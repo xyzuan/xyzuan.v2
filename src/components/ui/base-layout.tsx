@@ -24,11 +24,11 @@ const BaseLayout = ({
           repeatDelay={1}
           className={cn(
             "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 "
           )}
         />
       </div>
-      <div className="flex md:gap-6 max-w-6xl z-20">
+      <div className="flex md:gap-6 max-w-7xl z-20">
         {!forceDisableSidebar && (
           <aside>
             <Sidebar />
