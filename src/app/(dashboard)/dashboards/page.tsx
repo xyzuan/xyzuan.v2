@@ -1,5 +1,3 @@
-"use server";
-
 import Link from "next/link";
 import { Metadata } from "next";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -20,7 +18,7 @@ export const metadata: Metadata = {
   title: `Dashboard ${METADATA.exTitle}`,
   description: "My activity dashboard as software engineer",
   alternates: {
-    canonical: `${process.env.DOMAIN}/dashboard`,
+    canonical: `${process.env.DOMAIN}/dashboards`,
   },
 };
 
