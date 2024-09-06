@@ -9,15 +9,6 @@ export type Work = {
   date: string;
 };
 
-export type WorkCardProps = {
-  logo: string;
-  title: string;
-  instance: string;
-  date: string;
-  location: string;
-  responsibilities: WorkResponsibilites[];
-};
-
 export type WorkResponsibilites = {
   id: number;
   description: string;

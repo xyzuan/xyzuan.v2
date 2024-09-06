@@ -1,5 +1,5 @@
 import { STACKS } from "@/commons/constants/stacks";
-import { ProjectCardProps } from "@/commons/types/project.types";
+import { ProjectStack } from "@/commons/types/project.types";
 import {
   Card,
   CardDescription,
@@ -11,11 +11,20 @@ import { ChevronRight, PinIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+type ProjectCardProps = {
+  id: number;
+  img: string;
+  title: string;
+  description: string;
+  isFeatured: boolean;
+  stacks: ProjectStack[];
+};
+
 const ProjectCard = ({
   id,
   img,
   title,
-  desc,
+  description,
   stacks,
   isFeatured,
 }: ProjectCardProps) => {
@@ -46,7 +55,7 @@ const ProjectCard = ({
             {title}
           </CardTitle>
           <CardDescription className="text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-400 line-clamp-2">
-            {desc}
+            {description}
           </CardDescription>
           <div className="flex flex-wrap items-center gap-3 pt-2 ">
             {stacks?.map((item) => {

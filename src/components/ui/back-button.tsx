@@ -13,7 +13,10 @@ const BackButton = ({
   const router = useRouter();
   return (
     <Typography.p
-      className={cn("cursor-pointer flex items-center ml-[-8px]", className)}
+      className={cn(
+        "cursor-pointer flex items-center ml-[-8px] font-medium",
+        className
+      )}
       onClick={() => router.back()}
     >
       <ChevronLeft />

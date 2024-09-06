@@ -30,7 +30,7 @@ const WakatimeOverview = ({ data }: WakatimeOverviewProps) => {
     : "N/A";
 
   return (
-    <div className="mb-1 grid gap-3 py-2 md:grid-cols-2">
+    <div className="mb-1 grid gap-3 py-2 xl:grid-cols-2">
       <WakatimeOverviewItem label="Start Date" value={startDate} />
       <WakatimeOverviewItem label="End Date" value={endDate} />
       <WakatimeOverviewItem label="Daily Coding Average" value={dailyAverage} />

@@ -4,7 +4,7 @@ import Typography from "@/components/ui/typography";
 
 const Header = () => {
   return (
-    <div className="flex flex-col md:hidden mt-8">
+    <div className="flex flex-col xl:hidden mt-8">
       <div className="flex justify-between items-center">
         <div className="flex flex-col h-full">
           <Typography.h3 className="mt-0 flex items-center">

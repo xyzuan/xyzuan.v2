@@ -16,7 +16,7 @@ import Image from "./image";
 
 const Sidebar = () => {
   return (
-    <div className="hidden flex-col px-3 overflow-y-auto w-64 top-24 sticky md:flex">
+    <div className="hidden flex-col px-3 overflow-y-auto w-64 top-24 sticky xl:flex">
       <div className="mb-3">
         <Avatar className="w-24 h-24 mb-3">
           <Image

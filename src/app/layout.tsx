@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning={true} lang="en">
-      <body className={`${manrope.className} flex justify-center p-8 md:p-24`}>
+      <body className={`${manrope.className} flex justify-center m-8 xl:m-24`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>

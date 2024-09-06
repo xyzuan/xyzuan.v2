@@ -63,7 +63,7 @@ const GithubCalendar = ({ data }: GithubCalendarProps) => {
   return (
     <>
       <div className="relative flex flex-col">
-        <ul className="flex justify-end gap-[3px] overflow-hidden text-xs dark:text-neutral-400 md:justify-start">
+        <ul className="flex justify-end gap-[3px] overflow-hidden text-xs dark:text-neutral-400 xl:justify-start">
           {months.map((month) => (
             <li
               key={month.firstDay}

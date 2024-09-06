@@ -28,13 +28,13 @@ const BaseLayout = ({
           )}
         />
       </div>
-      <div className="flex md:gap-6 max-w-7xl z-20">
+      <div className="flex xl:gap-6 max-w-7xl z-20">
         {!forceDisableSidebar && (
           <aside>
             <Sidebar />
           </aside>
         )}
-        <main className="mb-16 md:mb-0 w-screen p-8 md:p-0">{children}</main>
+        <main className="mb-16 xl:mb-0 w-screen p-8 xl:p-0">{children}</main>
       </div>
       <BottomNav forceDisableSidebar={forceDisableSidebar} />
     </>

@@ -1,5 +1,8 @@
 import { PROJECT_ENDPOINT } from "@/commons/constants/project";
-import { ProjectsResponse } from "@/commons/types/project.types";
+import {
+  ProjectResponse,
+  ProjectsResponse,
+} from "@/commons/types/project.types";
 
 export const getAllProjects = async (): Promise<ProjectsResponse> => {
   const response = await fetch(PROJECT_ENDPOINT, {
@@ -14,5 +17,15 @@ export const getAllProjects = async (): Promise<ProjectsResponse> => {
     return { status, data: [] };
   }
 
+  return await response.json();
+};
+
+export const getProjectById = async (id: number): Promise<ProjectResponse> => {
+  const response = await fetch(`${PROJECT_ENDPOINT}/${id}`, {
+    method: "GET",
+    next: {
+      revalidate: 60,
+    },
+  });
   return await response.json();
 };

@@ -7,10 +7,19 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../components/ui/card";
+} from "@/components/ui/card";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { WorkCardProps } from "@/commons/types/works.types";
+import { WorkResponsibilites } from "@/commons/types/works.types";
+
+type WorkCardProps = {
+  logo: string;
+  title: string;
+  instance: string;
+  date: string;
+  location: string;
+  responsibilities: WorkResponsibilites[];
+};
 
 const WorkCard = ({
   logo,

@@ -4,17 +4,11 @@ export type Project = {
   title: string;
   stacks: ProjectStack[];
   content: string;
+  description: string;
   href: string;
+  projectLink: string;
   isFeatured: boolean;
-};
-
-export type ProjectCardProps = {
-  id: number;
-  img: string;
-  title: string;
-  desc: string;
-  isFeatured: boolean;
-  stacks: ProjectStack[];
+  createdAt: string;
 };
 
 export type ProjectStack = {
@@ -26,4 +20,9 @@ export type ProjectStack = {
 export type ProjectsResponse = {
   status: number;
   data: Project[];
+};
+
+export type ProjectResponse = {
+  status: number;
+  data: Project;
 };

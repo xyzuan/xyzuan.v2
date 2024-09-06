@@ -33,7 +33,7 @@ const ProjectsPage = async () => {
                 id={value.id}
                 title={value.title}
                 img={value.img}
-                desc={value.content}
+                description={value.description}
                 stacks={value.stacks}
                 isFeatured={value.isFeatured}
               />
