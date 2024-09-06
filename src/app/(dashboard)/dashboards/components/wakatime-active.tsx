@@ -1,7 +1,6 @@
 import { cn } from "@/commons/libs/utils";
 import WakatimeProgress from "./wakatime-progress";
 import Typography from "@/components/ui/typography";
-// import WakatimeProgress from "./wakatime-progress";
 
 interface ItemProps {
   name: string;

@@ -1,5 +1,3 @@
-import { Metadata } from "next";
-
 import BlurFade from "@/components/magicui/blur-fade";
 import About from "./components/about";
 import Header from "./components/header";

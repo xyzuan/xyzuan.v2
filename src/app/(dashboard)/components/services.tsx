@@ -2,12 +2,7 @@
 
 import { MagicCard } from "@/components/magicui/magic-card";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
 import { useTheme } from "next-themes";
 import Link from "next/link";

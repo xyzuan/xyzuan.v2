@@ -1,4 +1,3 @@
-import { cn } from "@/commons/libs/utils";
 import AnimatedShinyText from "@/components/magicui/animated-shiny-text";
 import { Button } from "@/components/ui/button";
 import Typography from "@/components/ui/typography";

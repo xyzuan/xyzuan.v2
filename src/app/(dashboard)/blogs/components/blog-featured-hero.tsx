@@ -11,7 +11,6 @@ import {
   BiChevronRight as NextIcon,
   BiStar as StarIcon,
 } from "react-icons/bi";
-import { FaRegEye as ViewIcon } from "react-icons/fa";
 import { TbCalendarBolt as DateIcon } from "react-icons/tb";
 
 const BlogFeaturedHero = ({ blogs }: BlogProps) => {

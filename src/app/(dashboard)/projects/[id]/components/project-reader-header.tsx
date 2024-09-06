@@ -1,7 +1,6 @@
 import { STACKS } from "@/commons/constants/stacks";
 import { ProjectStack } from "@/commons/types/project.types";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import Typography from "@/components/ui/typography";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";

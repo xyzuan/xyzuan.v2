@@ -1,5 +1,3 @@
-import Typography from "@/components/ui/typography";
-
 import BackButton from "@/components/ui/back-button";
 import BlurFade from "@/components/magicui/blur-fade";
 import { getProjectById } from "@/services/project";
