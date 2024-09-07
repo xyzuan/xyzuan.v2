@@ -3,11 +3,12 @@ import LoginForm from "./components/login-form";
 import Typography from "@/components/ui/typography";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SignUpForm from "./components/signup-form";
+import Image from "@/components/ui/image";
 
 export default function LoginPage() {
   return (
-    <div className="h-screen w-screen">
-      <div className="flex h-full w-full flex-col justify-center p-8 sm:w-[350px]">
+    <div className="h-screen w-screen max-w-4xl">
+      <div className="flex h-full w-full flex-col justify-center p-8 z-50">
         <div className="flex flex-col space-y-2">
           <Typography.h1>
             Nauzyx`
@@ -47,6 +48,14 @@ export default function LoginPage() {
           </Link>
           .
         </Typography.p>
+
+        <Image
+          alt="anya"
+          width={200}
+          height={1000}
+          className="absolute bottom-0 right-0 z-[-100]"
+          src="https://res.cloudinary.com/myxyzuan/image/upload/v1725733052/yaxsvzas8mfpwxunkdvq.png"
+        />
       </div>
     </div>
   );
