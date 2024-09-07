@@ -12,4 +12,5 @@ export const authLogin = async (email: string, password: string) => {
       password,
     }),
   });
+  return response;
 };

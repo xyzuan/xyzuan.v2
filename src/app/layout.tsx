@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Metadata } from "next";
 import { METADATA } from "@/commons/constants/metadata";
+import { Toaster } from "@/components/ui/sonner";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -45,6 +46,7 @@ export default function RootLayout({
     <html suppressHydrationWarning={true} lang="en">
       <body className={`${manrope.className} flex justify-center`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Toaster />
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>

@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,7 +15,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authLogin } from "@/services/auth";
-import { profileMe } from "@/services/profile";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().email({
@@ -26,6 +26,7 @@ const loginSchema = z.object({
 });
 
 const LoginForm = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -33,7 +34,13 @@ const LoginForm = () => {
     },
   });
   function onSubmit(values: z.infer<typeof loginSchema>) {
-    authLogin(values.email, values.password);
+    toast("Authenticating...");
+    authLogin(values.email, values.password).then((res) => {
+      if (res.ok) {
+        toast("Login Successfuly.");
+        router.replace("/admin");
+      }
+    });
   }
   return (
     <Form {...form}>
