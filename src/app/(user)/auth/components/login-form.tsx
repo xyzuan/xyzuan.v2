@@ -14,9 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authLogin } from "@/services/auth";
+import { authGoogle, authLogin } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { SiGoogle } from "react-icons/si";
 
 const loginSchema = z.object({
   email: z.string().email({
@@ -33,7 +34,7 @@ const LoginForm = () => {
       email: "",
     },
   });
-  const onSubmit = (values: z.infer<typeof loginSchema>) => {
+  const onLogin = (values: z.infer<typeof loginSchema>) => {
     const loginToast = toast.loading("Authenticating to Eden...");
     authLogin(values.email, values.password)
       .then(async (res) => {
@@ -56,9 +57,14 @@ const LoginForm = () => {
         })
       );
   };
+
+  const onGoogle = () => {
+    toast.info("Authenticating to Eden...");
+    authGoogle(process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000");
+  };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+      <form className="space-y-3">
         <FormField
           control={form.control}
           name="email"
@@ -85,8 +91,16 @@ const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Login</Button>
       </form>
+      <div className="flex flex-col gap-3 mt-6">
+        <Button onClick={() => onLogin(form.getValues())}>Login</Button>
+        <Button variant="outline" onClick={() => onGoogle()}>
+          <span className="mr-3">
+            <SiGoogle />
+          </span>
+          Auth with Google
+        </Button>
+      </div>
     </Form>
   );
 };

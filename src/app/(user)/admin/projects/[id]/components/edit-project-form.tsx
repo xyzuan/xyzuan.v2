@@ -15,7 +15,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import "@mdxeditor/editor/style.css";
 import { z } from "zod";
-import Editor from "@/components/ui/mdx-editor";
 
 const projectSchema = z.object({
   title: z.string(),

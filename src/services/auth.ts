@@ -1,4 +1,5 @@
 import {
+  AUTH_GOOGLE_ENDPOINT,
   AUTH_LOGIN_ENDPOINT,
   AUTH_LOGOUT_ENDPOINT,
   AUTH_SIGNUP_ENDPOINT,
@@ -17,6 +18,14 @@ export const authLogin = async (email: string, password: string) => {
     }),
   });
   return response;
+};
+
+export const authGoogle = async (callback: string) => {
+  const queryParams = new URLSearchParams({
+    next: callback,
+  }).toString();
+
+  window.location.href = `${AUTH_GOOGLE_ENDPOINT}?${queryParams}`;
 };
 
 export const authSignUp = async (
