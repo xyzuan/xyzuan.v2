@@ -9,21 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Home,
-  PanelLeft,
-  Settings,
-  LucideIcon,
-  HeartPulse,
-  Album,
-  BookImage,
-  FileQuestion,
-  BellRing,
-  CalendarCheck,
-  UserRound,
-  FileVideo,
-  Coffee,
-} from "lucide-react";
+import { Home, PanelLeft, Settings, Coffee } from "lucide-react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
