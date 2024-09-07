@@ -5,6 +5,7 @@ import { Manrope } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { METADATA } from "@/commons/constants/metadata";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -47,8 +48,9 @@ export default function RootLayout({
     <html suppressHydrationWarning={true} lang="en">
       <body className={`${manrope.className} flex justify-center`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Toaster />
           <Analytics />
+          <SpeedInsights />
+          <Toaster />
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
