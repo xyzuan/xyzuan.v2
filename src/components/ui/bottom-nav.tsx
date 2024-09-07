@@ -14,6 +14,8 @@ import { usePathname } from "next/navigation";
 import { buttonVariants } from "./button";
 import { ModeToggle } from "./mode-toggle";
 import Typography from "./typography";
+import { Avatar, AvatarImage } from "./avatar";
+import ProfileAvatar from "./profile-avatar";
 
 type BottomNavProps = {
   forceDisableSidebar?: boolean;
@@ -60,6 +62,7 @@ export function BottomNav({ forceDisableSidebar }: BottomNavProps) {
           );
         })}
         <ModeToggle />
+        <ProfileAvatar />
       </Dock>
     </div>
   );
