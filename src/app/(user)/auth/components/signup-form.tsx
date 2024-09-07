@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authLogin } from "@/services/auth";
+import { authLogin, authSignUp } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -22,32 +22,48 @@ const loginSchema = z.object({
   email: z.string().email({
     message: "Email must be valid email.",
   }),
+  name: z.string(),
   password: z.string(),
 });
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const router = useRouter();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
+      name: "",
+      password: "",
     },
   });
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
-    toast("Authenticating...");
-    authLogin(values.email, values.password).then(async (res) => {
+    toast("Creating your account...");
+    authSignUp(values.name, values.email, values.password).then(async (res) => {
       if (res.ok) {
-        toast("Login Successfuly.");
+        toast("Sign Up Successfuly.");
         router.refresh();
       } else {
         const errorData = await res.json();
-        toast("Login Failed", { description: errorData.message });
+        toast("Sign Up Failed", { description: errorData.message });
       }
     });
   };
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Full name</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="email"
@@ -74,10 +90,10 @@ const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Login</Button>
+        <Button type="submit">Create your account</Button>
       </form>
     </Form>
   );
 };
 
-export default LoginForm;
+export default SignUpForm;

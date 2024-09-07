@@ -15,11 +15,8 @@ import { TbCalendarBolt as DateIcon } from "react-icons/tb";
 
 const BlogFeaturedHero = ({ blogs }: BlogProps) => {
   const [currentFeaturedIndex, setCurrentFeaturedIndex] = useState<number>(0);
-
   const currentFeatured = blogs[currentFeaturedIndex];
-
   const featuredData = blogs.slice(0, 4);
-
   const defaultImage = "/images/placeholder.png";
 
   const nextFeatured = () => {

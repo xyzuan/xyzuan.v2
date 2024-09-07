@@ -34,7 +34,9 @@ const BaseLayout = ({
             <Sidebar />
           </aside>
         )}
-        <main className="mb-16 xl:mb-0 w-screen p-8 xl:p-0">{children}</main>
+        <main className="mb-16 mt-8 xl:mt-16 w-screen p-8 xl:p-0">
+          {children}
+        </main>
       </div>
       <BottomNav forceDisableSidebar={forceDisableSidebar} />
     </>

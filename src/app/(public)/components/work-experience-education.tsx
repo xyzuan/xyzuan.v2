@@ -1,5 +1,5 @@
 import Typography from "@/components/ui/typography";
-import WorkCard from "@/app/(dashboard)/components/work-card";
+import WorkCard from "@/app/(public)/components/work-card";
 import { getAllWorks } from "@/services/works";
 import BlurFade from "@/components/magicui/blur-fade";
 import EducationCard from "./education-card";
