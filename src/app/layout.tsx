@@ -1,9 +1,10 @@
 import "./globals.css";
 
+import { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { METADATA } from "@/commons/constants/metadata";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className={`${manrope.className} flex justify-center`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Toaster />
+          <Analytics />
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
