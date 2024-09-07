@@ -27,7 +27,6 @@ const DetailProjectPage = async ({
           stacks={projects.data.stacks}
           href={projects.data.href}
           projectLink={projects.data.projectLink}
-          createdAt={projects.data.createdAt}
         />
         <ProjectReaderView data={projects.data} />
       </div>

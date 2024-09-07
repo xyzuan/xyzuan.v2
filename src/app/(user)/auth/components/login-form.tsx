@@ -34,16 +34,27 @@ const LoginForm = () => {
     },
   });
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
-    toast("Authenticating...");
-    authLogin(values.email, values.password).then(async (res) => {
-      if (res.ok) {
-        toast("Login Successfuly.");
-        router.refresh();
-      } else {
-        const errorData = await res.json();
-        toast("Login Failed", { description: errorData.message });
-      }
-    });
+    const loginToast = toast.loading("Authenticating to Eden...");
+    authLogin(values.email, values.password)
+      .then(async (res) => {
+        if (res.ok) {
+          toast.success("Login Successfuly.", {
+            id: loginToast,
+          });
+          router.refresh();
+        } else {
+          const errorData = await res.json();
+          toast.error("Login Failed", {
+            id: loginToast,
+            description: errorData.message,
+          });
+        }
+      })
+      .catch((err) =>
+        toast.error(err, {
+          id: loginToast,
+        })
+      );
   };
   return (
     <Form {...form}>

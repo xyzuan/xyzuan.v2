@@ -1,5 +1,6 @@
 import {
   AUTH_LOGIN_ENDPOINT,
+  AUTH_LOGOUT_ENDPOINT,
   AUTH_SIGNUP_ENDPOINT,
 } from "@/commons/constants/auth";
 
@@ -34,6 +35,14 @@ export const authSignUp = async (
       email,
       password,
     }),
+  });
+  return response;
+};
+
+export const authSignOut = async () => {
+  const response = await fetch(AUTH_LOGOUT_ENDPOINT, {
+    method: "POST",
+    credentials: "include",
   });
   return response;
 };

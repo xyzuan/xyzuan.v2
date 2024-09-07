@@ -5,7 +5,7 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (token && pathname.startsWith("/auth")) {
-    return NextResponse.redirect(new URL("/admin", req.url));
+    return NextResponse.redirect(new URL("/admin/dashboard", req.url));
   }
   if (!token && pathname.startsWith("/admin")) {
     return NextResponse.redirect(new URL("/auth", req.url));

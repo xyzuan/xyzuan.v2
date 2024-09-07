@@ -8,7 +8,6 @@ import { SiGithub } from "react-icons/si";
 
 interface BlogReaderHeaderProps {
   title: string;
-  createdAt: string;
   description: string;
   href: string;
   projectLink: string;
