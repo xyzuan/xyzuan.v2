@@ -13,6 +13,7 @@ import { Profile } from "@/commons/types/profile.types";
 import { authSignOut } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Button } from "./button";
 
 const ProfileAvatar = () => {
   const [profile, setProfile] = useState<Profile | undefined>(undefined);
@@ -56,28 +57,39 @@ const ProfileAvatar = () => {
     fetchProfile();
   }, []);
 
-  if (!profile) return;
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Avatar>
-          <AvatarImage src={profile.iconUrl} />
-        </Avatar>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>
-          {profile.name}
-          <br />
-          {profile.email}
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleLogout()}>
-          Sign Out
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+  if (!profile) {
+    return (
+      <Button
+        onClick={() => router.push("/auth")}
+        variant="ghost"
+        className="rounded-full border mr-2"
+      >
+        Sign In
+      </Button>
+    );
+  } else {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <Avatar>
+            <AvatarImage src={profile.iconUrl} />
+          </Avatar>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuLabel>
+            {profile.name}
+            <br />
+            {profile.email}
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleLogout()}>
+            Sign Out
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
 };
 
 export default ProfileAvatar;
