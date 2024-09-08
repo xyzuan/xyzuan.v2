@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { METADATA } from "@/commons/constants/metadata";
 import { Toaster } from "@/components/ui/sonner";
+import { ProfileProvider } from "@/providers/profile-provider";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -48,10 +49,12 @@ export default function RootLayout({
     <html suppressHydrationWarning={true} lang="en">
       <body className={`${manrope.className} flex justify-center`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Analytics />
-          <SpeedInsights />
-          <Toaster position="top-right" richColors />
-          <TooltipProvider>{children}</TooltipProvider>
+          <ProfileProvider>
+            <Analytics />
+            <SpeedInsights />
+            <Toaster position="top-right" richColors />
+            <TooltipProvider>{children}</TooltipProvider>
+          </ProfileProvider>
         </ThemeProvider>
       </body>
     </html>

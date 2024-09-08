@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import ChatItem from "./chats-item";
 import { ChatListProps } from "@/commons/types/chats.types";
-import { useProfile } from "@/hooks/useProfile.hook";
+import { useProfile } from "@/providers/profile-provider";
 
 const ChatList = ({ messages }: ChatListProps) => {
   const { profile } = useProfile();
@@ -63,7 +63,7 @@ const ChatList = ({ messages }: ChatListProps) => {
         style={{ height: chatListHeight }}
       >
         {messages?.map((chat, index) => (
-          <ChatItem key={index} loggedEmail={profile?.email || ""} {...chat} />
+          <ChatItem key={index} {...chat} />
         ))}
       </div>
     </div>

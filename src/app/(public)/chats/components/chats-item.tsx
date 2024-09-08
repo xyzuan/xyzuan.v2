@@ -8,20 +8,11 @@ import ChatTime from "./chats-time";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { TrashIcon } from "lucide-react";
 import { deleteChat } from "@/services/chats";
-import { Profile } from "@/commons/types/profile.types";
+import { useProfile } from "@/providers/profile-provider";
+import { toast } from "sonner";
 
-interface ChatItemProps extends MessageProps {
-  loggedEmail: string;
-}
-
-const ChatItem = ({
-  id,
-  user,
-  message,
-  createdAt,
-  loggedEmail,
-  isShow,
-}: ChatItemProps) => {
+const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
+  const { profile: loggedUser } = useProfile();
   const authorEmail = "xyzuannihboss@gmail.com";
 
   const pattern = /@([^:]+):/g;
@@ -37,7 +28,13 @@ const ChatItem = ({
   });
 
   const handleDeleteMessage = (id: string) => {
-    deleteChat(id);
+    toast.promise(deleteChat(id), {
+      loading: "Deleting message from realms...",
+      success: () => {
+        return `Eden was successfully delete the message`;
+      },
+      error: (err) => err,
+    });
   };
 
   return (
@@ -72,15 +69,15 @@ const ChatItem = ({
           >
             {modifiedMessage}
           </p>
-          <div className="flex items-center gap-3">
-            {user?.email === loggedEmail && (
+          {(loggedUser?.email === user.email || loggedUser?.isAdmin) && (
+            <div className="flex items-center gap-3">
               <TrashIcon
                 size={17}
                 className="hidden cursor-pointer text-red-500 group-hover:flex"
                 onClick={() => handleDeleteMessage(id)}
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className="flex md:hidden">
           <ChatTime datetime={createdAt} />

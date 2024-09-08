@@ -11,8 +11,6 @@ import { authSignOut } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
-import { useProfile } from "@/hooks/useProfile.hook";
-import { PersonIcon } from "@radix-ui/react-icons";
 import {
   ArrowUpRight,
   LogOutIcon,
@@ -23,6 +21,7 @@ import {
 import Typography from "./typography";
 import SidebarTheming from "./sidebar-theming";
 import DropdownItem from "./dropdown-item";
+import { useProfile } from "@/providers/profile-provider";
 
 const ProfileAvatar = () => {
   const { profile, setProfile, loading } = useProfile();

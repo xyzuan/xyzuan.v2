@@ -1,7 +1,6 @@
 "use client";
 
 import ChatAuth from "./chats-auth";
-import { useProfile } from "@/hooks/useProfile.hook";
 import { SendIcon } from "lucide-react";
 import {
   Form,
@@ -19,6 +18,7 @@ import { toast } from "sonner";
 import { postChat } from "@/services/chats";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
+import { useProfile } from "@/providers/profile-provider";
 
 const chatSchema = z.object({
   message: z.string().min(1, "Message cannot be empty"),
