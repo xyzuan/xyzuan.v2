@@ -5,6 +5,8 @@ import { Metadata } from "next";
 import { METADATA } from "@/commons/constants/metadata";
 import { getChats } from "@/services/chats";
 import ChatInput from "./components/chats-input";
+import { revalidatePath } from "next/cache";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: `Chats ${METADATA.exTitle}`,
@@ -17,6 +19,8 @@ export const metadata: Metadata = {
 };
 
 const ChatsPage = async () => {
+  const chats = await getChats();
+
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
@@ -25,7 +29,7 @@ const ChatsPage = async () => {
           Leave whatever you like to say, suggestions, questions or anything!
         </Typography.p>
       </div>
-      <ChatList />
+      <ChatList messages={chats?.data} />
       <ChatInput />
     </BlurFade>
   );

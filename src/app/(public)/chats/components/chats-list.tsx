@@ -1,30 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { getChats } from "@/services/chats";
 import ChatItem from "./chats-item";
 import { ChatListProps } from "@/commons/types/chats.types";
 
-const ChatList = () => {
-  const [chats, setChats] = useState<ChatListProps | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchChat = async () => {
-      try {
-        const response = await getChats();
-        setChats({ messages: response.data });
-      } catch (err: any) {
-        setError(err.message || "An error occurred");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchChat();
-  }, []);
-
+const ChatList = ({ messages }: ChatListProps) => {
   const [chatListHeight, setChatListHeight] = useState("500px");
   const [hasScrolledUp, setHasScrolledUp] = useState(false);
   const chatListRef = useRef<HTMLDivElement | null>(null);
@@ -57,7 +37,7 @@ const ChatList = () => {
     if (chatListRef.current && !hasScrolledUp) {
       chatListRef.current.scrollTop = chatListRef.current.scrollHeight;
     }
-  }, [chats, hasScrolledUp]);
+  }, [messages, hasScrolledUp]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -80,7 +60,7 @@ const ChatList = () => {
         className="space-y-5 overflow-y-auto py-4"
         style={{ height: chatListHeight }}
       >
-        {chats?.messages?.map((chat, index) => (
+        {messages?.map((chat, index) => (
           <ChatItem key={index} {...chat} />
         ))}
       </div>

@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { postChat } from "@/services/chats";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const chatSchema = z.object({
   message: z.string().min(1, "Message cannot be empty"),
@@ -26,7 +26,7 @@ const chatSchema = z.object({
 
 const ChatInput = () => {
   const { profile } = useProfile();
-  const router = useRouter();
+  const [isSending, setIsSending] = useState(false);
 
   const form = useForm<z.infer<typeof chatSchema>>({
     resolver: zodResolver(chatSchema),
@@ -36,16 +36,24 @@ const ChatInput = () => {
   });
 
   const onSubmit = (values: z.infer<typeof chatSchema>) => {
-    toast.loading("Sending your message...");
-    postChat(values.message).then(async (res) => {
-      if (res.ok) {
-        toast.success("Sended Successfuly.");
-        router.refresh();
-      } else {
-        const errorData = await res.json();
-        toast("Chat send failed", { description: errorData.message });
-      }
-    });
+    setIsSending(true);
+    const sendToast = toast.loading("Sending message to Eden...");
+    postChat(values.message)
+      .then(async (res) => {
+        if (res.ok) {
+          toast.success("Sended Successfuly.", {
+            id: sendToast,
+          });
+          form.reset();
+        } else {
+          const errorData = await res.json();
+          toast.error("Chat send failed", {
+            description: errorData.message,
+            id: sendToast,
+          });
+        }
+      })
+      .finally(() => setIsSending(false));
   };
 
   return profile ? (
@@ -58,6 +66,7 @@ const ChatInput = () => {
           <FormField
             control={form.control}
             name="message"
+            disabled={isSending}
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
@@ -67,7 +76,7 @@ const ChatInput = () => {
               </FormItem>
             )}
           />
-          <Button type="submit">
+          <Button type="submit" disabled={isSending}>
             <SendIcon size={18} />
           </Button>
         </form>

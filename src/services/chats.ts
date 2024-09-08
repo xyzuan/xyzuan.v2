@@ -1,9 +1,11 @@
+import revalidate from "@/app/actions";
 import { CHAT_ENDPOINT } from "@/commons/constants/api";
 
 export const getChats = async () => {
   const response = await fetch(CHAT_ENDPOINT, {
     method: "GET",
     credentials: "include",
+    cache: "no-cache",
   });
   const status = response.status;
 
@@ -25,5 +27,6 @@ export const postChat = async (message: string) => {
       message,
     }),
   });
+  revalidate("/chats");
   return response;
 };
