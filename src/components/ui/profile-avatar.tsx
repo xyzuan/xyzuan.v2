@@ -1,4 +1,4 @@
-import { Avatar, AvatarImage } from "./avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,6 +54,7 @@ const ProfileAvatar = () => {
         <DropdownMenuTrigger>
           <Avatar>
             <AvatarImage src={profile.iconUrl} />
+            <AvatarFallback>{profile.name.slice(0, 1)}</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent>

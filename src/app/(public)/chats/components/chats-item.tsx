@@ -6,6 +6,7 @@ import { MdAdminPanelSettings as AdminIcon } from "react-icons/md";
 
 import { MessageProps } from "@/commons/types/chats.types";
 import ChatTime from "./chats-time";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
   const authorEmail = "xyzuannihboss@gmail.com";
@@ -24,15 +25,10 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
 
   return (
     <div className="flex items-start gap-3 px-3">
-      {user.iconUrl && (
-        <Image
-          src={user.iconUrl}
-          width={40}
-          height={40}
-          alt={user.name}
-          className="mt-1 rounded-full border dark:border-neutral-800"
-        />
-      )}
+      <Avatar>
+        <AvatarImage src={user.iconUrl} />
+        <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
+      </Avatar>
       <div className="space-y-1">
         <div className="flex flex-col items-start gap-3 md:flex-row md:items-center">
           <div className="flex items-center gap-2">
