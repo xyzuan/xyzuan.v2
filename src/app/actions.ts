@@ -2,10 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 
-export async function revalidate(path: string) {
+export default async function revalidate(path: string) {
   revalidatePath(path);
-}
-
-export async function revalidateBaseLayout() {
-  revalidatePath("/", "layout");
 }
