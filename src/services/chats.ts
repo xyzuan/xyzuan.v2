@@ -1,4 +1,4 @@
-import revalidate from "@/app/actions";
+import { revalidate } from "@/app/actions";
 import { CHAT_ENDPOINT } from "@/commons/constants/api";
 
 export const getChats = async () => {

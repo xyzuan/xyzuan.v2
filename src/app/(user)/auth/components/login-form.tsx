@@ -18,6 +18,8 @@ import { authGoogle, authLogin } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { SiGoogle } from "react-icons/si";
+import { useProfile } from "@/providers/profile-provider";
+import { getMyProfile } from "@/services/profile";
 
 const loginSchema = z.object({
   email: z.string().email({
@@ -27,6 +29,7 @@ const loginSchema = z.object({
 });
 
 const LoginForm = () => {
+  const { setProfile } = useProfile();
   const router = useRouter();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -35,15 +38,23 @@ const LoginForm = () => {
     },
   });
   const onLogin = (values: z.infer<typeof loginSchema>) => {
-    toast.promise(authLogin(values.email, values.password), {
-      loading: "Authenticating to Eden...",
-      success: () => "Login Successfuly.",
-      error: async (err) => {
-        const error = await err.json();
-        return error.message;
-      },
-      finally: () => router.refresh(),
-    });
+    toast.promise(
+      authLogin(values.email, values.password).then(async (res) => {
+        if (res.ok) {
+          const response = await getMyProfile();
+          if (response.ok) {
+            const profileData = await response.json();
+            setProfile(profileData);
+          }
+        }
+      }),
+      {
+        loading: "Authenticating to Eden...",
+        success: () => "Login Successfuly.",
+        error: (err) => err,
+        finally: () => router.refresh(),
+      }
+    );
   };
 
   const onGoogle = () => {

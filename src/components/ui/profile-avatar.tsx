@@ -34,10 +34,7 @@ const ProfileAvatar = () => {
         setProfile(null);
         return "Successfull logged out";
       },
-      error: async (err) => {
-        const error = await err.json();
-        return error.message;
-      },
+      error: (err) => err,
       finally: () => router.refresh(),
     });
   };
