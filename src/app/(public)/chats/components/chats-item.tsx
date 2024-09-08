@@ -1,14 +1,27 @@
 "use client";
 
 import clsx from "clsx";
-import Image from "next/image";
 import { MdAdminPanelSettings as AdminIcon } from "react-icons/md";
 
 import { MessageProps } from "@/commons/types/chats.types";
 import ChatTime from "./chats-time";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { TrashIcon } from "lucide-react";
+import { deleteChat } from "@/services/chats";
+import { Profile } from "@/commons/types/profile.types";
 
-const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
+interface ChatItemProps extends MessageProps {
+  loggedEmail: string;
+}
+
+const ChatItem = ({
+  id,
+  user,
+  message,
+  createdAt,
+  loggedEmail,
+  isShow,
+}: ChatItemProps) => {
   const authorEmail = "xyzuannihboss@gmail.com";
 
   const pattern = /@([^:]+):/g;
@@ -22,6 +35,10 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
     }
     return part;
   });
+
+  const handleDeleteMessage = (id: string) => {
+    deleteChat(id);
+  };
 
   return (
     <div className="flex items-start gap-3 px-3">
@@ -55,15 +72,15 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
           >
             {modifiedMessage}
           </p>
-          {/* <div className="flex items-center gap-3">
-            {(profile?.email === email || profile?.email === authorEmail) && (
-              <DeleteIcon
+          <div className="flex items-center gap-3">
+            {user?.email === loggedEmail && (
+              <TrashIcon
                 size={17}
                 className="hidden cursor-pointer text-red-500 group-hover:flex"
-                onClick={handleDeleteMessage}
+                onClick={() => handleDeleteMessage(id)}
               />
             )}
-          </div> */}
+          </div>
         </div>
         <div className="flex md:hidden">
           <ChatTime datetime={createdAt} />

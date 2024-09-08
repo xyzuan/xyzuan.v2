@@ -30,3 +30,13 @@ export const postChat = async (message: string) => {
   revalidate("/chats");
   return response;
 };
+
+export const deleteChat = async (id: string) => {
+  const response = await fetch(`${CHAT_ENDPOINT}/${id}`, {
+    method: "DELETE",
+    credentials: "include",
+  });
+
+  revalidate("/chats");
+  return response;
+};

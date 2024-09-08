@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import ChatItem from "./chats-item";
 import { ChatListProps } from "@/commons/types/chats.types";
+import { useProfile } from "@/hooks/useProfile.hook";
 
 const ChatList = ({ messages }: ChatListProps) => {
+  const { profile } = useProfile();
   const [chatListHeight, setChatListHeight] = useState("500px");
   const [hasScrolledUp, setHasScrolledUp] = useState(false);
   const chatListRef = useRef<HTMLDivElement | null>(null);
@@ -61,7 +63,7 @@ const ChatList = ({ messages }: ChatListProps) => {
         style={{ height: chatListHeight }}
       >
         {messages?.map((chat, index) => (
-          <ChatItem key={index} {...chat} />
+          <ChatItem key={index} loggedEmail={profile?.email || ""} {...chat} />
         ))}
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Profile } from "./profile.types";
 export interface MessageProps {
   id: string;
   user: Profile;
+  profile: Profile;
   message: string;
   createdAt: string;
   isShow?: boolean;
