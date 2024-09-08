@@ -28,24 +28,18 @@ const ProfileAvatar = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    const logOutToast = toast.loading("Returning back home from Eden...");
-    authSignOut()
-      .then((res) => {
-        if (res.ok) {
-          toast.success("Successfull logged out", {
-            id: logOutToast,
-          });
-          setProfile(null);
-        }
-      })
-      .catch((err) =>
-        toast.error(err, {
-          id: logOutToast,
-        })
-      )
-      .finally(() => {
-        router.refresh();
-      });
+    toast.promise(authSignOut(), {
+      loading: "Turning back to home from Eden...",
+      success: () => {
+        setProfile(null);
+        return "Successfull logged out";
+      },
+      error: async (err) => {
+        const error = await err.json();
+        return error.message;
+      },
+      finally: () => router.refresh(),
+    });
   };
 
   if (loading) return;

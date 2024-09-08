@@ -37,23 +37,15 @@ const ChatInput = () => {
 
   const onSubmit = (values: z.infer<typeof chatSchema>) => {
     setIsSending(true);
-    const sendToast = toast.loading("Sending message to Eden...");
-    postChat(values.message)
-      .then(async (res) => {
-        if (res.ok) {
-          toast.success("Sended Successfuly.", {
-            id: sendToast,
-          });
-          form.reset();
-        } else {
-          const errorData = await res.json();
-          toast.error("Chat send failed", {
-            description: errorData.message,
-            id: sendToast,
-          });
-        }
-      })
-      .finally(() => setIsSending(false));
+    toast.promise(postChat(values.message), {
+      loading: "Sending message to Eden...",
+      success: () => {
+        form.reset();
+        return `Sended Successfuly.`;
+      },
+      error: (err) => err,
+      finally: () => setIsSending(false),
+    });
   };
 
   return profile ? (

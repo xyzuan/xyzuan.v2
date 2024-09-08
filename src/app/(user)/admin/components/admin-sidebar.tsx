@@ -59,18 +59,17 @@ export default function AdminSidebar() {
   const handleCloseDialog = () => setIsDialogOpen(false);
 
   const handleConfirmLogout = () => {
-    const logOutToast = toast.loading("Returning from Eden...");
-    authSignOut()
-      .then((res) => {
-        if (res.ok) {
-          toast.success("Successfull logged out", {
-            id: logOutToast,
-          });
-        }
-      })
-      .finally(() => {
-        router.refresh();
-      });
+    toast.promise(authSignOut(), {
+      loading: "Turning back to home from Eden...",
+      success: () => {
+        return "Successfull logged out";
+      },
+      error: async (err) => {
+        const error = await err.json();
+        return error.message;
+      },
+      finally: () => router.refresh(),
+    });
   };
 
   return (

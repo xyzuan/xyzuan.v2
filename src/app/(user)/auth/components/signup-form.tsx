@@ -37,15 +37,16 @@ const SignUpForm = () => {
     },
   });
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
-    toast("Creating your account...");
-    authSignUp(values.name, values.email, values.password).then(async (res) => {
-      if (res.ok) {
-        toast("Sign Up Successfuly.");
-        router.refresh();
-      } else {
-        const errorData = await res.json();
-        toast("Sign Up Failed", { description: errorData.message });
-      }
+    toast.promise(authSignUp(values.name, values.email, values.password), {
+      loading: "Registering your account to Eden realms...",
+      success: () => {
+        return "Register Successfuly.";
+      },
+      error: async (err) => {
+        const error = await err.json();
+        return error.message;
+      },
+      finally: () => router.refresh(),
     });
   };
   return (

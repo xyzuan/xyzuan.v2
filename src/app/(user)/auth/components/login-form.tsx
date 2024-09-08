@@ -35,33 +35,22 @@ const LoginForm = () => {
     },
   });
   const onLogin = (values: z.infer<typeof loginSchema>) => {
-    const loginToast = toast.loading("Authenticating to Eden...");
-    authLogin(values.email, values.password)
-      .then(async (res) => {
-        if (res.ok) {
-          toast.success("Login Successfuly.", {
-            id: loginToast,
-          });
-          router.refresh();
-        } else {
-          const errorData = await res.json();
-          toast.error("Login Failed", {
-            id: loginToast,
-            description: errorData.message,
-          });
-        }
-      })
-      .catch((err) =>
-        toast.error(err, {
-          id: loginToast,
-        })
-      );
+    toast.promise(authLogin(values.email, values.password), {
+      loading: "Authenticating to Eden...",
+      success: () => "Login Successfuly.",
+      error: async (err) => {
+        const error = await err.json();
+        return error.message;
+      },
+      finally: () => router.refresh(),
+    });
   };
 
   const onGoogle = () => {
-    toast.info("Authenticating to Eden...");
+    toast.loading("Authenticating to Eden...");
     authGoogle(process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000");
   };
+
   return (
     <Form {...form}>
       <form className="space-y-3">
