@@ -1,4 +1,4 @@
-import { PROJECT_ENDPOINT } from "@/commons/constants/project";
+import { PROJECT_ENDPOINT } from "@/commons/constants/api";
 import {
   ProjectResponse,
   ProjectsResponse,

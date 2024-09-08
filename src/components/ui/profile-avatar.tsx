@@ -1,5 +1,3 @@
-import { getMyProfile } from "@/services/profile";
-import { useEffect, useState } from "react";
 import { Avatar, AvatarImage } from "./avatar";
 import {
   DropdownMenu,
@@ -9,14 +7,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./dropdown-menu";
-import { Profile } from "@/commons/types/profile.types";
 import { authSignOut } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
+import { useProfile } from "@/hooks/useProfile.hook";
 
 const ProfileAvatar = () => {
-  const [profile, setProfile] = useState<Profile | undefined>(undefined);
+  const { profile, setProfile } = useProfile();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -27,7 +25,7 @@ const ProfileAvatar = () => {
           toast.success("Successfull logged out", {
             id: logOutToast,
           });
-          setProfile(undefined);
+          setProfile(null);
         }
       })
       .catch((err) =>
@@ -39,23 +37,6 @@ const ProfileAvatar = () => {
         router.refresh();
       });
   };
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await getMyProfile();
-        if (!response.ok) {
-          throw new Error("Failed to fetch profile");
-        }
-        const data = await response.json();
-        setProfile(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchProfile();
-  }, []);
 
   if (!profile) {
     return (

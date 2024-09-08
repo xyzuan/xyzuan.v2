@@ -3,7 +3,7 @@ import {
   AUTH_LOGIN_ENDPOINT,
   AUTH_LOGOUT_ENDPOINT,
   AUTH_SIGNUP_ENDPOINT,
-} from "@/commons/constants/auth";
+} from "@/commons/constants/api";
 
 export const authLogin = async (email: string, password: string) => {
   const response = await fetch(AUTH_LOGIN_ENDPOINT, {

@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authLogin, authSignUp } from "@/services/auth";
+import { authSignUp } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 

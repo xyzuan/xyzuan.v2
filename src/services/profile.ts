@@ -1,4 +1,4 @@
-import { PROFILE_ME_ENDPOINT } from "@/commons/constants/profile";
+import { PROFILE_ME_ENDPOINT } from "@/commons/constants/api";
 
 export const getMyProfile = async (token?: string) => {
   const headers: HeadersInit = token

@@ -3,6 +3,7 @@ import {
   Home,
   LayoutDashboard,
   LucideIcon,
+  MessageCircle,
   RocketIcon,
   Rss,
 } from "lucide-react";
@@ -53,6 +54,12 @@ export function getMenuList(pathname: string): Group[] {
           label: "Contacts",
           active: pathname.includes("/contacts"),
           icon: RocketIcon,
+        },
+        {
+          href: "/chats",
+          label: "Chats",
+          active: pathname.includes("/chats"),
+          icon: MessageCircle,
         },
       ],
     },

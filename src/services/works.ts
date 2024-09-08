@@ -1,4 +1,4 @@
-import { WORKS_ENDPOINT } from "@/commons/constants/work";
+import { WORKS_ENDPOINT } from "@/commons/constants/api";
 import { WorksResponse } from "@/commons/types/works.types";
 
 export const getAllWorks = async (): Promise<WorksResponse> => {
