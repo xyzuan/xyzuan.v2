@@ -55,7 +55,7 @@ const ProfileAvatar = () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         {profile ? (
-          <Avatar className="mr-2">
+          <Avatar className="mr-1">
             <AvatarImage src={profile.iconUrl} />
             <AvatarFallback>{profile.name.slice(0, 1)}</AvatarFallback>
           </Avatar>
