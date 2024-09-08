@@ -34,7 +34,7 @@ const BaseLayout = ({
             <Sidebar />
           </aside>
         )}
-        <main className="mb-16 mt-8 xl:mt-16 w-screen p-8 xl:p-0">
+        <main className="mb-16 mt-0 xl:mt-16 w-screen p-8 xl:p-0">
           {children}
         </main>
       </div>

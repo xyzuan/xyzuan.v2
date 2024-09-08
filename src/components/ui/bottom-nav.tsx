@@ -61,7 +61,6 @@ export function BottomNav({ forceDisableSidebar }: BottomNavProps) {
             </DockIcon>
           );
         })}
-        <ModeToggle />
         <ProfileAvatar />
       </Dock>
     </div>

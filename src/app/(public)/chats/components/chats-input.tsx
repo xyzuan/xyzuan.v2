@@ -1,7 +1,6 @@
 "use client";
 
 import ChatAuth from "./chats-auth";
-import ChatUserInfo from "./chats-user-info";
 import { useProfile } from "@/hooks/useProfile.hook";
 import { SendIcon } from "lucide-react";
 import {
@@ -19,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { postChat } from "@/services/chats";
 import { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
 const chatSchema = z.object({
   message: z.string().min(1, "Message cannot be empty"),
@@ -61,7 +61,7 @@ const ChatInput = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex gap-x-1 border-t border-neutral-300 p-4 pb-3 dark:border-neutral-800"
+          className="flex gap-x-3 border-t border-neutral-300 pt-3 dark:border-neutral-800"
         >
           <FormField
             control={form.control}
@@ -70,22 +70,21 @@ const ChatInput = () => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <Input {...field} />
+                  <Input placeholder="Input your message" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
           <Button type="submit" disabled={isSending}>
-            <SendIcon size={18} />
+            {isSending ? (
+              <FaSpinner size={18} className="animate-spin" />
+            ) : (
+              <SendIcon size={18} />
+            )}
           </Button>
         </form>
       </Form>
-      <ChatUserInfo
-        name={profile.name}
-        email={profile.email}
-        iconUrl={profile.iconUrl}
-      />
     </>
   ) : (
     <ChatAuth />

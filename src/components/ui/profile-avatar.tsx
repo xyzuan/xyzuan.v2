@@ -12,6 +12,17 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
 import { useProfile } from "@/hooks/useProfile.hook";
+import { PersonIcon } from "@radix-ui/react-icons";
+import {
+  ArrowUpRight,
+  LogOutIcon,
+  LucidePersonStanding,
+  User2Icon,
+  UserIcon,
+} from "lucide-react";
+import Typography from "./typography";
+import SidebarTheming from "./sidebar-theming";
+import DropdownItem from "./dropdown-item";
 
 const ProfileAvatar = () => {
   const { profile, setProfile, loading } = useProfile();
@@ -40,40 +51,62 @@ const ProfileAvatar = () => {
 
   if (loading) return;
 
-  if (!profile) {
-    return (
-      <Button
-        onClick={() => router.push("/auth")}
-        variant="ghost"
-        className="rounded-full border mr-2"
-      >
-        Sign In
-      </Button>
-    );
-  } else {
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Avatar>
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        {profile ? (
+          <Avatar className="mr-2">
             <AvatarImage src={profile.iconUrl} />
             <AvatarFallback>{profile.name.slice(0, 1)}</AvatarFallback>
           </Avatar>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        ) : (
+          <Button variant="ghost" className="rounded-full border mr-2">
+            <UserIcon className="size-4" />
+          </Button>
+        )}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        {profile ? (
           <DropdownMenuLabel>
             {profile.name}
             <br />
-            {profile.email}
+            <span className="text-xs opacity-65">{profile.email}</span>
           </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleLogout()}>
-            Sign Out
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  }
+        ) : (
+          <div
+            onClick={() => router.push("/auth")}
+            className="flex p-3 gap-3 items-center cursor-pointer"
+          >
+            <div className="flex flex-col gap-1">
+              <Typography.p className="text-sm">Sign in</Typography.p>
+              <Typography.p className="text-xs opacity-65">
+                Login your account in eden realms
+              </Typography.p>
+            </div>
+            <ArrowUpRight className=" opacity-65" />
+          </div>
+        )}
+        <DropdownMenuSeparator />
+        {profile && (
+          <>
+            <Typography.p className="text-sm font-medium text-muted-foreground px-4 pb-2 max-w-[248px] truncate pt-3">
+              Account
+            </Typography.p>
+            <DropdownItem icon={<UserIcon className="h-[1.2rem] w-[1.2rem]" />}>
+              Profile
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => handleLogout()}
+              icon={<LogOutIcon className="h-[1.2rem] w-[1.2rem]" />}
+            >
+              Sign Out
+            </DropdownItem>
+          </>
+        )}
+        <SidebarTheming />
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 };
 
 export default ProfileAvatar;

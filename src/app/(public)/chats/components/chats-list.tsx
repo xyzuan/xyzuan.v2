@@ -41,7 +41,7 @@ const ChatList = ({ messages }: ChatListProps) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const newHeight = `${window.innerHeight - 360}px`;
+      const newHeight = `${window.innerHeight - 320}px`;
       setChatListHeight(newHeight);
     };
 
@@ -54,7 +54,7 @@ const ChatList = ({ messages }: ChatListProps) => {
     };
   }, []);
   return (
-    <div className="rounded-lg px-1">
+    <div className="rounded-lg">
       <div
         ref={chatListRef}
         className="space-y-5 overflow-y-auto py-4"
