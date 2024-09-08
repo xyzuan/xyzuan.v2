@@ -14,7 +14,7 @@ import { Button } from "./button";
 import { useProfile } from "@/hooks/useProfile.hook";
 
 const ProfileAvatar = () => {
-  const { profile, setProfile } = useProfile();
+  const { profile, setProfile, loading } = useProfile();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -37,6 +37,8 @@ const ProfileAvatar = () => {
         router.refresh();
       });
   };
+
+  if (loading) return;
 
   if (!profile) {
     return (
