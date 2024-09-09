@@ -50,7 +50,6 @@ const ProfileSideCard = () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div
-          // onClick={() => router.push("/auth")}
           className={cn(
             `flex p-3 w-full gap-3 items-center cursor-pointer border rounded-xl transition-all ${
               theme === "dark" ? "hover:bg-[#262626]" : "hover:bg-[#D9D9D955]"
@@ -58,15 +57,15 @@ const ProfileSideCard = () => {
           )}
         >
           <Avatar className="h-10 w-10">
-            <AvatarImage>{profile.iconUrl}</AvatarImage>
-            <AvatarFallback>{profile.name.slice(0, 1)}</AvatarFallback>
+            <AvatarImage src={profile?.iconUrl} />
+            <AvatarFallback>{profile?.name.slice(0, 1)}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-1">
             <Typography.p className="text-sm text-start font-medium">
-              {profile.name}
+              {profile?.name}
             </Typography.p>
             <Typography.p className="text-xs text-start opacity-75">
-              {profile.email}
+              {profile?.email}
             </Typography.p>
           </div>
         </div>
