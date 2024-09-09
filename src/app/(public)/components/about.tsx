@@ -9,7 +9,7 @@ const About = () => {
     <div className="flex flex-col h-fit gap-6">
       <div className="flex justify-between items-end">
         <Typography.h3>About</Typography.h3>
-        <Link href="https://xyzuan.my.id/assets/Jody%20Yuantoro_ATS_CV_v2.pdf">
+        <Link href="https://drive.google.com/file/d/1HVLyI_LinIQ6nZtk2BwQR9OzPxJwj82m/view?usp=drivesdk">
           <Button variant="outline">
             <AnimatedShinyText className="inline-flex items-center transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
               <span>✨ Download My Resume</span>
