@@ -2,7 +2,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -11,17 +10,13 @@ import { authSignOut } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
-import {
-  ArrowUpRight,
-  LogOutIcon,
-  LucidePersonStanding,
-  User2Icon,
-  UserIcon,
-} from "lucide-react";
+import { LogOutIcon, UserIcon } from "lucide-react";
 import Typography from "./typography";
 import SidebarTheming from "./sidebar-theming";
 import DropdownItem from "./dropdown-item";
 import { useProfile } from "@/providers/profile-provider";
+import AuthCard from "./auth-card";
+import { FaSpinner } from "react-icons/fa";
 
 const ProfileAvatar = () => {
   const { profile, setProfile, loading } = useProfile();
@@ -39,7 +34,12 @@ const ProfileAvatar = () => {
     });
   };
 
-  if (loading) return;
+  if (loading)
+    return (
+      <Button variant="ghost" className="rounded-full border mr-2">
+        <FaSpinner className="size-4 animate-spin" />
+      </Button>
+    );
 
   return (
     <DropdownMenu>
@@ -63,18 +63,7 @@ const ProfileAvatar = () => {
             <span className="text-xs opacity-65">{profile.email}</span>
           </DropdownMenuLabel>
         ) : (
-          <div
-            onClick={() => router.push("/auth")}
-            className="flex p-3 gap-3 items-center cursor-pointer"
-          >
-            <div className="flex flex-col gap-1">
-              <Typography.p className="text-sm">Sign in</Typography.p>
-              <Typography.p className="text-xs opacity-65">
-                Login your account in eden realms
-              </Typography.p>
-            </div>
-            <ArrowUpRight className=" opacity-65" />
-          </div>
+          <AuthCard />
         )}
         <DropdownMenuSeparator />
         {profile && (

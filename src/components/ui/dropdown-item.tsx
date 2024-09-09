@@ -25,7 +25,7 @@ const DropdownItem = ({
       <span className={cn("mr-4")}>{icon}</span>
       <Typography.p
         className={cn(
-          "leading-7 flex flex-grow max-w-[200px] truncate translate-x-0 opacity-100"
+          "text-sm leading-7 flex flex-grow max-w-[200px] truncate translate-x-0 opacity-100"
         )}
       >
         {children}

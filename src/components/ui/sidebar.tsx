@@ -10,14 +10,17 @@ import { getMenuList } from "@/commons/constants/menu-list";
 import { ArrowRightIcon, Ellipsis } from "lucide-react";
 import { MdVerified as VerifiedIcon } from "react-icons/md";
 import Typography from "./typography";
-import { Avatar } from "./avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import SidebarTheming from "./sidebar-theming";
 import Image from "./image";
+import AuthCard from "./auth-card";
+import { useProfile } from "@/providers/profile-provider";
+import ProfileSideCard from "./profile-side-card";
 
 const Sidebar = () => {
   return (
     <div className="hidden flex-col px-3 overflow-y-auto w-64 top-24 sticky xl:flex">
-      <div className="mb-3">
+      <div className="mb-3 px-1">
         <Avatar className="w-24 h-24 mb-3">
           <Image
             height={162}
@@ -47,6 +50,7 @@ const SidebarMenu = ({ isOpen }: any) => {
     <nav>
       <ul className="flex flex-col items-start space-y-1">
         <>
+          <ProfileSideCard />
           {menuList.map(({ groupLabel, menus }, index) => (
             <li className={cn("w-full", groupLabel ? "pt-5" : "")} key={index}>
               {(isOpen && groupLabel) || isOpen === undefined ? (
