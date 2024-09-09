@@ -55,7 +55,6 @@ const ChatInput = () => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex gap-x-3 pt-3"
         >
-          <div className="fixed bottom-10 inset-x-0 h-14 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
           <FormField
             control={form.control}
             name="message"

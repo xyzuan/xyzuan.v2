@@ -1,19 +1,18 @@
 "use client";
 
-import clsx from "clsx";
-import { MdAdminPanelSettings as AdminIcon } from "react-icons/md";
-
 import { MessageProps } from "@/commons/types/chats.types";
 import ChatTime from "./chats-time";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { TrashIcon } from "lucide-react";
+import { MdVerified as VerifiedIcon } from "react-icons/md";
 import { deleteChat } from "@/services/chats";
 import { useProfile } from "@/providers/profile-provider";
 import { toast } from "sonner";
+import { cn } from "@/commons/libs/utils";
+import Typography from "@/components/ui/typography";
 
 const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
   const { profile: loggedUser } = useProfile();
-  const authorEmail = "xyzuannihboss@gmail.com";
 
   const pattern = /@([^:]+):/g;
   const modifiedMessage = message?.split(pattern).map((part, index) => {
@@ -38,39 +37,45 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
   };
 
   return (
-    <div className="flex items-start gap-3 px-3">
+    <div
+      className={`flex ${user.isAdmin && "flex-row-reverse"} items-start gap-3`}
+    >
       <Avatar>
         <AvatarImage src={user.iconUrl} />
         <AvatarFallback>{user.name.slice(0, 1)}</AvatarFallback>
       </Avatar>
       <div className="space-y-1">
-        <div className="flex flex-col items-start gap-3 md:flex-row md:items-center">
-          <div className="flex items-center gap-2">
-            <div className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
-              {user.name}
-            </div>
-            {user.email === authorEmail && (
-              <div className="text-medium flex items-center gap-0.5 rounded-full bg-gradient-to-bl from-purple-800 via-violet-900 to-purple-800 px-1.5 py-0.5 text-violet-50">
-                <AdminIcon size={13} />
-                <span className=" text-[10px]">Author</span>
-              </div>
+        <div
+          className={`flex ${
+            user.isAdmin && "flex-row-reverse"
+          } items-center gap-2`}
+        >
+          <Typography.p className="text-sm flex flex-row items-center font-medium text-neutral-700 dark:text-neutral-300">
+            {user.name}
+            {user.isAdmin && (
+              <span>
+                <VerifiedIcon size={13} className="text-blue-400 ml-1" />
+              </span>
             )}
-            <div className="hidden md:flex">
-              <ChatTime datetime={createdAt} />
-            </div>
-          </div>
+          </Typography.p>
         </div>
-        <div className="group flex items-center gap-3">
+        <div
+          className={`group flex items-center ${
+            user.isAdmin && "flex-row-reverse"
+          }`}
+        >
           <p
-            className={clsx(
-              "w-fit rounded-xl rounded-tl-none bg-neutral-200 px-3 py-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200",
-              "group-hover:dark:bg-neutral-700"
+            className={cn(
+              "w-fit group-hover:dark:bg-neutral-700 bg-neutral-200 px-3 py-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200",
+              user.isAdmin
+                ? "rounded-xl rounded-tr-none"
+                : "rounded-xl rounded-tl-none"
             )}
           >
             {modifiedMessage}
           </p>
           {(loggedUser?.email === user.email || loggedUser?.isAdmin) && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center mx-3">
               <TrashIcon
                 size={17}
                 className="hidden cursor-pointer text-red-500 group-hover:flex"
@@ -79,7 +84,7 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
             </div>
           )}
         </div>
-        <div className="flex md:hidden">
+        <div className={`flex ${user.isAdmin && "justify-end"}`}>
           <ChatTime datetime={createdAt} />
         </div>
       </div>
