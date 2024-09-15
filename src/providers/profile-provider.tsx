@@ -19,7 +19,13 @@ type ProfileContextType = {
 
 const ProfileContext = createContext<ProfileContextType | undefined>(undefined);
 
-export const ProfileProvider = ({ children }: { children: ReactNode }) => {
+export const ProfileProvider = ({
+  children,
+  authSession,
+}: {
+  children: ReactNode;
+  authSession?: string;
+}) => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -39,8 +45,11 @@ export const ProfileProvider = ({ children }: { children: ReactNode }) => {
         setLoading(false);
       }
     };
-
-    fetchProfile();
+    if (authSession) {
+      fetchProfile();
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   return (
