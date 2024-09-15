@@ -48,16 +48,16 @@ const ProfileSideCard = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className="w-full">
         <div
           className={cn(
-            `flex p-3 w-full gap-3 items-center cursor-pointer border rounded-xl transition-all ${
+            `flex p-3 gap-3 items-center cursor-pointer border rounded-xl transition-all ${
               theme === "dark" ? "hover:bg-[#262626]" : "hover:bg-[#D9D9D955]"
             }`
           )}
         >
           <Avatar className="h-10 w-10">
-            <AvatarImage src={profile?.iconUrl} />
+            <AvatarImage alt={profile?.name} src={profile?.iconUrl} />
             <AvatarFallback>{profile?.name.slice(0, 1)}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-1">

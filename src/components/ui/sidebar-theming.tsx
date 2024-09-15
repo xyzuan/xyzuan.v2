@@ -39,6 +39,7 @@ const SidebarTheming = () => {
 
         <Switch
           checked={theme === "dark"}
+          accessKey="theme-mode"
           onCheckedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
         />
       </div>
