@@ -50,9 +50,7 @@ export default function RootLayout({
     <html suppressHydrationWarning={true} lang="en">
       <body className={`${manrope.className} flex justify-center`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ProfileProvider
-            authSession={cookies().get("auth_session")?.value || ""}
-          >
+          <ProfileProvider authSession={cookies().get("auth_session")?.value}>
             <Analytics />
             <SpeedInsights />
             <Toaster position="top-right" richColors />
