@@ -1,8 +1,6 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
-
 import { cn } from "@/commons/libs/utils";
 import { Button } from "./button";
 import { usePathname } from "next/navigation";
@@ -10,16 +8,16 @@ import { getMenuList } from "@/commons/constants/menu-list";
 import { ArrowRightIcon, Ellipsis } from "lucide-react";
 import { MdVerified as VerifiedIcon } from "react-icons/md";
 import Typography from "./typography";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import { Avatar } from "./avatar";
 import SidebarTheming from "./sidebar-theming";
 import Image from "./image";
 import ProfileSideCard from "./profile-side-card";
 
 const Sidebar = () => {
   return (
-    <div className="hidden flex-col px-3 overflow-y-auto lg:w-64 md:w-52 top-24 sticky md:flex">
+    <div className="hidden max-h-screen flex-col px-3 overflow-y-auto lg:w-64 md:w-52 top-0 pt-16 pb-6 sticky md:flex">
       <div className="mb-3 px-1">
-        <Avatar className="w-24 h-24 mb-3">
+        <Avatar className={`w-24 h-24 mb-3 transition-transform duration-300`}>
           <Image
             height={162}
             width={162}
