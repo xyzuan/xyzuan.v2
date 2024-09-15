@@ -19,22 +19,20 @@ const WorkExperienceEducation = async () => {
   const works = await getAllWorks();
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div className="col-span-1">
         <Typography.h3>Work & Experience</Typography.h3>
         <div className="grid grid-cols-1 mt-6 gap-6">
           {works?.data?.map((value, idx) => {
             return (
-              <BlurFade key={value.id} delay={0.25 + idx * 0.05} inView>
-                <WorkCard
-                  logo={value.logo}
-                  title={value.jobTitle}
-                  instance={value.instance}
-                  location={value.address}
-                  responsibilities={value.responsibilities}
-                  date={value.date}
-                />
-              </BlurFade>
+              <WorkCard
+                logo={value.logo}
+                title={value.jobTitle}
+                instance={value.instance}
+                location={value.address}
+                responsibilities={value.responsibilities}
+                date={value.date}
+              />
             );
           })}
         </div>
@@ -44,16 +42,14 @@ const WorkExperienceEducation = async () => {
         <div className="grid grid-cols-1 mt-6 gap-6">
           {EDUCATION_MOCK.map((value, idx) => {
             return (
-              <BlurFade key={idx} delay={0.25 + idx * 0.05} inView>
-                <EducationCard
-                  logo={value.logo}
-                  institution={value.institution}
-                  degree={value.degree}
-                  major={value.major}
-                  periodic={value.periodic}
-                  location={value.location}
-                />
-              </BlurFade>
+              <EducationCard
+                logo={value.logo}
+                institution={value.institution}
+                degree={value.degree}
+                major={value.major}
+                periodic={value.periodic}
+                location={value.location}
+              />
             );
           })}
         </div>
