@@ -26,6 +26,7 @@ const WorkExperienceEducation = async () => {
           {works?.data?.map((value, idx) => {
             return (
               <WorkCard
+                key={idx}
                 logo={value.logo}
                 title={value.jobTitle}
                 instance={value.instance}
@@ -43,6 +44,7 @@ const WorkExperienceEducation = async () => {
           {EDUCATION_MOCK.map((value, idx) => {
             return (
               <EducationCard
+                key={idx}
                 logo={value.logo}
                 institution={value.institution}
                 degree={value.degree}
