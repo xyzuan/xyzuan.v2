@@ -13,13 +13,11 @@ import Typography from "./typography";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import SidebarTheming from "./sidebar-theming";
 import Image from "./image";
-import AuthCard from "./auth-card";
-import { useProfile } from "@/providers/profile-provider";
 import ProfileSideCard from "./profile-side-card";
 
 const Sidebar = () => {
   return (
-    <div className="hidden flex-col px-3 overflow-y-auto w-64 top-24 sticky xl:flex">
+    <div className="hidden flex-col px-3 overflow-y-auto lg:w-64 md:w-52 top-24 sticky md:flex">
       <div className="mb-3 px-1">
         <Avatar className="w-24 h-24 mb-3">
           <Image
