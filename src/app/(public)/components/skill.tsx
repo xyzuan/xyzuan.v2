@@ -8,10 +8,11 @@ import { STACKS } from "@/commons/constants/stacks";
 import { Skeleton } from "@/components/ui/skeleton";
 import BlurFade from "@/components/magicui/blur-fade";
 import { motion, AnimatePresence } from "framer-motion";
+import { getRandomWidth } from "@/commons/helpers";
 
 const Tag = ({ icon, title }: { icon: ReactNode; title: string }) => (
   <BlurFade delay={0.25 * Math.random() * (4 - 1.25)} inView>
-    <div className="flex w-max items-center gap-2 rounded-full border border-neutral-300 bg-neutral-50 px-5 py-2 text-[15px] shadow-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-50">
+    <div className="flex w-max items-center gap-2 rounded-full bg-background border px-5 py-2 text-[15px] ">
       {icon}
       <span>{title}</span>
     </div>
@@ -39,10 +40,6 @@ const Skill = () => {
     };
   }, []);
 
-  const getRandomWidth = (min: number, max: number) => {
-    return `${Math.floor(Math.random() * (max - min + 1) + min)}px`;
-  };
-
   const skeletons = Array.from({ length: 3 }).map((_, rowIndex) => (
     <motion.div
       key={rowIndex}
@@ -56,9 +53,10 @@ const Skill = () => {
         reverse={rowIndex === 1}
         className="[--duration:60s]"
       >
-        {Array.from({ length: 10 }).map(() => (
+        {Array.from({ length: 10 }).map((_, idx) => (
           <Skeleton
-            className={`h-10 rounded-full`}
+            key={idx}
+            className={`h-10 rounded-full bg-background border`}
             style={{ width: getRandomWidth(80, 120) }}
           />
         ))}
@@ -90,8 +88,8 @@ const Skill = () => {
         <AnimatePresence mode="wait">
           {isLoading ? skeletons : sliders}
         </AnimatePresence>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-white dark:from-background"></div>
       </div>
     </div>
   );
