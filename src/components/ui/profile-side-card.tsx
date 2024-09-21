@@ -17,7 +17,6 @@ import DropdownItem from "./dropdown-item";
 import { LogOutIcon } from "lucide-react";
 
 const ProfileSideCard = () => {
-  const { theme } = useTheme();
   const router = useRouter();
   const { profile, setProfile, loading } = useProfile();
 
@@ -51,8 +50,7 @@ const ProfileSideCard = () => {
       <DropdownMenuTrigger className="w-full">
         <div
           className={cn(
-            `flex p-3 gap-3 items-center cursor-pointer border rounded-xl transition-all ${
-              theme === "dark" ? "hover:bg-[#262626]" : "hover:bg-[#D9D9D955]"
+            `flex p-3 gap-3 items-center cursor-pointer border rounded-xl transition-all dark:hover:bg-[#262626] hover:bg-[#D9D9D955]"
             }`
           )}
         >

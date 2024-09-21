@@ -7,7 +7,6 @@ import Typography from "@/components/ui/typography";
 import { STACKS } from "@/commons/constants/stacks";
 import { Skeleton } from "@/components/ui/skeleton";
 import BlurFade from "@/components/magicui/blur-fade";
-import { motion, AnimatePresence } from "framer-motion";
 import { getRandomWidth } from "@/commons/helpers";
 
 const Tag = ({ icon, title }: { icon: ReactNode; title: string }) => (
@@ -41,43 +40,29 @@ const Skill = () => {
   }, []);
 
   const skeletons = Array.from({ length: 3 }).map((_, rowIndex) => (
-    <motion.div
+    <Marquee
       key={rowIndex}
-      exit={{
-        opacity: 0,
-        transition: { duration: 0.2 },
-      }}
+      reverse={rowIndex === 1}
+      className="[--duration:60s]"
     >
-      <Marquee
-        key={rowIndex}
-        reverse={rowIndex === 1}
-        className="[--duration:60s]"
-      >
-        {Array.from({ length: 10 }).map((_, idx) => (
-          <Skeleton
-            key={idx}
-            className={`h-10 rounded-full bg-background border`}
-            style={{ width: getRandomWidth(80, 120) }}
-          />
-        ))}
-      </Marquee>
-    </motion.div>
+      {Array.from({ length: 10 }).map((_, idx) => (
+        <Skeleton
+          key={idx}
+          className={`h-10 rounded-full bg-background border`}
+          style={{ width: getRandomWidth(80, 120) }}
+        />
+      ))}
+    </Marquee>
   ));
 
   const sliders = Array.from({ length: 3 }, (_, index) => {
     const sliderSkills = [...shuffledSkills].sort(() => Math.random() - 0.5);
     return (
-      <motion.div key="sliders">
-        <Marquee
-          key={index}
-          reverse={index === 1}
-          className="[--duration:140s]"
-        >
-          {sliderSkills.map(([title, icon], index) => (
-            <Tag key={index} icon={icon} title={title} />
-          ))}
-        </Marquee>
-      </motion.div>
+      <Marquee key={index} reverse={index === 1} className="[--duration:140s]">
+        {sliderSkills.map(([title, icon], index) => (
+          <Tag key={index} icon={icon} title={title} />
+        ))}
+      </Marquee>
     );
   });
 
@@ -85,9 +70,7 @@ const Skill = () => {
     <div className="flex flex-col h-fit gap-6">
       <Typography.h3>Tech stacks that i have used</Typography.h3>
       <div className="relative flex w-full max-w-4xl flex-col items-center justify-center overflow-hidden rounded-lg">
-        <AnimatePresence mode="wait">
-          {isLoading ? skeletons : sliders}
-        </AnimatePresence>
+        {isLoading ? skeletons : sliders}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-white dark:from-background"></div>
         <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-white dark:from-background"></div>
       </div>

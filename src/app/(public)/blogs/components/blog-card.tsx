@@ -49,116 +49,122 @@ const BlogCard = ({
   };
 
   return (
-    <Link href={`/blogs/${newSlug}?id=${id}`}>
-      <Card
-        className="group relative flex h-[400px] w-full min-w-72 flex-col"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="relative h-full rounded-xl duration-500 overflow-hidden">
-          <Image
-            src={cover_image || defaultImage}
-            alt={title}
-            fill={true}
-            className="h-full w-full transform object-cover object-left transition-transform duration-300 group-hover:scale-105 group-hover:blur-sm"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black opacity-80 transition-opacity duration-300"></div>
-        </div>
-
-        <div className="absolute flex h-full flex-col justify-between space-y-4 p-5">
-          <div className="flex flex-wrap gap-2">
-            {tag_list?.map((tag, idx) => (
-              <Badge
-                key={idx}
-                variant="outline"
-                className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs backdrop-blur-2xl"
-              >
-                <span className="mr-1 font-semibold">#</span>
-                {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
-              </Badge>
-            ))}
+    <motion.div
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3, delay: Math.random() * 0.1 }}
+    >
+      <Link href={`/blogs/${newSlug}?id=${id}`}>
+        <Card
+          className="group relative flex h-[400px] w-full min-w-72 flex-col"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div className="relative h-full rounded-xl duration-500 overflow-hidden">
+            <Image
+              src={cover_image || defaultImage}
+              alt={title}
+              fill={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="h-full w-full transform object-cover object-left transition-transform duration-300 group-hover:scale-105 group-hover:blur-sm"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black opacity-80 transition-opacity duration-300"></div>
           </div>
 
-          <div className="flex flex-col justify-end">
-            <div className="flex flex-col space-y-3">
-              <Typography.h3 className=" text-lg font-medium text-neutral-100 group-hover:underline group-hover:underline-offset-4 ">
-                {trimmedTitle}
-              </Typography.h3>
-              <div className="flex items-center gap-1 text-neutral-400">
-                <DateIcon size={14} />
-                <span className="ml-0.5 text-xs">
-                  {formatDate(published_at)}
-                </span>
+          <div className="absolute flex h-full flex-col justify-between space-y-4 p-5">
+            <div className="flex flex-wrap gap-2">
+              {tag_list?.map((tag, idx) => (
+                <Badge
+                  key={idx}
+                  variant="outline"
+                  className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs backdrop-blur-2xl"
+                >
+                  <span className="mr-1 font-semibold">#</span>
+                  {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
+                </Badge>
+              ))}
+            </div>
+
+            <div className="flex flex-col justify-end">
+              <div className="flex flex-col space-y-3">
+                <Typography.h3 className=" text-lg font-medium text-neutral-100 group-hover:underline group-hover:underline-offset-4 ">
+                  {trimmedTitle}
+                </Typography.h3>
+                <div className="flex items-center gap-1 text-neutral-400">
+                  <DateIcon size={14} />
+                  <span className="ml-0.5 text-xs">
+                    {formatDate(published_at)}
+                  </span>
+                </div>
+                {trimmedContent && (
+                  <Typography.p className="text-sm leading-relaxed text-neutral-400">
+                    {formatExcerpt(trimmedContent)}
+                  </Typography.p>
+                )}
               </div>
-              {trimmedContent && (
-                <Typography.p className="text-sm leading-relaxed text-neutral-400">
-                  {formatExcerpt(trimmedContent)}
-                </Typography.p>
-              )}
-            </div>
-            <Separator className="my-3 opacity-55" />
-            <div className="flex justify-between gap-4 px-0.5 text-neutral-400">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Image
-                    src={user.profile_image_90}
-                    alt={user.name}
-                    width={25}
-                    height={25}
-                    rounded="rounded-full"
-                    className="rotate-3 border border-neutral-500"
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <Typography.p>{user.name}</Typography.p>
-                </TooltipContent>
-              </Tooltip>
+              <Separator className="my-3 opacity-55" />
+              <div className="flex justify-between gap-4 px-0.5 text-neutral-400">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Image
+                      src={user.profile_image_90}
+                      alt={user.name}
+                      width={25}
+                      height={25}
+                      rounded="rounded-full"
+                      className="rotate-3 border border-neutral-500"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <Typography.p>{user.name}</Typography.p>
+                  </TooltipContent>
+                </Tooltip>
 
-              <motion.div
-                variants={slideDownVariants}
-                initial="visible"
-                animate={isHovered ? "hidden" : "visible"}
-                className={clsx(
-                  "flex justify-between gap-4 ",
-                  isHovered && "hidden"
-                )}
-              >
-                <div className="flex items-center gap-1">
-                  <EyeIcon size={14} />
-                  <span className="ml-0.5 text-xs font-medium">
-                    {page_views_count.toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <BiComment size={14} />
-                  <span className="ml-0.5 text-xs font-medium">
-                    {comments_count.toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <FlameIcon size={14} />
-                  <span className="ml-0.5 text-xs font-medium">
-                    {public_reactions_count.toLocaleString()}
-                  </span>
-                </div>
-              </motion.div>
-              <motion.div
-                variants={slideDownVariants}
-                initial="hidden"
-                animate={isHovered ? "visible" : "hidden"}
-                className={clsx(
-                  "flex items-center gap-1",
-                  !isHovered && "hidden"
-                )}
-              >
-                <span className="mr-0.5 text-xs font-medium">READ MORE</span>
-                <MoreIcon size={16} />
-              </motion.div>
+                <motion.div
+                  variants={slideDownVariants}
+                  initial="visible"
+                  animate={isHovered ? "hidden" : "visible"}
+                  className={clsx(
+                    "flex justify-between gap-4 ",
+                    isHovered && "hidden"
+                  )}
+                >
+                  <div className="flex items-center gap-1">
+                    <EyeIcon size={14} />
+                    <span className="ml-0.5 text-xs font-medium">
+                      {page_views_count.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <BiComment size={14} />
+                    <span className="ml-0.5 text-xs font-medium">
+                      {comments_count.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <FlameIcon size={14} />
+                    <span className="ml-0.5 text-xs font-medium">
+                      {public_reactions_count.toLocaleString()}
+                    </span>
+                  </div>
+                </motion.div>
+                <motion.div
+                  variants={slideDownVariants}
+                  initial="hidden"
+                  animate={isHovered ? "visible" : "hidden"}
+                  className={clsx(
+                    "flex items-center gap-1",
+                    !isHovered && "hidden"
+                  )}
+                >
+                  <span className="mr-0.5 text-xs font-medium">READ MORE</span>
+                  <MoreIcon size={16} />
+                </motion.div>
+              </div>
             </div>
           </div>
-        </div>
-      </Card>
-    </Link>
+        </Card>
+      </Link>
+    </motion.div>
   );
 };
 

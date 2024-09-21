@@ -3,10 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import ChatItem from "./chats-item";
 import { ChatListProps } from "@/commons/types/chats.types";
-import { useProfile } from "@/providers/profile-provider";
 
 const ChatList = ({ messages }: ChatListProps) => {
-  const { profile } = useProfile();
   const [chatListHeight, setChatListHeight] = useState("500px");
   const [hasScrolledUp, setHasScrolledUp] = useState(false);
   const chatListRef = useRef<HTMLDivElement | null>(null);

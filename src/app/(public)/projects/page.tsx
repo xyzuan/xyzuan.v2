@@ -18,7 +18,7 @@ const ProjectsPage = async () => {
   const projects = await getAllProjects();
 
   return (
-    <BlurFade delay={0.25 * 0.05} inView>
+    <>
       <div className="mb-6">
         <Typography.h3>Projects</Typography.h3>
         <Typography.p>
@@ -26,22 +26,20 @@ const ProjectsPage = async () => {
         </Typography.p>
       </div>
       <div className="grid gap-5 px-1 pt-2 sm:grid-cols-2">
-        {projects?.data?.map((value, idx) => {
+        {projects?.data?.map((value) => {
           return (
-            <BlurFade key={value.id} delay={0.25 + idx * 0.05} inView>
-              <ProjectCard
-                id={value.id}
-                title={value.title}
-                img={value.img}
-                description={value.description}
-                stacks={value.stacks}
-                isFeatured={value.isFeatured}
-              />
-            </BlurFade>
+            <ProjectCard
+              id={value.id}
+              title={value.title}
+              img={value.img}
+              description={value.description}
+              stacks={value.stacks}
+              isFeatured={value.isFeatured}
+            />
           );
         })}
       </div>
-    </BlurFade>
+    </>
   );
 };
 

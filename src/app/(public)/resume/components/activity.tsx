@@ -2,7 +2,6 @@ import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import Typography from "@/components/ui/typography";
-import BlurFade from "@/components/magicui/blur-fade";
 import { fetchGithubData } from "@/services/github";
 import { GITHUB_ACCOUNTS } from "@/commons/constants/github";
 import { getALLTimeSinceToday, getReadStats } from "@/services/wakatime";
@@ -27,7 +26,7 @@ const Activity = async () => {
   );
 
   return (
-    <BlurFade delay={0.25 * 0.05} inView>
+    <>
       <div className="space-y-3 mt-11">
         <Typography.h4 className="flex gap-3 items-center font-normal">
           <ClockIcon height={24} width={24} />
@@ -57,7 +56,7 @@ const Activity = async () => {
           data={github?.data?.contributionsCollection?.contributionCalendar}
         />
       </div>
-    </BlurFade>
+    </>
   );
 };
 

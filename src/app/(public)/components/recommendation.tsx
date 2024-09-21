@@ -5,12 +5,10 @@ import RecommendationCard, {
   RecommendationCardProps,
 } from "./recommendation-card";
 import Typography from "@/components/ui/typography";
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getRandomHeight } from "@/commons/helpers";
 import { CardFooter, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 const RECOMMENDATIONS_MOCK = [
   {
@@ -111,14 +109,7 @@ const Recommendation = () => {
   }, []);
 
   const skeletons = Array.from({ length: 3 }).map((_, rowIndex) => (
-    <motion.div
-      className="w-full"
-      key={rowIndex}
-      exit={{
-        opacity: 0,
-        transition: { duration: 0.2 },
-      }}
-    >
+    <div>
       <Marquee vertical reverse={rowIndex === 1} className="[--duration:160s]">
         {Array.from({ length: 8 }).map((_, idx) => (
           <Skeleton
@@ -137,7 +128,7 @@ const Recommendation = () => {
           </Skeleton>
         ))}
       </Marquee>
-    </motion.div>
+    </div>
   ));
 
   const recommendations = Array.from({ length: 3 }, (_, index) => {
@@ -145,8 +136,13 @@ const Recommendation = () => {
       () => Math.random() - 0.5
     );
     return (
-      <motion.div key={index}>
-        <Marquee vertical reverse={index === 1} className="[--duration:140s]">
+      <div>
+        <Marquee
+          vertical
+          pauseOnHover
+          reverse={index === 1}
+          className="[--duration:140s]"
+        >
           {recommendationsRand.map((value, idx) => (
             <RecommendationCard
               key={idx}
@@ -157,7 +153,7 @@ const Recommendation = () => {
             />
           ))}
         </Marquee>
-      </motion.div>
+      </div>
     );
   });
 
@@ -165,13 +161,11 @@ const Recommendation = () => {
     <>
       <Typography.h3>Recommendations</Typography.h3>
       <div className="relative flex h-[500px] w-full flex-row md-row-span-1 items-center justify-center overflow-hidden mt-3">
-        <AnimatePresence mode="wait">
-          {isLoading ? skeletons : recommendations}
-        </AnimatePresence>
+        {isLoading ? skeletons : recommendations}
         <div className="pointer-events-none absolute xl:hidden inset-y-0 left-0 w-1/12 bg-gradient-to-r from-white dark:from-background"></div>
         <div className="pointer-events-none absolute xl:hidden inset-y-0 right-0 w-1/12 bg-gradient-to-l from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-white dark:from-background"></div>
       </div>
     </>
   );

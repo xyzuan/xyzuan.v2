@@ -2,6 +2,7 @@ import About from "./components/about";
 import Header from "./components/header";
 import RecentBlog from "./components/recent-blog";
 import Recommendation from "./components/recommendation";
+import Services from "./components/services";
 import Skill from "./components/skill";
 
 const HomePage = () => {
@@ -12,6 +13,7 @@ const HomePage = () => {
       <RecentBlog />
       <Skill />
       <Recommendation />
+      <Services />
     </>
   );
 };

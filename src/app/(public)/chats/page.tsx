@@ -5,8 +5,6 @@ import { Metadata } from "next";
 import { METADATA } from "@/commons/constants/metadata";
 import { getChats } from "@/services/chats";
 import ChatInput from "./components/chats-input";
-import { revalidatePath } from "next/cache";
-import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: `Chats ${METADATA.exTitle}`,
