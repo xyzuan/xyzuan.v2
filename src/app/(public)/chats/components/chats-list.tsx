@@ -59,7 +59,7 @@ const ChatList = ({ messages }: ChatListProps) => {
     <div className="rounded-lg">
       <div
         ref={chatListRef}
-        className="space-y-5 overflow-y-auto py-4"
+        className="space-y-5 overflow-y-auto py-4 scrollbar-hide"
         style={{ height: chatListHeight }}
       >
         {messages?.map((chat, index) => (

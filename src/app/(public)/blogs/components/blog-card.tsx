@@ -51,7 +51,7 @@ const BlogCard = ({
   return (
     <Link href={`/blogs/${newSlug}?id=${id}`}>
       <Card
-        className="group relative flex h-[400px] w-full flex-col"
+        className="group relative flex h-[400px] w-full min-w-72 flex-col"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

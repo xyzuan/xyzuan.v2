@@ -83,7 +83,7 @@ const Skill = () => {
 
   return (
     <div className="flex flex-col h-fit gap-6">
-      <Typography.h3>Tools that I have used</Typography.h3>
+      <Typography.h3>Tech stacks that i have used</Typography.h3>
       <div className="relative flex w-full max-w-4xl flex-col items-center justify-center overflow-hidden rounded-lg">
         <AnimatePresence mode="wait">
           {isLoading ? skeletons : sliders}
