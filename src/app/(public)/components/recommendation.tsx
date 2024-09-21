@@ -109,7 +109,7 @@ const Recommendation = () => {
   }, []);
 
   const skeletons = Array.from({ length: 3 }).map((_, rowIndex) => (
-    <div>
+    <div key={rowIndex}>
       <Marquee vertical reverse={rowIndex === 1} className="[--duration:160s]">
         {Array.from({ length: 8 }).map((_, idx) => (
           <Skeleton
@@ -136,7 +136,7 @@ const Recommendation = () => {
       () => Math.random() - 0.5
     );
     return (
-      <div>
+      <div key={index}>
         <Marquee
           vertical
           pauseOnHover
