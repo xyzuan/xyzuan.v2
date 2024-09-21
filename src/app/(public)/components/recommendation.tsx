@@ -123,7 +123,7 @@ const Recommendation = () => {
         {Array.from({ length: 8 }).map((_, idx) => (
           <Skeleton
             key={idx}
-            className={`w-full bg-background border rounded-2xl`}
+            className={`min-w-72 bg-background border rounded-2xl`}
           >
             <CardHeader>
               <Skeleton
@@ -168,8 +168,8 @@ const Recommendation = () => {
         <AnimatePresence mode="wait">
           {isLoading ? skeletons : recommendations}
         </AnimatePresence>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute xl:hidden inset-y-0 left-0 w-1/12 bg-gradient-to-r from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute xl:hidden inset-y-0 right-0 w-1/12 bg-gradient-to-l from-white dark:from-background"></div>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
       </div>

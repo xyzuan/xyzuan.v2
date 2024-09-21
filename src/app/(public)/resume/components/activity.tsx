@@ -1,28 +1,18 @@
 import Link from "next/link";
-import { Metadata } from "next";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { METADATA } from "@/commons/constants/metadata";
 
 import Typography from "@/components/ui/typography";
 import BlurFade from "@/components/magicui/blur-fade";
 import { fetchGithubData } from "@/services/github";
 import { GITHUB_ACCOUNTS } from "@/commons/constants/github";
 import { getALLTimeSinceToday, getReadStats } from "@/services/wakatime";
-import GithubCalendar from "./components/github-calendar";
-import GithubOverview from "./components/github-overview";
-import WakatimeOverview from "./components/wakatime-overview";
+import GithubCalendar from "./github-calendar";
+import GithubOverview from "./github-overview";
+import WakatimeOverview from "./wakatime-overview";
 import { ClockIcon } from "lucide-react";
-import WakatimeActive from "./components/wakatime-active";
+import WakatimeActive from "./wakatime-active";
 
-export const metadata: Metadata = {
-  title: `Dashboard ${METADATA.exTitle}`,
-  description: "My activity dashboard as software engineer",
-  alternates: {
-    canonical: `${process.env.DOMAIN}/dashboards`,
-  },
-};
-
-const DashboardsPage = async () => {
+const Activity = async () => {
   const readStatsResponse = await getReadStats();
   const allTimeSinceTodayResponse = await getALLTimeSinceToday();
 
@@ -38,14 +28,7 @@ const DashboardsPage = async () => {
 
   return (
     <BlurFade delay={0.25 * 0.05} inView>
-      <div className="mb-6">
-        <Typography.h3>Dashboard</Typography.h3>
-        <Typography.p>
-          This is my personal dashboard, built with Next.js API routes deployed
-          as serverless functions.
-        </Typography.p>
-      </div>
-      <div className="space-y-3">
+      <div className="space-y-3 mt-11">
         <Typography.h4 className="flex gap-3 items-center font-normal">
           <ClockIcon height={24} width={24} />
           Weekly Statistic
@@ -78,4 +61,4 @@ const DashboardsPage = async () => {
   );
 };
 
-export default DashboardsPage;
+export default Activity;

@@ -1,4 +1,5 @@
 import {
+  BookText,
   Coffee,
   Home,
   LayoutDashboard,
@@ -32,10 +33,10 @@ export function getMenuList(pathname: string): Group[] {
           icon: Home,
         },
         {
-          href: "/dashboards",
-          label: "Dashboards",
-          active: pathname.includes("/dashboards"),
-          icon: LayoutDashboard,
+          href: "/resume",
+          label: "Resume",
+          active: pathname.includes("/resume"),
+          icon: BookText,
         },
         {
           href: "/projects",

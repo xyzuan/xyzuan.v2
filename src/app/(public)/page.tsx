@@ -2,7 +2,6 @@ import About from "./components/about";
 import Header from "./components/header";
 import Recommendation from "./components/recommendation";
 import Skill from "./components/skill";
-import WorkExperienceEducation from "./components/work-experience-education";
 
 const HomePage = () => {
   return (
@@ -11,7 +10,6 @@ const HomePage = () => {
       <About />
       <Skill />
       <Recommendation />
-      <WorkExperienceEducation />
     </>
   );
 };
