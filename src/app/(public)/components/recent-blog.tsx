@@ -1,5 +1,5 @@
 import { BlogItem } from "@/commons/types/blogs.types";
-import { getBlogData } from "@/services/devto";
+import { getBlogData } from "@/services/blogs";
 import BlogCard from "../blogs/components/blog-card";
 import Typography from "@/components/ui/typography";
 

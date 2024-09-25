@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { SendIcon } from "lucide-react";
 import {
   Form,
@@ -14,31 +15,32 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { postChat } from "@/services/chats";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useProfile } from "@/providers/profile-provider";
+import { postBlogComment } from "@/services/blogs";
 import AuthDialog from "@/components/ui/auth-dialog";
 
-const chatSchema = z.object({
-  message: z.string().min(1, "Message cannot be empty"),
+const commentSchema = z.object({
+  content: z.string().min(1, "Message cannot be empty"),
 });
 
-const ChatInput = () => {
-  const { profile } = useProfile();
+const BlogCommentInput = () => {
+  const { profile, loading } = useProfile();
   const [isSending, setIsSending] = useState(false);
+  const { id } = useParams() as { id: string };
 
-  const form = useForm<z.infer<typeof chatSchema>>({
-    resolver: zodResolver(chatSchema),
+  const form = useForm<z.infer<typeof commentSchema>>({
+    resolver: zodResolver(commentSchema),
     defaultValues: {
-      message: "",
+      content: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof chatSchema>) => {
+  const onSubmit = (values: z.infer<typeof commentSchema>) => {
     setIsSending(true);
-    toast.promise(postChat(values.message), {
-      loading: "Sending message to Eden...",
+    toast.promise(postBlogComment(id as string, values.content), {
+      loading: "Sending comment to Eden...",
       success: () => {
         form.reset();
         return `Sended Successfuly.`;
@@ -48,6 +50,8 @@ const ChatInput = () => {
     });
   };
 
+  if (loading) return null;
+
   return profile ? (
     <Form {...form}>
       <form
@@ -56,12 +60,16 @@ const ChatInput = () => {
       >
         <FormField
           control={form.control}
-          name="message"
+          name="content"
           disabled={isSending}
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input placeholder="Input your message" {...field} />
+                <Input
+                  className="backdrop-blur-xl"
+                  placeholder="Input your comment"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -77,8 +85,8 @@ const ChatInput = () => {
       </form>
     </Form>
   ) : (
-    <AuthDialog />
+    <AuthDialog msg="comment blog" />
   );
 };
 
-export default ChatInput;
+export default BlogCommentInput;

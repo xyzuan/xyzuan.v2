@@ -8,14 +8,14 @@ interface BlogReaderHeaderProps {
   title: string;
   comments_count?: number;
   reading_time_minutes?: number;
-  page_views_count?: number | null;
+  page_views_count?: number;
   published_at?: string;
 }
 
 const BlogReaderHeader = ({
   title,
   comments_count = 0,
-  page_views_count,
+  page_views_count = 0,
   published_at,
   reading_time_minutes,
 }: BlogReaderHeaderProps) => {
@@ -45,9 +45,7 @@ const BlogReaderHeader = ({
               <span>min read</span>
             </Typography.p>
           </div>
-          <div
-            className="hidden cursor-pointer items-center gap-1 font-medium hover:dark:text-neutral-300 xl:flex"
-          >
+          <div className="hidden cursor-pointer items-center gap-1 font-medium hover:dark:text-neutral-300 xl:flex">
             <CommentIcon size={20} />
             <Typography.p className="ml-0.5 flex gap-1">
               <span>{comments_count}</span>
@@ -56,9 +54,7 @@ const BlogReaderHeader = ({
           </div>
         </div>
 
-        <div
-          className="flex cursor-pointer items-center gap-1 font-medium hover:dark:text-neutral-300 xl:hidden"
-        >
+        <div className="flex cursor-pointer items-center gap-1 font-medium hover:dark:text-neutral-300 xl:hidden">
           <CommentIcon size={20} />
           <div className="ml-0.5 flex gap-1">
             <span>{comments_count}</span>

@@ -58,7 +58,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
         }}
       >
         <Image
-          src={currentFeatured?.cover_image || defaultImage}
+          src={currentFeatured?.img || defaultImage}
           alt={currentFeatured?.title}
           fill={true}
           sizes="100vw, 100vh"
@@ -75,9 +75,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
           </div>
           <div className="flex flex-col justify-end gap-6">
             <div className="flex flex-col space-y-2 text-white">
-              <Link
-                href={`/blogs/${currentFeatured?.slug}?id=${currentFeatured?.id}`}
-              >
+              <Link href={`/blogs/${currentFeatured?.id}`}>
                 <h3 className="group relative flex w-fit cursor-pointer  text-2xl font-bold leading-normal">
                   {currentFeatured?.title}
                   <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-white transition-transform group-hover:scale-x-100"></span>
@@ -87,7 +85,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
                 <div className="flex items-center gap-1 ">
                   <DateIcon size={16} />
                   <span className="ml-0.5 text-xs">
-                    {formatDate(currentFeatured?.published_timestamp)}
+                    {formatDate(currentFeatured?.createdAt)}
                   </span>
                 </div>
               </div>
@@ -123,7 +121,7 @@ const BlogFeaturedHero = ({ blogs }: BlogProps) => {
               style={{ borderRadius: "50%" }}
             >
               <Image
-                src={item?.cover_image || defaultImage}
+                src={item?.img || defaultImage}
                 alt={item?.title}
                 fill={true}
                 sizes="100vw, 100vh"

@@ -1,4 +1,4 @@
-import { getBlogData } from "@/services/devto";
+import { getBlogData } from "@/services/blogs";
 import BlogFeaturedHero from "./components/blog-featured-hero";
 import BlogItemSection from "./components/blog-item-section";
 import { Metadata } from "next";

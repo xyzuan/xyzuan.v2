@@ -4,6 +4,10 @@ const PUBLIC_API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH;
 // Chat
 export const CHAT_ENDPOINT = `${PUBLIC_API_BASE_PATH}/message`;
 
+// Blog
+export const BLOG_ENDPOINT = `${PUBLIC_API_BASE_PATH}/blog`;
+export const BLOG_VIEW_ENDPOINT = `${API_BASE_PATH}/blog/view`;
+
 // Auth Eden
 export const AUTH_LOGIN_ENDPOINT = `${PUBLIC_API_BASE_PATH}/auth/login`;
 export const AUTH_SIGNUP_ENDPOINT = `${PUBLIC_API_BASE_PATH}/auth/signup`;

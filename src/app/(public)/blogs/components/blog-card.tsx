@@ -23,20 +23,16 @@ import { TbCalendarBolt as DateIcon } from "react-icons/tb";
 
 const BlogCard = ({
   id,
-  user,
   title,
-  cover_image,
-  published_at,
   description,
-  slug,
-  comments_count,
-  public_reactions_count,
-  page_views_count,
-  tag_list,
+  content,
+  viewCount,
+  commentsCount,
+  reactionsCount,
+  img,
+  createdAt,
 }: BlogItem) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-
-  const newSlug = formatBlogSlug(slug);
   const trimmedTitle = title.slice(0, 70) + (title.length > 70 ? "..." : "");
   const trimmedContent =
     description.slice(0, 100) + (description.length > 80 ? "..." : "");
@@ -53,7 +49,7 @@ const BlogCard = ({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, delay: Math.random() * 0.1 }}
     >
-      <Link href={`/blogs/${newSlug}?id=${id}`}>
+      <Link href={`/blogs/${id}`}>
         <Card
           className="group relative flex h-[400px] w-full min-w-72 flex-col"
           onMouseEnter={() => setIsHovered(true)}
@@ -61,7 +57,7 @@ const BlogCard = ({
         >
           <div className="relative h-full rounded-xl duration-500 overflow-hidden">
             <Image
-              src={cover_image || defaultImage}
+              src={img || defaultImage}
               alt={title}
               fill={true}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -72,7 +68,7 @@ const BlogCard = ({
 
           <div className="absolute flex h-full flex-col justify-between space-y-4 p-5">
             <div className="flex flex-wrap gap-2">
-              {tag_list?.map((tag, idx) => (
+              {/* {tag_list?.map((tag, idx) => (
                 <Badge
                   key={idx}
                   variant="outline"
@@ -81,7 +77,7 @@ const BlogCard = ({
                   <span className="mr-1 font-semibold">#</span>
                   {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
                 </Badge>
-              ))}
+              ))} */}
             </div>
 
             <div className="flex flex-col justify-end">
@@ -92,7 +88,7 @@ const BlogCard = ({
                 <div className="flex items-center gap-1 text-neutral-400">
                   <DateIcon size={14} />
                   <span className="ml-0.5 text-xs">
-                    {formatDate(published_at)}
+                    {formatDate(createdAt)}
                   </span>
                 </div>
                 {trimmedContent && (
@@ -103,7 +99,7 @@ const BlogCard = ({
               </div>
               <Separator className="my-3 opacity-55" />
               <div className="flex justify-between gap-4 px-0.5 text-neutral-400">
-                <Tooltip>
+                {/* <Tooltip>
                   <TooltipTrigger asChild>
                     <Image
                       src={user.profile_image_90}
@@ -117,7 +113,7 @@ const BlogCard = ({
                   <TooltipContent>
                     <Typography.p>{user.name}</Typography.p>
                   </TooltipContent>
-                </Tooltip>
+                </Tooltip> */}
 
                 <motion.div
                   variants={slideDownVariants}
@@ -131,19 +127,19 @@ const BlogCard = ({
                   <div className="flex items-center gap-1">
                     <EyeIcon size={14} />
                     <span className="ml-0.5 text-xs font-medium">
-                      {page_views_count.toLocaleString()}
+                      {viewCount.toLocaleString()}
                     </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <BiComment size={14} />
                     <span className="ml-0.5 text-xs font-medium">
-                      {comments_count.toLocaleString()}
+                      {commentsCount.toLocaleString()}
                     </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <FlameIcon size={14} />
                     <span className="ml-0.5 text-xs font-medium">
-                      {public_reactions_count.toLocaleString()}
+                      {reactionsCount.toLocaleString()}
                     </span>
                   </div>
                 </motion.div>
