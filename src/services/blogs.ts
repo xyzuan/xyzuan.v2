@@ -5,6 +5,10 @@ import { BlogItem } from "@/commons/types/blogs.types";
 export const getBlogData = async (): Promise<BlogItem[]> => {
   const response = await fetch(BLOG_ENDPOINT, {
     method: "GET",
+    // TO-DO Implement callback function to revalidate data
+    next: {
+      revalidate: 60,
+    },
   }).then((res) => res.json());
   return response.data;
 };
@@ -12,6 +16,10 @@ export const getBlogData = async (): Promise<BlogItem[]> => {
 export const getBlogDetail = async (id: number): Promise<BlogItem> => {
   const response = await fetch(`${BLOG_ENDPOINT}/${id}`, {
     method: "GET",
+    // TO-DO Implement callback function to revalidate data
+    next: {
+      revalidate: 60,
+    },
   }).then((res) => res.json());
   return response.data;
 };
