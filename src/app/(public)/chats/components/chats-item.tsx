@@ -50,7 +50,7 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
             user.isAdmin && "flex-row-reverse"
           } items-center gap-2`}
         >
-          <Typography.p className="text-sm flex flex-row items-center font-medium text-neutral-700 dark:text-neutral-300">
+          <Typography.p className="text-sm flex items-center font-medium text-neutral-700 dark:text-neutral-300">
             {user.name}
             {user.isAdmin && (
               <span>
