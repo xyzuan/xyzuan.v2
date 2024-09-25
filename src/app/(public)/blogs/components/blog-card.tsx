@@ -1,6 +1,6 @@
 "use client";
 
-import { formatBlogSlug, formatDate, formatExcerpt } from "@/commons/helpers";
+import { formatDate, formatExcerpt, getTags } from "@/commons/helpers";
 import { BlogItem } from "@/commons/types/blogs.types";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -14,7 +14,7 @@ import {
 import Typography from "@/components/ui/typography";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { EyeIcon, FlameIcon, ViewIcon } from "lucide-react";
+import { EyeIcon, FlameIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { BiComment } from "react-icons/bi";
@@ -25,7 +25,7 @@ const BlogCard = ({
   id,
   title,
   description,
-  content,
+  tags,
   viewCount,
   commentsCount,
   reactionsCount,
@@ -68,16 +68,15 @@ const BlogCard = ({
 
           <div className="absolute flex h-full flex-col justify-between space-y-4 p-5">
             <div className="flex flex-wrap gap-2">
-              {/* {tag_list?.map((tag, idx) => (
+              {getTags(tags).map((tag, idx) => (
                 <Badge
                   key={idx}
                   variant="outline"
                   className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs backdrop-blur-2xl"
                 >
-                  <span className="mr-1 font-semibold">#</span>
                   {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
                 </Badge>
-              ))} */}
+              ))}
             </div>
 
             <div className="flex flex-col justify-end">
@@ -99,11 +98,11 @@ const BlogCard = ({
               </div>
               <Separator className="my-3 opacity-55" />
               <div className="flex justify-between gap-4 px-0.5 text-neutral-400">
-                {/* <Tooltip>
+                <Tooltip>
                   <TooltipTrigger asChild>
                     <Image
-                      src={user.profile_image_90}
-                      alt={user.name}
+                      src="https://avatars.githubusercontent.com/u/57469823?v=4"
+                      alt="Jody Yuantoro"
                       width={25}
                       height={25}
                       rounded="rounded-full"
@@ -111,9 +110,9 @@ const BlogCard = ({
                     />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <Typography.p>{user.name}</Typography.p>
+                    <Typography.p>Jody Yuantoro</Typography.p>
                   </TooltipContent>
-                </Tooltip> */}
+                </Tooltip>
 
                 <motion.div
                   variants={slideDownVariants}

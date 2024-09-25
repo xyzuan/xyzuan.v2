@@ -64,3 +64,10 @@ export const getRandomWidth = (min: number, max: number) => {
 export const getRandomHeight = (min: number, max: number) => {
   return `${Math.floor(Math.random() * (max - min + 1) + min)}px`;
 };
+
+export const getTags = (tagsString: string) => {
+  return tagsString
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter((tag) => tag);
+};

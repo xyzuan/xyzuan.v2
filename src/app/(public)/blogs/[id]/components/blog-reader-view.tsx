@@ -4,14 +4,24 @@ import Image from "@/components/ui/image";
 import MDXComponent from "@/components/ui/mdx-components";
 import BlogCommentList from "./blog-comment-list";
 import Typography from "@/components/ui/typography";
+import { getTags } from "@/commons/helpers";
+import { Badge } from "@/components/ui/badge";
 
 interface BlogReaderViewProps {
   blogData: BlogItem;
 }
 
 const BlogReaderView = ({ blogData }: BlogReaderViewProps) => {
-  const { img, title, content, viewCount, comments, commentsCount, createdAt } =
-    blogData;
+  const {
+    img,
+    title,
+    content,
+    tags,
+    viewCount,
+    comments,
+    commentsCount,
+    createdAt,
+  } = blogData;
 
   return (
     <>
@@ -33,6 +43,13 @@ const BlogReaderView = ({ blogData }: BlogReaderViewProps) => {
           />
         </div>
         {content && <MDXComponent>{content}</MDXComponent>}
+      </div>
+      <div className="flex flex-wrap gap-2 mt-6">
+        {getTags(tags).map((tag, idx) => (
+          <Badge key={idx} variant="outline">
+            {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
+          </Badge>
+        ))}
       </div>
       <Typography.h3 className="mb-3">Comments</Typography.h3>
       <BlogCommentList comments={comments} />

@@ -6,6 +6,7 @@ export type BlogItem = {
   title: string;
   description: string;
   content: string;
+  tags: string;
   comments: CommentItem[];
   reactions: number;
   viewCount: number;
