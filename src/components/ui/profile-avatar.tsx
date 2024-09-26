@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import { Avatar, AvatarFallback } from "./avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,6 +17,7 @@ import DropdownItem from "./dropdown-item";
 import { useProfile } from "@/providers/profile-provider";
 import AuthCard from "./auth-card";
 import { FaSpinner } from "react-icons/fa";
+import Image from "./image";
 
 const ProfileAvatar = () => {
   const { profile, setProfile, loading } = useProfile();
@@ -46,8 +47,16 @@ const ProfileAvatar = () => {
       <DropdownMenuTrigger>
         {profile ? (
           <Avatar className="mr-1">
-            <AvatarImage src={profile.iconUrl} />
-            <AvatarFallback>{profile.name.slice(0, 1)}</AvatarFallback>
+            {profile?.iconUrl !== null ? (
+              <Image
+                height={42}
+                width={42}
+                alt={profile?.name}
+                src={profile?.iconUrl}
+              />
+            ) : (
+              <AvatarFallback>{profile?.name.slice(0, 1)}</AvatarFallback>
+            )}
           </Avatar>
         ) : (
           <Button variant="ghost" className="rounded-full border mr-2">

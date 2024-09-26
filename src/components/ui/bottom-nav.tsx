@@ -12,9 +12,7 @@ import { getMenuList } from "@/commons/constants/menu-list";
 import { cn } from "@/commons/libs/utils";
 import { usePathname } from "next/navigation";
 import { buttonVariants } from "./button";
-import { ModeToggle } from "./mode-toggle";
 import Typography from "./typography";
-import { Avatar, AvatarImage } from "./avatar";
 import ProfileAvatar from "./profile-avatar";
 
 type BottomNavProps = {

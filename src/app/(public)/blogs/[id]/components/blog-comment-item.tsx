@@ -2,10 +2,11 @@
 
 import { formatDate } from "@/commons/helpers";
 import { CommentItem } from "@/commons/types/blogs.types";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardHeader } from "@/components/ui/card";
 import { MdVerified as VerifiedIcon } from "react-icons/md";
 import Typography from "@/components/ui/typography";
+import Image from "@/components/ui/image";
 
 export default function BlogCommentItem({
   user,
@@ -19,8 +20,16 @@ export default function BlogCommentItem({
     >
       <div className="flex-shrink-0">
         <Avatar className="h-12 w-12" data-testid="user-comment-image">
-          <AvatarImage alt={user?.name} src={user?.iconUrl} />
-          <AvatarFallback>{user?.name.slice(0, 1)}</AvatarFallback>
+          {user?.iconUrl !== null ? (
+            <Image
+              height={62}
+              width={62}
+              alt={user?.name}
+              src={user?.iconUrl}
+            />
+          ) : (
+            <AvatarFallback>{user?.name.slice(0, 1)}</AvatarFallback>
+          )}
         </Avatar>
       </div>
       <Card className="flex w-full flex-col gap-2">

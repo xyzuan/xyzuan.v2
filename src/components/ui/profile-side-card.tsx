@@ -1,7 +1,6 @@
 import { cn } from "@/commons/libs/utils";
-import { useTheme } from "next-themes";
 import Typography from "./typography";
-import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import { Avatar, AvatarFallback } from "./avatar";
 import { authSignOut } from "@/services/auth";
 import { toast } from "sonner";
 import { useProfile } from "@/providers/profile-provider";
@@ -15,6 +14,7 @@ import {
 } from "./dropdown-menu";
 import DropdownItem from "./dropdown-item";
 import { LogOutIcon } from "lucide-react";
+import Image from "./image";
 
 const ProfileSideCard = () => {
   const router = useRouter();
@@ -55,8 +55,16 @@ const ProfileSideCard = () => {
           )}
         >
           <Avatar className="h-10 w-10">
-            <AvatarImage alt={profile?.name} src={profile?.iconUrl} />
-            <AvatarFallback>{profile?.name.slice(0, 1)}</AvatarFallback>
+            {profile?.iconUrl !== null ? (
+              <Image
+                height={42}
+                width={42}
+                alt={profile?.name}
+                src={profile?.iconUrl}
+              />
+            ) : (
+              <AvatarFallback>{profile?.name.slice(0, 1)}</AvatarFallback>
+            )}
           </Avatar>
           <div className="flex flex-col gap-1">
             <Typography.p className="text-sm text-start font-medium">
