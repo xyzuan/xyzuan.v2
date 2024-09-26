@@ -14,6 +14,7 @@ const Image = (props: ImageProps) => {
 
   return (
     <div
+      suppressHydrationWarning={true}
       className={cn(
         "overflow-hidden",
         isLoading ? "animate-pulse" : "",

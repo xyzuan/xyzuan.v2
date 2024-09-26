@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CodeBlock from "./code-block";
 import Typography from "./typography";
+import NextImage from "next/image";
 
 interface MarkdownRendererProps {
   children: string;
@@ -44,10 +45,14 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
           />
         ),
         img: (props) => (
-          <img
-            alt="mdx-alt"
-            className="transition-all duration-700 ease-in-out rounded-xl my-8 align-middle"
-            {...props}
+          <NextImage
+            className="rounded-xl mx-auto my-3"
+            width={(props.width as number) || 500}
+            height={(props.height as number) || 500}
+            src={props.src as string}
+            alt={props.alt as string}
+            loading="lazy"
+            quality={100}
           />
         ),
         code: (props) => <CodeBlock {...props} />,
