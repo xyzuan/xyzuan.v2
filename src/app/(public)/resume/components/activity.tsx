@@ -10,6 +10,7 @@ import GithubOverview from "./github-overview";
 import WakatimeOverview from "./wakatime-overview";
 import { ClockIcon } from "lucide-react";
 import WakatimeActive from "./wakatime-active";
+import BlurFade from "@/components/magicui/blur-fade";
 
 const Activity = async () => {
   const readStatsResponse = await getReadStats();
@@ -26,7 +27,7 @@ const Activity = async () => {
   );
 
   return (
-    <>
+    <BlurFade>
       <div className="space-y-3 mt-11">
         <Typography.h4 className="flex gap-3 items-center font-normal">
           <ClockIcon height={24} width={24} />
@@ -56,7 +57,7 @@ const Activity = async () => {
           data={github?.data?.contributionsCollection?.contributionCalendar}
         />
       </div>
-    </>
+    </BlurFade>
   );
 };
 

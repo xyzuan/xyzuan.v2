@@ -16,7 +16,7 @@ const DetailProjectPage = async ({
   const projects = await getProjectById(params.id);
 
   return (
-    <BlurFade delay={0.25 * 0.05} inView>
+    <BlurFade>
       <div className="mb-6">
         <div className="mb-6">
           <BackButton />

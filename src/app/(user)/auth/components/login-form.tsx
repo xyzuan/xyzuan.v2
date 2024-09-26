@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { SiGoogle } from "react-icons/si";
 import { useProfile } from "@/providers/profile-provider";
 import { getMyProfile } from "@/services/profile";
+import BlurFade from "@/components/magicui/blur-fade";
 
 const loginSchema = z.object({
   email: z.string().email({
@@ -63,45 +64,47 @@ const LoginForm = () => {
   };
 
   return (
-    <Form {...form}>
-      <form className="space-y-3">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email Address</FormLabel>
-              <FormControl>
-                <Input placeholder="example@xyzuan.my.id" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="Password" type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </form>
-      <div className="flex flex-col gap-3 mt-6">
-        <Button onClick={() => onLogin(form.getValues())}>Login</Button>
-        <Button variant="outline" onClick={() => onGoogle()}>
-          <span className="mr-3">
-            <SiGoogle />
-          </span>
-          Auth with Google
-        </Button>
-      </div>
-    </Form>
+    <BlurFade>
+      <Form {...form}>
+        <form className="space-y-3">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address</FormLabel>
+                <FormControl>
+                  <Input placeholder="example@xyzuan.my.id" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input placeholder="Password" type="password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </form>
+        <div className="flex flex-col gap-3 mt-6">
+          <Button onClick={() => onLogin(form.getValues())}>Login</Button>
+          <Button variant="outline" onClick={() => onGoogle()}>
+            <span className="mr-3">
+              <SiGoogle />
+            </span>
+            Auth with Google
+          </Button>
+        </div>
+      </Form>
+    </BlurFade>
   );
 };
 

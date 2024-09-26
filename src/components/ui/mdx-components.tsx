@@ -46,7 +46,7 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
         img: (props) => (
           <img
             alt="mdx-alt"
-            className="transition-all duration-700 ease-in-out hover:scale-105 rounded-xl my-8 align-middle"
+            className="transition-all duration-700 ease-in-out rounded-xl my-8 align-middle"
             {...props}
           />
         ),

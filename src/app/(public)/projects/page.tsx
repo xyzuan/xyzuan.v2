@@ -18,7 +18,7 @@ const ProjectsPage = async () => {
   const projects = await getAllProjects();
 
   return (
-    <>
+    <BlurFade>
       <div className="mb-6">
         <Typography.h3>Projects</Typography.h3>
         <Typography.p>
@@ -40,7 +40,7 @@ const ProjectsPage = async () => {
           );
         })}
       </div>
-    </>
+    </BlurFade>
   );
 };
 

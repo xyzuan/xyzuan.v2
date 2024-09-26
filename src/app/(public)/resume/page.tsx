@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { METADATA } from "@/commons/constants/metadata";
 import Activity from "./components/activity";
 import Typography from "@/components/ui/typography";
+import BlurFade from "@/components/magicui/blur-fade";
 
 export const metadata: Metadata = {
   title: `Dashboard ${METADATA.exTitle}`,
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 
 const ResumePage = () => {
   return (
-    <>
+    <BlurFade>
       <div className="mb-6">
         <Typography.h3>Resume</Typography.h3>
         <Typography.p>
@@ -34,7 +35,7 @@ const ResumePage = () => {
           <Activity />
         </TabsContent>
       </Tabs>
-    </>
+    </BlurFade>
   );
 };
 

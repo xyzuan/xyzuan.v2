@@ -4,6 +4,7 @@ import { BentoGrid } from "@/components/magicui/bento-grid";
 import Typography from "@/components/ui/typography";
 import contacts from "@/commons/constants/contacts";
 import ContactCard from "./components/contact-card";
+import BlurFade from "@/components/magicui/blur-fade";
 
 export const metadata: Metadata = {
   title: `Contacs ${METADATA.exTitle}`,
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 const ContactsPage = () => {
   return (
-    <div className="mb-6">
+    <BlurFade className="mb-6">
       <Typography.h3>Contacts</Typography.h3>
       <Typography.p>
         Feel free to get in touch and let&apos;s have a discussion about how we
@@ -33,7 +34,7 @@ const ContactsPage = () => {
           <ContactCard key={idx} {...feature} />
         ))}
       </BentoGrid>
-    </div>
+    </BlurFade>
   );
 };
 

@@ -20,7 +20,7 @@ const ChatsPage = async () => {
   const chats = await getChats();
 
   return (
-    <BlurFade delay={0.25 * 0.05} inView>
+    <BlurFade>
       <div className="mb-6">
         <Typography.h3>Chats</Typography.h3>
         <Typography.p>

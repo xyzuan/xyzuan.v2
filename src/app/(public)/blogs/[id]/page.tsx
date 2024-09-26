@@ -1,9 +1,10 @@
+import { Metadata } from "next";
 import BlurFade from "@/components/magicui/blur-fade";
 import BackButton from "@/components/ui/back-button";
-import { getBlogDetail, incrementBlogView } from "@/services/blogs";
+import { getBlogDetail } from "@/services/blogs";
 import BlogReaderView from "./components/blog-reader-view";
-import { Metadata } from "next";
 import { METADATA } from "@/commons/constants/metadata";
+import revalidate, { incrementBlogView } from "@/app/actions";
 
 type BlogsDetailPageProps = {
   params: { id: number };
@@ -15,7 +16,7 @@ export async function generateMetadata({
   const blog = await getBlogDetail(params.id);
   return {
     title: `${blog.title} ${METADATA.exTitle}`,
-    // description: blog.description,
+    description: blog.description,
     openGraph: {
       images: blog.img,
       url: `${process.env.DOMAIN}/blogs/${blog.id}`,
@@ -32,6 +33,7 @@ export async function generateMetadata({
 }
 
 const BlogsDetailPage = async ({ params }: BlogsDetailPageProps) => {
+  revalidate("/");
   await incrementBlogView(params.id);
   const blog = await getBlogDetail(params.id);
 
