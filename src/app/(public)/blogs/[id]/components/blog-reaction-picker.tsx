@@ -54,7 +54,7 @@ const BlogReactionPicker = ({
         </div>
       </HoverCardTrigger>
       <HoverCardContent
-        className="p-0 w-fit rounded-full mb-3"
+        className="p-0 w-fit rounded-full mb-3 bg-background/65 backdrop-blur-xl"
         align="start"
         sideOffset={-168}
       >
