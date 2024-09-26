@@ -16,7 +16,7 @@ const BlogReaderFooter = ({
       <Separator />
       <div className="flex flex-col w-full my-3 mt-3">
         <Typography.h4 className="mb-3">Reactions</Typography.h4>
-        <div className="flex gap-2">
+        <div className="flex gap-4">
           {reactions.length > 0 ? (
             <>
               {reactions.map((value, idx) => (
@@ -30,7 +30,7 @@ const BlogReaderFooter = ({
                       {value.user?.name?.slice(0, 1)}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="absolute bottom-0 right-0 text-base">
+                  <div className="flex justify-center items-center p-2 h-6 w-6 absolute bottom-0 right-0 text-base bg-foreground/55 backdrop-blur-3xl rounded-full">
                     {getEmoteLabel(value.type.toUpperCase())}
                   </div>
                 </div>
