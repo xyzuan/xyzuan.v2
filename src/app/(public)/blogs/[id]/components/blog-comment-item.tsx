@@ -18,7 +18,7 @@ export default function BlogCommentItem({
       className="flex gap-5 break-all dark:text-neutral-400"
     >
       <div className="flex-shrink-0">
-        <Avatar data-testid="user-comment-image">
+        <Avatar className="h-12 w-12" data-testid="user-comment-image">
           <AvatarImage alt={user?.name} src={user?.iconUrl} />
           <AvatarFallback>{user?.name.slice(0, 1)}</AvatarFallback>
         </Avatar>

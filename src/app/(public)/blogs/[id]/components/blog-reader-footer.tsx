@@ -30,10 +30,8 @@ const BlogReaderFooter = ({
                       {value.user?.name?.slice(0, 1)}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="absolute bottom-0 right-0 bg-white rounded-full shadow-sm">
-                    <div className="text-base">
-                      {getEmoteLabel(value.type.toUpperCase())}
-                    </div>
+                  <div className="absolute bottom-0 right-0 text-base">
+                    {getEmoteLabel(value.type.toUpperCase())}
                   </div>
                 </div>
               ))}

@@ -75,7 +75,7 @@ const BlogCommentInput = ({
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    className="backdrop-blur-xl"
+                    className="bg-background/65 backdrop-blur-xl"
                     placeholder="Input your comment"
                     {...field}
                   />
