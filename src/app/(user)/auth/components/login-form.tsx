@@ -14,13 +14,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authGoogle, authLogin } from "@/services/auth";
+import { authGithub, authGoogle, authLogin } from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { SiGoogle } from "react-icons/si";
+import { SiGithub, SiGoogle } from "react-icons/si";
 import { useProfile } from "@/providers/profile-provider";
 import { getMyProfile } from "@/services/profile";
 import BlurFade from "@/components/magicui/blur-fade";
+import Typography from "@/components/ui/typography";
 
 const loginSchema = z.object({
   email: z.string().email({
@@ -63,6 +64,11 @@ const LoginForm = () => {
     authGoogle(process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000");
   };
 
+  const onGithub = () => {
+    toast.loading("Authenticating to Eden...");
+    authGithub(process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000");
+  };
+
   return (
     <BlurFade>
       <Form {...form}>
@@ -96,11 +102,20 @@ const LoginForm = () => {
         </form>
         <div className="flex flex-col gap-3 mt-6">
           <Button onClick={() => onLogin(form.getValues())}>Login</Button>
+          <Typography.P className="text-center text-sm opacity-65 my-2">
+            Or login with
+          </Typography.P>
           <Button variant="outline" onClick={() => onGoogle()}>
             <span className="mr-3">
               <SiGoogle />
             </span>
-            Auth with Google
+            Authenticate with Google
+          </Button>
+          <Button variant="outline" onClick={() => onGithub()}>
+            <span className="mr-3">
+              <SiGithub />
+            </span>
+            Authenticate with Github
           </Button>
         </div>
       </Form>
