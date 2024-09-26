@@ -8,7 +8,7 @@ export type BlogItem = {
   content: string;
   tags: string;
   comments: CommentItem[];
-  reactions: number;
+  reactions: ReactionItem[];
   viewCount: number;
   commentsCount: number;
   reactionsCount: number;
@@ -17,6 +17,12 @@ export type BlogItem = {
 
 export type BlogProps = {
   blogs: BlogItem[];
+};
+
+export type ReactionItem = {
+  id: number;
+  type: string;
+  user: Profile;
 };
 
 export type CommentItem = {

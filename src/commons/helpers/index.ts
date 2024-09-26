@@ -1,5 +1,6 @@
 import { format, parseISO } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
+import { emotes } from "../constants/emotes";
 
 interface ParsedUrlProps {
   parentSlug: string;
@@ -70,4 +71,9 @@ export const getTags = (tagsString: string) => {
     .split(",")
     .map((tag) => tag.trim())
     .filter((tag) => tag);
+};
+
+export const getEmoteLabel = (emojiNode: string) => {
+  const emote = emotes.find((e) => e.key === emojiNode);
+  return emote ? emote.node : "Unknown";
 };

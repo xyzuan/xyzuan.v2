@@ -23,7 +23,7 @@ export const getBlogDetail = async (id: number): Promise<BlogItem> => {
   return response.data;
 };
 
-export const postBlogComment = async (id: string, content: string) => {
+export const postBlogComment = async (id: number, content: string) => {
   const response = await fetch(`${BLOG_ENDPOINT}/comment/${id}`, {
     method: "POST",
     headers: {
@@ -32,6 +32,22 @@ export const postBlogComment = async (id: string, content: string) => {
     credentials: "include",
     body: JSON.stringify({
       content,
+    }),
+  });
+
+  revalidate(`/blogs/${id}`);
+  return response;
+};
+
+export const postBlogReaction = async (id: number, reaction: string) => {
+  const response = await fetch(`${BLOG_ENDPOINT}/reaction/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      type: reaction,
     }),
   });
 

@@ -3,9 +3,9 @@ import BlogReaderHeader from "./blog-reader-header";
 import Image from "@/components/ui/image";
 import MDXComponent from "@/components/ui/mdx-components";
 import BlogCommentList from "./blog-comment-list";
-import Typography from "@/components/ui/typography";
 import { getTags } from "@/commons/helpers";
 import { Badge } from "@/components/ui/badge";
+import BlogReaderFooter from "./blog-reader-footer";
 
 interface BlogReaderViewProps {
   blogData: BlogItem;
@@ -18,6 +18,7 @@ const BlogReaderView = ({ blogData }: BlogReaderViewProps) => {
     content,
     tags,
     viewCount,
+    reactions,
     comments,
     commentsCount,
     createdAt,
@@ -51,7 +52,7 @@ const BlogReaderView = ({ blogData }: BlogReaderViewProps) => {
           </Badge>
         ))}
       </div>
-      <Typography.h3 className="mb-3">Comments</Typography.h3>
+      <BlogReaderFooter reactions={reactions} commentCount={commentsCount} />
       <BlogCommentList comments={comments} />
     </>
   );

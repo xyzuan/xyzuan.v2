@@ -20,15 +20,22 @@ import { FaSpinner } from "react-icons/fa";
 import { useProfile } from "@/providers/profile-provider";
 import { postBlogComment } from "@/services/blogs";
 import AuthDialog from "@/components/ui/auth-dialog";
+import BlogReactionPicker from "./blog-reaction-picker";
+import { ReactionItem } from "@/commons/types/blogs.types";
 
 const commentSchema = z.object({
   content: z.string().min(1, "Message cannot be empty"),
 });
 
-const BlogCommentInput = () => {
+const BlogCommentInput = ({
+  id,
+  reactions,
+}: {
+  id: number;
+  reactions: ReactionItem[];
+}) => {
   const { profile, loading } = useProfile();
   const [isSending, setIsSending] = useState(false);
-  const { id } = useParams() as { id: string };
 
   const form = useForm<z.infer<typeof commentSchema>>({
     resolver: zodResolver(commentSchema),
@@ -39,7 +46,7 @@ const BlogCommentInput = () => {
 
   const onSubmit = (values: z.infer<typeof commentSchema>) => {
     setIsSending(true);
-    toast.promise(postBlogComment(id as string, values.content), {
+    toast.promise(postBlogComment(id, values.content), {
       loading: "Sending comment to Eden...",
       success: () => {
         form.reset();
@@ -53,37 +60,40 @@ const BlogCommentInput = () => {
   if (loading) return null;
 
   return profile ? (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex gap-x-3 pt-3"
-      >
-        <FormField
-          control={form.control}
-          name="content"
-          disabled={isSending}
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormControl>
-                <Input
-                  className="backdrop-blur-xl"
-                  placeholder="Input your comment"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" disabled={isSending}>
-          {isSending ? (
-            <FaSpinner size={18} className="animate-spin" />
-          ) : (
-            <SendIcon size={18} />
-          )}
-        </Button>
-      </form>
-    </Form>
+    <div className="flex items-center justify-center w-full gap-3">
+      <BlogReactionPicker profile={profile} reactions={reactions} id={id} />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex gap-x-3 w-full"
+        >
+          <FormField
+            control={form.control}
+            name="content"
+            disabled={isSending}
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    className="backdrop-blur-xl"
+                    placeholder="Input your comment"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" disabled={isSending}>
+            {isSending ? (
+              <FaSpinner size={18} className="animate-spin" />
+            ) : (
+              <SendIcon size={18} />
+            )}
+          </Button>
+        </form>
+      </Form>
+    </div>
   ) : (
     <AuthDialog msg="comment blog" />
   );
