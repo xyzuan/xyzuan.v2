@@ -21,7 +21,7 @@ import { useProfile } from "@/providers/profile-provider";
 import AuthDialog from "@/components/ui/auth-dialog";
 
 const chatSchema = z.object({
-  message: z.string().min(1, "Message cannot be empty"),
+  message: z.string().trim().min(1, "Message cannot be empty"),
 });
 
 const ChatInput = () => {

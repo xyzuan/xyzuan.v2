@@ -24,7 +24,7 @@ import BlogReactionPicker from "./blog-reaction-picker";
 import { ReactionItem } from "@/commons/types/blogs.types";
 
 const commentSchema = z.object({
-  content: z.string().min(1, "Message cannot be empty"),
+  content: z.string().trim().min(1, "Message cannot be empty"),
 });
 
 const BlogCommentInput = ({
