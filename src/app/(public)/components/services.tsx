@@ -13,12 +13,12 @@ const Services = () => {
   return (
     <div className="space-y-5">
       <div className="space-y-3">
-        <Typography.h3>What I&apos;ve been working on</Typography.h3>
-        <Typography.p className="leading-[1.8] text-neutral-800 dark:text-neutral-300 lg:leading-loose">
+        <Typography.H3>What I&apos;ve been working on</Typography.H3>
+        <Typography.P className="leading-[1.8] text-neutral-800 dark:text-neutral-300 lg:leading-loose">
           I assist brands, companies, institutions, and startups in creating
           exceptional digital experiences for their businesses through strategic
           development services.
-        </Typography.p>
+        </Typography.P>
       </div>
       <MagicCard gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}>
         <CardHeader>
@@ -28,10 +28,10 @@ const Services = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <Typography.p className="leading-[1.8] text-neutral-800 dark:text-neutral-300 lg:leading-loose">
+          <Typography.P className="leading-[1.8] text-neutral-800 dark:text-neutral-300 lg:leading-loose">
             I&apos;m open for freelance projects, feel free to email me to see
             how can we collaborate.
-          </Typography.p>
+          </Typography.P>
         </CardContent>
         <CardFooter>
           <Link href="/contacts">

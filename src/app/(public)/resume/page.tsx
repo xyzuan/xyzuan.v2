@@ -18,10 +18,10 @@ const ResumePage = () => {
   return (
     <BlurFade>
       <div className="mb-6">
-        <Typography.h3>Resume</Typography.h3>
-        <Typography.p>
+        <Typography.H3>Resume</Typography.H3>
+        <Typography.P>
           Several projects that I have worked on, both private and open source.
-        </Typography.p>
+        </Typography.P>
       </div>
       <Tabs defaultValue="journey">
         <TabsList>

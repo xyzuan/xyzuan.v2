@@ -19,10 +19,10 @@ const AuthCard = ({ className }: any) => {
       )}
     >
       <div className="flex flex-col gap-1">
-        <Typography.p className="text-sm font-medium">Sign in</Typography.p>
-        <Typography.p className="text-xs opacity-75">
+        <Typography.P className="text-sm font-medium">Sign in</Typography.P>
+        <Typography.P className="text-xs opacity-75">
           Login your account in eden realms
-        </Typography.p>
+        </Typography.P>
       </div>
       <ArrowUpRight className=" opacity-65" />
     </div>

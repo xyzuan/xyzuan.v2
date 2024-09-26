@@ -87,9 +87,9 @@ const WakatimeActive = ({ data }: WakatimeActiveProps) => {
           )}
         >
           <div className="h-full w-full rounded-lg bg-background p-2">
-            <Typography.p className="absolute -top-3 left-3 bg-background px-2 dark:bg-dark">
+            <Typography.P className="absolute -top-3 left-3 bg-background px-2 dark:bg-dark">
               {item?.title}
-            </Typography.p>
+            </Typography.P>
 
             <ul className="flex flex-col gap-1 px-4 py-3">
               {item?.data?.map((subItem) => (

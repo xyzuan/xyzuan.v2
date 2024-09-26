@@ -67,12 +67,12 @@ const ProfileSideCard = () => {
             )}
           </Avatar>
           <div className="flex flex-col gap-1">
-            <Typography.p className="text-sm text-start font-medium">
+            <Typography.P className="text-sm text-start font-medium">
               {profile?.name}
-            </Typography.p>
-            <Typography.p className="text-xs text-start opacity-75">
+            </Typography.P>
+            <Typography.P className="text-xs text-start opacity-75">
               {profile?.email}
-            </Typography.p>
+            </Typography.P>
           </div>
         </div>
       </DropdownMenuTrigger>

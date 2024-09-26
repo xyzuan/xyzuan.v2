@@ -56,14 +56,14 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
             user?.isAdmin && "flex-row-reverse"
           } items-center gap-2`}
         >
-          <Typography.p className="text-sm flex items-center font-medium text-neutral-700 dark:text-neutral-300">
+          <Typography.P className="text-sm flex items-center font-medium text-neutral-700 dark:text-neutral-300">
             {user?.name}
             {user?.isAdmin && (
               <span>
                 <VerifiedIcon size={13} className="text-blue-400 ml-1" />
               </span>
             )}
-          </Typography.p>
+          </Typography.P>
         </div>
         <div
           className={`group flex items-center ${

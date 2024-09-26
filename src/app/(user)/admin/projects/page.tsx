@@ -9,10 +9,10 @@ const AdminProjectsPage = async () => {
   return (
     <BlurFade delay={0.25 * 0.05} inView>
       <div className="mb-6">
-        <Typography.h3>Projects</Typography.h3>
-        <Typography.p>
+        <Typography.H3>Projects</Typography.H3>
+        <Typography.P>
           Several projects that I have worked on, both private and open source.
-        </Typography.p>
+        </Typography.P>
       </div>
       <AdminProjectsView projects={projects.data} />
     </BlurFade>

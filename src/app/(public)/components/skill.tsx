@@ -68,7 +68,7 @@ const Skill = () => {
 
   return (
     <div className="flex flex-col h-fit gap-6">
-      <Typography.h3>Tech stacks that i have used</Typography.h3>
+      <Typography.H3>Tech stacks that i have used</Typography.H3>
       <div className="relative flex w-full max-w-4xl flex-col items-center justify-center overflow-hidden rounded-lg">
         {isLoading ? skeletons : sliders}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-white dark:from-background"></div>

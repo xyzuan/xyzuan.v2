@@ -20,10 +20,10 @@ const ProjectsPage = async () => {
   return (
     <BlurFade>
       <div className="mb-6">
-        <Typography.h3>Projects</Typography.h3>
-        <Typography.p>
+        <Typography.H3>Projects</Typography.H3>
+        <Typography.P>
           Several projects that I have worked on, both private and open source.
-        </Typography.p>
+        </Typography.P>
       </div>
       <div className="grid gap-5 px-1 pt-2 sm:grid-cols-2">
         {projects?.data?.map((value, idx) => {

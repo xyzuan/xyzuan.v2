@@ -25,13 +25,13 @@ const Sidebar = () => {
             src="https://avatars.githubusercontent.com/u/57469823?v=4"
           />
         </Avatar>
-        <Typography.h4 className="flex items-center">
+        <Typography.H4 className="flex items-center">
           Jody Yuantoro
           <span>
             <VerifiedIcon size={18} className="text-blue-400 ml-2" />
           </span>
-        </Typography.h4>
-        <Typography.p className="text-primary/55">@xyzuan</Typography.p>
+        </Typography.H4>
+        <Typography.P className="text-primary/55">@xyzuan</Typography.P>
       </div>
       <SidebarMenu />
     </div>
@@ -50,9 +50,9 @@ const SidebarMenu = ({ isOpen }: any) => {
           {menuList.map(({ groupLabel, menus }, index) => (
             <li className={cn("w-full", groupLabel ? "pt-5" : "")} key={index}>
               {(isOpen && groupLabel) || isOpen === undefined ? (
-                <Typography.p className="text-sm font-medium text-muted-foreground px-4 pb-2 max-w-[248px] truncate">
+                <Typography.P className="text-sm font-medium text-muted-foreground px-4 pb-2 max-w-[248px] truncate">
                   {groupLabel}
-                </Typography.p>
+                </Typography.P>
               ) : !isOpen && isOpen !== undefined && groupLabel ? (
                 <div className="w-full flex justify-center items-center">
                   <Ellipsis className="h-5 w-5" />
@@ -72,7 +72,7 @@ const SidebarMenu = ({ isOpen }: any) => {
                       <span className={cn(isOpen === false ? "" : "mr-4")}>
                         <Icon size={18} />
                       </span>
-                      <Typography.p
+                      <Typography.P
                         className={cn(
                           "flex flex-grow max-w-[200px] truncate",
                           isOpen === false
@@ -81,7 +81,7 @@ const SidebarMenu = ({ isOpen }: any) => {
                         )}
                       >
                         {label}
-                      </Typography.p>
+                      </Typography.P>
                       <ArrowRightIcon
                         className={active ? "block opacity-60" : "hidden"}
                         height={14}

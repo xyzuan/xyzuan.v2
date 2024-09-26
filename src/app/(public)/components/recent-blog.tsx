@@ -8,7 +8,7 @@ const RecentBlog = async () => {
 
   return (
     <>
-      <Typography.h3>Recent blogs</Typography.h3>
+      <Typography.H3>Recent blogs</Typography.H3>
       <div className="flex h-fit w-full gap-4 overflow-x-scroll mt-6 rounded-xl scrollbar-hide">
         {blogs.map((item: BlogItem, index: number) => (
           <BlogCard key={index} {...item} />

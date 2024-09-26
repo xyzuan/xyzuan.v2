@@ -22,7 +22,7 @@ const WorkExperienceEducation = async () => {
     <BlurFade>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="col-span-1">
-          <Typography.h3>Work & Experience</Typography.h3>
+          <Typography.H3>Work & Experience</Typography.H3>
           <div className="grid grid-cols-1 mt-6 gap-6">
             {works?.data?.map((value, idx) => {
               return (
@@ -40,7 +40,7 @@ const WorkExperienceEducation = async () => {
           </div>
         </div>
         <div className="col-span-1">
-          <Typography.h3>Education</Typography.h3>
+          <Typography.H3>Education</Typography.H3>
           <div className="grid grid-cols-1 mt-6 gap-6">
             {EDUCATION_MOCK.map((value, idx) => {
               return (

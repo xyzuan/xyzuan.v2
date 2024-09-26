@@ -7,13 +7,13 @@ const Header = () => {
     <div className="flex flex-col md:hidden mt-8">
       <div className="flex justify-between items-center">
         <div className="flex flex-col h-full">
-          <Typography.h3 className="mt-0 flex items-center">
+          <Typography.H3 className="mt-0 flex items-center">
             Jody Yuantoro
             <span>
               <VerifiedIcon size={18} className="text-blue-400 ml-2" />
             </span>
-          </Typography.h3>
-          <Typography.p className="text-primary/55">@xyzuan</Typography.p>
+          </Typography.H3>
+          <Typography.P className="text-primary/55">@xyzuan</Typography.P>
         </div>
         <Image
           alt="xyzuan"

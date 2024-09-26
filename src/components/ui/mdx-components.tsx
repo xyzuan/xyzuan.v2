@@ -31,10 +31,10 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
             {...props}
           />
         ),
-        p: (props) => <Typography.p {...props} />,
-        h1: (props) => <Typography.h1 {...props} />,
-        h2: (props) => <Typography.h2 {...props} />,
-        h3: (props) => <Typography.h3 {...props} />,
+        p: (props) => <Typography.P {...props} />,
+        h1: (props) => <Typography.H1 {...props} />,
+        h2: (props) => <Typography.H2 {...props} />,
+        h3: (props) => <Typography.H3 {...props} />,
         ul: (props) => (
           <ul className="list-disc space-y-3 pb-5 pl-10 font-sans" {...props} />
         ),

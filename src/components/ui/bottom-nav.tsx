@@ -19,7 +19,9 @@ type BottomNavProps = {
   forceDisableSidebar?: boolean;
 };
 
-export function BottomNav({ forceDisableSidebar }: BottomNavProps) {
+export function BottomNav({
+  forceDisableSidebar,
+}: Readonly<BottomNavProps>): React.JSX.Element {
   const pathname = usePathname();
   const menuList = getMenuList(pathname);
 
@@ -53,7 +55,7 @@ export function BottomNav({ forceDisableSidebar }: BottomNavProps) {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <Typography.p>{label}</Typography.p>
+                  <Typography.P>{label}</Typography.P>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>

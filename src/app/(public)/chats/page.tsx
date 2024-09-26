@@ -22,10 +22,10 @@ const ChatsPage = async () => {
   return (
     <BlurFade>
       <div className="mb-6">
-        <Typography.h3>Chats</Typography.h3>
-        <Typography.p>
+        <Typography.H3>Chats</Typography.H3>
+        <Typography.P>
           Leave whatever you like to say, suggestions, questions or anything!
-        </Typography.p>
+        </Typography.P>
       </div>
       <ChatList messages={chats?.data} />
       <ChatInput />

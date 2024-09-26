@@ -29,25 +29,25 @@ const Activity = async () => {
   return (
     <BlurFade>
       <div className="space-y-3 mt-11">
-        <Typography.h4 className="flex gap-3 items-center font-normal">
+        <Typography.H4 className="flex gap-3 items-center font-normal">
           <ClockIcon height={24} width={24} />
           Weekly Statistic
-        </Typography.h4>
-        <Typography.p>My WakaTime last 7 days stats.</Typography.p>
+        </Typography.H4>
+        <Typography.P>My WakaTime last 7 days stats.</Typography.P>
         <WakatimeOverview data={wakatime} />
         <WakatimeActive data={wakatime} />
       </div>
       <div className="space-y-3 mt-6">
-        <Typography.h4 className="flex gap-3 items-center font-normal">
+        <Typography.H4 className="flex gap-3 items-center font-normal">
           <GitHubLogoIcon height={24} width={24} />
           Contributions
-        </Typography.h4>
+        </Typography.H4>
         <div className="flex justify-between">
-          <Typography.p>
+          <Typography.P>
             My contributions from last year on github.
-          </Typography.p>
+          </Typography.P>
           <Link href={`https://github.com/${GITHUB_ACCOUNTS[0].username}`}>
-            <Typography.p>{`@${GITHUB_ACCOUNTS[0].username}`}</Typography.p>
+            <Typography.P>{`@${GITHUB_ACCOUNTS[0].username}`}</Typography.P>
           </Link>
         </div>
         <GithubOverview

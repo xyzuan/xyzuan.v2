@@ -16,7 +16,7 @@ const BlogReaderFooter = ({
     <div className="mt-6">
       <Separator />
       <div className="flex flex-col w-full my-3 mt-3">
-        <Typography.h4 className="mb-3">Reactions</Typography.h4>
+        <Typography.H4 className="mb-3">Reactions</Typography.H4>
         <div className="flex gap-4 overflow-y-auto scrollbar-hide">
           {reactions.length > 0 ? (
             <>
@@ -43,7 +43,7 @@ const BlogReaderFooter = ({
               ))}
             </>
           ) : (
-            <Typography.p className="opacity-70">No reactions yet</Typography.p>
+            <Typography.P className="opacity-70">No reactions yet</Typography.P>
           )}
         </div>
       </div>

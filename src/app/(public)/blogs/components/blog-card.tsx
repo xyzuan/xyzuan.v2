@@ -81,9 +81,9 @@ const BlogCard = ({
 
             <div className="flex flex-col justify-end">
               <div className="flex flex-col space-y-3">
-                <Typography.h3 className=" text-lg font-medium text-neutral-100 group-hover:underline group-hover:underline-offset-4 ">
+                <Typography.H3 className=" text-lg font-medium text-neutral-100 group-hover:underline group-hover:underline-offset-4 ">
                   {trimmedTitle}
-                </Typography.h3>
+                </Typography.H3>
                 <div className="flex items-center gap-1 text-neutral-400">
                   <DateIcon size={14} />
                   <span className="ml-0.5 text-xs">
@@ -91,9 +91,9 @@ const BlogCard = ({
                   </span>
                 </div>
                 {trimmedContent && (
-                  <Typography.p className="text-sm leading-relaxed text-neutral-400">
+                  <Typography.P className="text-sm leading-relaxed text-neutral-400">
                     {formatExcerpt(trimmedContent)}
-                  </Typography.p>
+                  </Typography.P>
                 )}
               </div>
               <Separator className="my-3 opacity-55" />
@@ -110,7 +110,7 @@ const BlogCard = ({
                     />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <Typography.p>Jody Yuantoro</Typography.p>
+                    <Typography.P>Jody Yuantoro</Typography.P>
                   </TooltipContent>
                 </Tooltip>
 

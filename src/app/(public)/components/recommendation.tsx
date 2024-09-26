@@ -159,7 +159,7 @@ const Recommendation = () => {
 
   return (
     <>
-      <Typography.h3>Recommendations</Typography.h3>
+      <Typography.H3>Recommendations</Typography.H3>
       <div className="relative flex h-[500px] w-full flex-row md-row-span-1 items-center justify-center overflow-hidden mt-3">
         {isLoading ? skeletons : recommendations}
         <div className="pointer-events-none absolute xl:hidden inset-y-0 left-0 w-1/12 bg-gradient-to-r from-white dark:from-background"></div>

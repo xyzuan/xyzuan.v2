@@ -25,12 +25,12 @@ const RecommendationCard = ({
           <Image height={48} width={48} alt={name} src={profile_pic} />
         </Avatar>
         <div className="xl:mx-5">
-          <Typography.p className="leading-6 text-sm text-medium mb-1">
+          <Typography.P className="leading-6 text-sm text-medium mb-1">
             {name}
-          </Typography.p>
-          <Typography.p className="text-xs text-neutral-600 dark:text-neutral-400">
+          </Typography.P>
+          <Typography.P className="text-xs text-neutral-600 dark:text-neutral-400">
             {position}
-          </Typography.p>
+          </Typography.P>
         </div>
       </CardFooter>
     </Card>

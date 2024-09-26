@@ -11,7 +11,7 @@ interface BlogCommentListProps {
 export default function BlogCommentList({ comments }: BlogCommentListProps) {
   return (
     <section id="comments" className="space-y-5 pb-6 pt-4">
-      <Typography.h4 className="mb-3">Comments</Typography.h4>
+      <Typography.H4 className="mb-3">Comments</Typography.H4>
       {comment.length >= 1 ? (
         <>
           {comments?.map((comment) => (

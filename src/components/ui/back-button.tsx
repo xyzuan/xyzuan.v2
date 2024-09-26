@@ -12,7 +12,7 @@ const BackButton = ({
 }>) => {
   const router = useRouter();
   return (
-    <Typography.p
+    <Typography.P
       className={cn(
         "cursor-pointer flex items-center ml-[-8px] font-medium",
         className
@@ -21,7 +21,7 @@ const BackButton = ({
     >
       <ChevronLeft />
       Back
-    </Typography.p>
+    </Typography.P>
   );
 };
 

@@ -26,8 +26,8 @@ const ContactCard = ({
     <Card className={cn("flex items-end", className)}>
       <CardContent>
         {icon}
-        <Typography.h3 className="mb-3">{title}</Typography.h3>
-        <Typography.p>{description}</Typography.p>
+        <Typography.H3 className="mb-3">{title}</Typography.H3>
+        <Typography.P>{description}</Typography.P>
         <Link href={href}>
           <Button className="mt-6">
             {cta}

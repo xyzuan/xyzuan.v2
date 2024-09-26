@@ -77,9 +77,9 @@ const ProfileAvatar = () => {
         <DropdownMenuSeparator />
         {profile && (
           <>
-            <Typography.p className="text-sm font-medium text-muted-foreground px-4 pb-2 max-w-[248px] truncate pt-3">
+            <Typography.P className="text-sm font-medium text-muted-foreground px-4 pb-2 max-w-[248px] truncate pt-3">
               Account
-            </Typography.p>
+            </Typography.P>
             <DropdownItem icon={<UserIcon className="h-[1.2rem] w-[1.2rem]" />}>
               Profile
             </DropdownItem>

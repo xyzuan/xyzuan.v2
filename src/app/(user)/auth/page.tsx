@@ -10,14 +10,14 @@ export default function LoginPage() {
     <div className="h-screen w-screen max-w-4xl">
       <div className="flex h-full w-full flex-col justify-center p-8 z-50">
         <div className="flex flex-col space-y-2">
-          <Typography.h1>
+          <Typography.H1>
             Nauzyx`
             <br />
             Scape
-          </Typography.h1>
-          <Typography.p className="text-sm text-muted-foreground">
+          </Typography.H1>
+          <Typography.P className="text-sm text-muted-foreground">
             Enter your account credentials to enter eden area.
-          </Typography.p>
+          </Typography.P>
         </div>
         <Tabs defaultValue="login" className="my-6">
           <TabsList className="mb-3">
@@ -31,7 +31,7 @@ export default function LoginPage() {
             <SignUpForm />
           </TabsContent>
         </Tabs>
-        <Typography.p className="text-sm text-muted-foreground">
+        <Typography.P className="text-sm text-muted-foreground">
           By clicking continue, you agree to our{" "}
           <Link
             className="underline underline-offset-4 hover:text-primary"
@@ -47,7 +47,7 @@ export default function LoginPage() {
             Privacy Policy
           </Link>
           .
-        </Typography.p>
+        </Typography.P>
 
         <Image
           alt="anya"

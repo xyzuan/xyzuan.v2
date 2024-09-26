@@ -23,13 +23,13 @@ const DropdownItem = ({
       {...props}
     >
       <span className={cn("mr-4")}>{icon}</span>
-      <Typography.p
+      <Typography.P
         className={cn(
           "text-sm leading-7 flex flex-grow max-w-[200px] truncate translate-x-0 opacity-100"
         )}
       >
         {children}
-      </Typography.p>
+      </Typography.P>
     </div>
   );
 };
