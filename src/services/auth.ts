@@ -1,6 +1,7 @@
 import {
   AUTH_GITHUB_ENDPOINT,
   AUTH_GOOGLE_ENDPOINT,
+  AUTH_LINKEDIN_ENDPOINT,
   AUTH_LOGIN_ENDPOINT,
   AUTH_LOGOUT_ENDPOINT,
   AUTH_SIGNUP_ENDPOINT,
@@ -35,6 +36,14 @@ export const authGithub = async (callback: string) => {
   }).toString();
 
   window.location.href = `${AUTH_GITHUB_ENDPOINT}?${queryParams}`;
+};
+
+export const authLinkedin = async (callback: string) => {
+  const queryParams = new URLSearchParams({
+    next: callback,
+  }).toString();
+
+  window.location.href = `${AUTH_LINKEDIN_ENDPOINT}?${queryParams}`;
 };
 
 export const authSignUp = async (

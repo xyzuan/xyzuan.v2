@@ -14,10 +14,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authGithub, authGoogle, authLogin } from "@/services/auth";
+import {
+  authGithub,
+  authGoogle,
+  authLinkedin,
+  authLogin,
+} from "@/services/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { SiGithub, SiGoogle } from "react-icons/si";
+import { SiGithub, SiGoogle, SiLinkedin } from "react-icons/si";
 import { useProfile } from "@/providers/profile-provider";
 import { getMyProfile } from "@/services/profile";
 import BlurFade from "@/components/magicui/blur-fade";
@@ -60,13 +65,18 @@ const LoginForm = () => {
   };
 
   const onGoogle = () => {
-    toast.loading("Authenticating to Eden...");
-    authGoogle(process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000");
+    toast.loading("Redirecting to Google Account...");
+    authGoogle(process.env.NEXT_PUBLIC_DOMAIN ?? "http://localhost:3000");
   };
 
   const onGithub = () => {
-    toast.loading("Authenticating to Eden...");
-    authGithub(process.env.NEXT_PUBLIC_DOMAIN || "http://localhost:3000");
+    toast.loading("Redirecting to Github...");
+    authGithub(process.env.NEXT_PUBLIC_DOMAIN ?? "http://localhost:3000");
+  };
+
+  const onLinkedin = () => {
+    toast.loading("Redirecting to Linkedin...");
+    authLinkedin(process.env.NEXT_PUBLIC_DOMAIN ?? "http://localhost:3000");
   };
 
   return (
@@ -116,6 +126,12 @@ const LoginForm = () => {
               <SiGithub />
             </span>
             Authenticate with Github
+          </Button>
+          <Button variant="outline" onClick={() => onLinkedin()}>
+            <span className="mr-3">
+              <SiLinkedin />
+            </span>
+            Authenticate with Linkedin
           </Button>
         </div>
       </Form>
