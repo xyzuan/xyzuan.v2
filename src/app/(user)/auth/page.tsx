@@ -23,7 +23,7 @@ export default function LoginPage() {
             Enter your account credentials to enter eden area.
           </Typography.P>
         </div>
-        <div className="bg-background flex flex-col justify-center h-full px-6 pb-12 lg:pb-0 lg:px-24 z-50">
+        <div className="bg-background flex flex-col lg:justify-center h-full w-full lg:w-auto px-6 pb-12 lg:pb-0 lg:px-24 z-50">
           <Tabs defaultValue="login" className="my-6">
             <TabsList className="mb-3">
               <TabsTrigger value="login">Login</TabsTrigger>
@@ -56,7 +56,7 @@ export default function LoginPage() {
         </div>
       </div>
       <FlickeringGrid
-        className="z-0 absolute inset-0 h-full w-full"
+        className="z-0 absolute h-screen w-screen hidden lg:block"
         squareSize={8}
         gridGap={24}
         color="#6B7280"
