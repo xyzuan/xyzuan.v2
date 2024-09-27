@@ -1,4 +1,3 @@
-import BlurFade from "@/components/magicui/blur-fade";
 import { Avatar } from "@/components/ui/avatar";
 import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import Image from "@/components/ui/image";

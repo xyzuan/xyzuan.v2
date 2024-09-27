@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getRandomHeight } from "@/commons/helpers";
 import { CardFooter, CardHeader } from "@/components/ui/card";
+import { profile } from "console";
 
 const RECOMMENDATIONS_MOCK = [
   {
@@ -83,6 +84,15 @@ const RECOMMENDATIONS_MOCK = [
     name: "Muhammad Zulfiqor Lilhaq",
     position: "Software Engineer",
     value: "bisa di andalkan",
+  },
+  {
+    profile_pic:
+      "https://media.licdn.com/dms/image/v2/D5603AQFj4WpxmMtksQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1718262665059?e=1732752000&v=beta&t=3agXaMuB4wcA34EXBziZZZ97UxjrUMUzbBN3EZltZPU",
+    name: "Ahyad Izzuddin Syuhaiba",
+    position:
+      "Game Development | UI/UX Design | Laboratory Assistant at Informatics Laboratory UMM",
+    value:
+      "Jody exemplifies the characteristics of an inspiring and visionary leader. He has successfully formed a cohesive and efficient team under his guidance. His expertise in project management, team motivation, and empirically based decision making make him a highly reliable individual.",
   },
 ];
 
