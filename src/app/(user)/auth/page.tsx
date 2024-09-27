@@ -3,7 +3,6 @@ import LoginForm from "./components/login-form";
 import Typography from "@/components/ui/typography";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SignUpForm from "./components/signup-form";
-import Image from "@/components/ui/image";
 
 export default function LoginPage() {
   return (
@@ -49,13 +48,13 @@ export default function LoginPage() {
           .
         </Typography.P>
 
-        <Image
+        {/* <Image
           alt="anya"
           width={200}
           height={1000}
           className="absolute bottom-0 right-0 z-[-100]"
           src="https://res.cloudinary.com/myxyzuan/image/upload/v1725733052/yaxsvzas8mfpwxunkdvq.png"
-        />
+        /> */}
       </div>
     </div>
   );

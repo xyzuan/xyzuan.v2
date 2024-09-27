@@ -44,12 +44,14 @@ const ProjectReaderHeader = ({
             </Link>
           )}
           {projectLink && (
-            <Button variant="secondary">
-              <span className="mr-3">
-                <SiGithub size={16} />
-              </span>
-              Source Code
-            </Button>
+            <Link href={projectLink}>
+              <Button variant="secondary">
+                <span className="mr-3">
+                  <SiGithub size={16} />
+                </span>
+                Source Code
+              </Button>
+            </Link>
           )}
         </div>
       </div>

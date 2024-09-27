@@ -12,7 +12,6 @@ const BlogReaderFooter = ({
   reactions: ReactionItem[];
   commentCount: number;
 }) => {
-  console.log(reactions);
   return (
     <div className="mt-6">
       <Separator />
