@@ -20,11 +20,15 @@ import { useRouter } from "next/navigation";
 import BlurFade from "@/components/magicui/blur-fade";
 
 const loginSchema = z.object({
-  email: z.string().email({
-    message: "Email must be valid email.",
-  }),
-  name: z.string(),
-  password: z.string(),
+  email: z
+    .string()
+    .email({
+      message: "Email must be valid email.",
+    })
+    .trim()
+    .min(1, "Email cannot be empty"),
+  name: z.string().trim().min(1, "Name cannot be empty"),
+  password: z.string().trim().min(1, "Password cannot be empty"),
 });
 
 const SignUpForm = () => {

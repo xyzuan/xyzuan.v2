@@ -29,10 +29,14 @@ import BlurFade from "@/components/magicui/blur-fade";
 import Typography from "@/components/ui/typography";
 
 const loginSchema = z.object({
-  email: z.string().email({
-    message: "Email must be valid email.",
-  }),
-  password: z.string(),
+  email: z
+    .string()
+    .email({
+      message: "Email must be valid email.",
+    })
+    .trim()
+    .min(1, "Email cannot be empty"),
+  password: z.string().trim().min(1, "Password cannot be empty"),
 });
 
 const LoginForm = () => {
@@ -82,7 +86,7 @@ const LoginForm = () => {
   return (
     <BlurFade>
       <Form {...form}>
-        <form className="space-y-3">
+        <form onSubmit={form.handleSubmit(onLogin)} className="space-y-3">
           <FormField
             control={form.control}
             name="email"
@@ -109,10 +113,12 @@ const LoginForm = () => {
               </FormItem>
             )}
           />
+          <Button className="w-full mt-3" type="submit">
+            Login
+          </Button>
         </form>
         <div className="flex flex-col gap-3 mt-6">
-          <Button onClick={() => onLogin(form.getValues())}>Login</Button>
-          <Typography.P className="text-center text-sm opacity-65 my-2">
+          <Typography.P className="text-center text-sm opacity-65 mb-2">
             Or login with
           </Typography.P>
           <Button variant="outline" onClick={() => onGoogle()}>

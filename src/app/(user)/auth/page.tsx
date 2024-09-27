@@ -60,6 +60,7 @@ export default function LoginPage() {
         squareSize={8}
         gridGap={24}
         color="#6B7280"
+        height={2000}
         maxOpacity={0.3}
         flickerChance={0.6}
       />
