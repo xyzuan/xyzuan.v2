@@ -44,7 +44,7 @@ const ProfileAvatar = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger data-cy="auth-card">
         {profile ? (
           <Avatar className="mr-1">
             {profile?.iconUrl !== null ? (
@@ -84,6 +84,7 @@ const ProfileAvatar = () => {
               Profile
             </DropdownItem>
             <DropdownItem
+              data-cy="sign-out"
               onClick={() => handleLogout()}
               icon={<LogOutIcon className="h-[1.2rem] w-[1.2rem]" />}
             >

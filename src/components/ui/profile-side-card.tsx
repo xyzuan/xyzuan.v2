@@ -49,6 +49,7 @@ const ProfileSideCard = () => {
     <DropdownMenu>
       <DropdownMenuTrigger className="w-full">
         <div
+          data-cy="profile-card"
           className={cn(
             `flex p-3 gap-3 items-center cursor-pointer border rounded-xl transition-all dark:hover:bg-[#262626] hover:bg-[#D9D9D955]"
             }`
@@ -78,6 +79,7 @@ const ProfileSideCard = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownItem
+          data-cy="sign-out"
           onClick={() => handleLogout()}
           icon={<LogOutIcon className="h-[1.2rem] w-[1.2rem]" />}
         >

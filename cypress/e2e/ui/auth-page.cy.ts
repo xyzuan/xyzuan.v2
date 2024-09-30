@@ -41,4 +41,31 @@ context("Authentication", () => {
       cy.contains("Required");
     });
   });
+
+  describe("Sign-out", () => {
+    it("Login with Valid Credentials", () => {
+      cy.get('input[name="email"]').type("jodyyuan@xyzuan.my.id");
+      cy.get('input[name="password"]').type("xyzuan2002");
+
+      cy.intercept("POST", "https://api.xyzuan.my.id/v2/auth/login").as(
+        "login"
+      );
+      cy.intercept("GET", "https://xyzuan.my.id").as("root");
+
+      cy.get('button[type="submit"]').click();
+      cy.wait("@login")
+        .its("response.statusCode")
+        .should("eq", 200)
+        .getCookie("auth_session")
+        .should("exist");
+
+      cy.wait("@root")
+        .its("response.statusCode")
+        .should("eq", 200)
+        .get('[data-cy="profile-card"]')
+        .click()
+        .contains("Sign Out")
+        .click();
+    });
+  });
 });
