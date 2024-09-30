@@ -10,6 +10,7 @@ const AuthCard = ({ className }: any) => {
 
   return (
     <div
+      data-cy="auth-card"
       onClick={() => router.push("/auth")}
       className={cn(
         `flex p-3 gap-3 items-center cursor-pointer transition-all ${
