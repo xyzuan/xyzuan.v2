@@ -60,8 +60,8 @@ const ChatList = ({ messages }: ChatListProps) => {
         className="space-y-5 overflow-y-auto py-4 scrollbar-hide"
         style={{ height: chatListHeight }}
       >
-        {messages?.map((chat, index) => (
-          <ChatItem key={index} {...chat} />
+        {messages?.map((chat) => (
+          <ChatItem key={chat.id} {...chat} />
         ))}
       </div>
     </div>

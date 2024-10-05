@@ -16,7 +16,7 @@ export const getChats = async () => {
   return await response.json();
 };
 
-export const postChat = async (message: string) => {
+export const postChat = async (message: string, messageMentionId?: string) => {
   const response = await fetch(CHAT_ENDPOINT, {
     method: "POST",
     headers: {
@@ -25,6 +25,7 @@ export const postChat = async (message: string) => {
     credentials: "include",
     body: JSON.stringify({
       message,
+      messageMentionId,
     }),
   });
   revalidate("/chats");

@@ -10,7 +10,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { METADATA } from "@/commons/constants/metadata";
 import { Toaster } from "@/components/ui/sonner";
-import BlurFade from "@/components/magicui/blur-fade";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : process.env.DOMAIN || ""
+      : process.env.DOMAIN ?? ""
   ),
   description: METADATA.description,
   keywords: METADATA.keyword,

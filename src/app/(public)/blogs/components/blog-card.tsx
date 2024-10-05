@@ -68,15 +68,17 @@ const BlogCard = ({
 
           <div className="absolute flex h-full flex-col justify-between space-y-4 p-5">
             <div className="flex flex-wrap gap-2">
-              {getTags(tags).map((tag, idx) => (
-                <Badge
-                  key={idx}
-                  variant="outline"
-                  className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs backdrop-blur-2xl"
-                >
-                  {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
-                </Badge>
-              ))}
+              {tags &&
+                tags.length > 0 &&
+                getTags(tags).map((tag, idx) => (
+                  <Badge
+                    key={idx}
+                    variant="outline"
+                    className="rounded-full px-2.5 py-1 font-mono text-white border-white/20 text-xs backdrop-blur-2xl"
+                  >
+                    {tag?.charAt(0).toUpperCase() + tag?.slice(1)}
+                  </Badge>
+                ))}
             </div>
 
             <div className="flex flex-col justify-end">

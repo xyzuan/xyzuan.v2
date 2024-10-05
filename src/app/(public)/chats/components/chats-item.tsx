@@ -11,21 +11,17 @@ import { toast } from "sonner";
 import { cn } from "@/commons/libs/utils";
 import Typography from "@/components/ui/typography";
 import Image from "@/components/ui/image";
+import { useChats } from "@/providers/chats-provider";
 
-const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
+const ChatItem = ({
+  id,
+  user,
+  message,
+  createdAt,
+  mentionedTo,
+}: MessageProps) => {
   const { profile: loggedUser } = useProfile();
-
-  const pattern = /@([^:]+):/g;
-  const modifiedMessage = message?.split(pattern).map((part, index) => {
-    if (index % 2 === 1) {
-      return (
-        <span key={index} className="text-yellow-600 dark:text-yellow-400">
-          @{part}
-        </span>
-      );
-    }
-    return part;
-  });
+  const { setIsReplying } = useChats();
 
   const handleDeleteMessage = (id: string) => {
     toast.promise(deleteChat(id), {
@@ -36,12 +32,26 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
       error: (err) => err,
     });
   };
+  const scrollToMessage = (messageId: string) => {
+    const element = document.getElementById(messageId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      element.classList.add("border", "scale-110", "border-primary/30");
+      setTimeout(() => {
+        element.classList.remove("border", "scale-110", "border-primary/30");
+      }, 3000);
+    }
+  };
 
   return (
     <div
+      onDoubleClick={() => setIsReplying({ id, user })}
       className={`flex ${
         user?.isAdmin && "flex-row-reverse"
-      } items-start gap-3`}
+      } items-start gap-3 cursor-pointer`}
     >
       <Avatar className="h-12 w-12">
         {user?.iconUrl !== null ? (
@@ -71,14 +81,28 @@ const ChatItem = ({ id, user, message, createdAt, isShow }: MessageProps) => {
           }`}
         >
           <p
+            id={id}
             className={cn(
-              "w-fit group-hover:dark:bg-neutral-700 bg-neutral-200 px-3 py-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200",
+              "w-fit group-hover:dark:bg-neutral-700 bg-neutral-200 px-3 py-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 transition-all duration-200",
               user?.isAdmin
                 ? "rounded-xl rounded-tr-none"
                 : "rounded-xl rounded-tl-none"
             )}
           >
-            {modifiedMessage}
+            {mentionedTo && (
+              <div
+                className="flex flex-col bg-background/45 px-3 py-2 rounded-xl rounded-tl-sm rounded-bl-sm my-1 border-l border-primary"
+                onClick={() => scrollToMessage(mentionedTo?.id)}
+              >
+                <Typography.P className="text-sm font-medium">
+                  {mentionedTo?.user.name}
+                </Typography.P>
+                <Typography.P className="text-sm opacity-75">
+                  {mentionedTo?.message}
+                </Typography.P>
+              </div>
+            )}
+            {message}
           </p>
           {(loggedUser?.email === user.email || loggedUser?.isAdmin) && (
             <div className="flex items-center mx-3">

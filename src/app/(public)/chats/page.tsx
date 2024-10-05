@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { METADATA } from "@/commons/constants/metadata";
 import { getChats } from "@/services/chats";
 import ChatInput from "./components/chats-input";
+import { ChatsProvider } from "@/providers/chats-provider";
 
 export const metadata: Metadata = {
   title: `Chats ${METADATA.exTitle}`,
@@ -27,8 +28,10 @@ const ChatsPage = async () => {
           Leave whatever you like to say, suggestions, questions or anything!
         </Typography.P>
       </div>
-      <ChatList messages={chats?.data} />
-      <ChatInput />
+      <ChatsProvider>
+        <ChatList messages={chats?.data} />
+        <ChatInput />
+      </ChatsProvider>
     </BlurFade>
   );
 };

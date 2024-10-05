@@ -5,6 +5,9 @@ export interface MessageProps {
   user: Profile;
   profile: Profile;
   message: string;
+  mentionedToId: string;
+  mentionedTo: MessageProps;
+  mentionedBy: MessageProps[];
   createdAt: string;
   isShow?: boolean;
 }
