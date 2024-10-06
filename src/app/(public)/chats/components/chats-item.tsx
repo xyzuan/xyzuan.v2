@@ -75,7 +75,7 @@ const ChatItem = ({
         user?.isAdmin && "flex-row-reverse"
       } items-start gap-3 cursor-pointer`}
     >
-      <Avatar className="h-12 w-12">
+      <Avatar className="h-9 w-9">
         {user?.iconUrl !== null ? (
           <Image height={52} width={52} alt={user?.name} src={user?.iconUrl} />
         ) : (
@@ -105,7 +105,7 @@ const ChatItem = ({
           <p
             id={id}
             className={cn(
-              "w-fit group-hover:dark:bg-neutral-700 bg-neutral-200 px-3 py-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 transition-all duration-200",
+              "w-fit text-sm group-hover:dark:bg-neutral-700 bg-neutral-200 px-3 py-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 transition-all duration-200",
               user?.isAdmin
                 ? "rounded-xl rounded-tr-none"
                 : "rounded-xl rounded-tl-none"
