@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { METADATA } from "@/commons/constants/metadata";
 import { Toaster } from "@/components/ui/sonner";
+import ChatsWebSocketProvider from "@/providers/chats-ws-provider";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -51,10 +52,12 @@ export default function RootLayout({
       <body className={`${manrope.className} flex justify-center`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ProfileProvider authSession={cookies().get("auth_session")?.value}>
-            <Analytics />
-            <SpeedInsights />
-            <Toaster position="top-right" richColors />
-            <TooltipProvider>{children}</TooltipProvider>
+            <ChatsWebSocketProvider>
+              <Analytics />
+              <SpeedInsights />
+              <Toaster position="top-right" richColors />
+              <TooltipProvider>{children}</TooltipProvider>
+            </ChatsWebSocketProvider>
           </ProfileProvider>
         </ThemeProvider>
       </body>

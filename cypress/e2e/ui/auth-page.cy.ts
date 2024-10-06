@@ -43,7 +43,7 @@ context("Authentication", () => {
   });
 
   describe("Sign-out", () => {
-    it("Login with Valid Credentials", () => {
+    it("login and Logout with Valid Credentials", () => {
       cy.get('input[name="email"]').type("jodyyuan@xyzuan.my.id");
       cy.get('input[name="password"]').type("xyzuan2002");
 
@@ -64,8 +64,10 @@ context("Authentication", () => {
         .should("eq", 200)
         .get('[data-cy="profile-card"]')
         .click()
-        .contains("Sign Out")
+        .get('[data-cy="sign-out"]')
         .click();
+
+      cy.getCookie("auth_session").should("not.exist");
     });
   });
 });

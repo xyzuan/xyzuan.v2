@@ -5,13 +5,14 @@ import ChatTime from "./chats-time";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { TrashIcon } from "lucide-react";
 import { MdVerified as VerifiedIcon } from "react-icons/md";
-import { deleteChat } from "@/services/chats";
 import { useProfile } from "@/providers/profile-provider";
 import { toast } from "sonner";
 import { cn } from "@/commons/libs/utils";
 import Typography from "@/components/ui/typography";
 import Image from "@/components/ui/image";
 import { useChats } from "@/providers/chats-provider";
+import { useWebSocket } from "next-ws/client";
+import revalidate from "@/app/actions";
 
 const ChatItem = ({
   id,
@@ -20,18 +21,39 @@ const ChatItem = ({
   createdAt,
   mentionedTo,
 }: MessageProps) => {
+  const ws = useWebSocket();
   const { profile: loggedUser } = useProfile();
   const { setIsReplying } = useChats();
 
   const handleDeleteMessage = (id: string) => {
-    toast.promise(deleteChat(id), {
-      loading: "Deleting message from realms...",
-      success: () => {
-        return `Eden was successfully delete the message`;
-      },
-      error: (err) => err,
-    });
+    try {
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        toast.promise(
+          new Promise((resolve) => {
+            ws.send(
+              JSON.stringify({
+                action: "DELETE",
+                messageId: id,
+              })
+            );
+            resolve("Message deleted successfully");
+          }),
+          {
+            loading: "Deleting message from realms...",
+            success: "Eden successfully deleted the message",
+            error: (err) => err || "Failed to delete message",
+            finally: () => revalidate("/chats"),
+          }
+        );
+      } else {
+        toast.error("Unable to delete message. WebSocket not connected.");
+      }
+    } catch (error) {
+      console.error("Error deleting message:", error);
+      toast.error("Error deleting message.");
+    }
   };
+
   const scrollToMessage = (messageId: string) => {
     const element = document.getElementById(messageId);
     if (element) {

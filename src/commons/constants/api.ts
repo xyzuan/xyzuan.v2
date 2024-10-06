@@ -1,8 +1,10 @@
 const API_BASE_PATH = process.env.API_BASE_PATH;
 const PUBLIC_API_BASE_PATH = process.env.NEXT_PUBLIC_API_BASE_PATH;
+const PUBLIC_API_WS_BASE_PATH = process.env.NEXT_PUBLIC_API_WS_BASE_PATH;
 
 // Chat
 export const CHAT_ENDPOINT = `${PUBLIC_API_BASE_PATH}/message`;
+export const CHAT_WS_ENDPOINT = `${PUBLIC_API_WS_BASE_PATH}/message`;
 
 // Blog
 export const BLOG_ENDPOINT = `${PUBLIC_API_BASE_PATH}/blog`;

@@ -1,9 +1,20 @@
 "use client";
 
+import revalidate from "@/app/actions";
 import { MessageProps } from "@/commons/types/chats.types";
-import React, { createContext, useContext, ReactNode, useState } from "react";
+import { useWebSocket } from "next-ws/client";
+import React, {
+  createContext,
+  useContext,
+  ReactNode,
+  useState,
+  useEffect,
+} from "react";
+import { toast } from "sonner";
 
 type ChatsContextType = {
+  ws: any;
+  isWsReady: boolean;
   isReplying: Partial<MessageProps> | undefined;
   setIsReplying: React.Dispatch<
     React.SetStateAction<Partial<MessageProps> | undefined>
@@ -15,15 +26,59 @@ type ChatsContextType = {
 const ChatsContext = createContext<ChatsContextType | undefined>(undefined);
 
 export const ChatsProvider = ({ children }: { children: ReactNode }) => {
+  const ws = useWebSocket();
+
+  const [isWsReady, setIsWsReady] = useState<boolean>(false);
   const [isReplying, setIsReplying] = useState<
     Partial<MessageProps> | undefined
   >(undefined);
   const [isSending, setIsSending] = useState(false);
 
   const value = React.useMemo(
-    () => ({ isReplying, setIsReplying, isSending, setIsSending }),
-    [isReplying, setIsReplying, isSending, setIsSending]
+    () => ({
+      ws,
+      isWsReady,
+      isReplying,
+      setIsReplying,
+      isSending,
+      setIsSending,
+    }),
+    [ws, isWsReady, isReplying, setIsReplying, isSending, setIsSending]
   );
+
+  useEffect(() => {
+    const handleOpen = () => {
+      setIsWsReady(true);
+    };
+
+    const handleClose = () => {
+      setIsWsReady(false);
+    };
+
+    const handleError = (error: Event) => {
+      console.error("WebSocket error:", error);
+      setIsWsReady(false);
+    };
+
+    async function onMessage(event: MessageEvent) {
+      const messageData = JSON.parse(event.data);
+      revalidate("/chats");
+      toast.info(`New message received from ${messageData.user.name}`, {
+        description: messageData.message,
+      });
+    }
+
+    ws?.addEventListener("open", handleOpen);
+    ws?.addEventListener("close", handleClose);
+    ws?.addEventListener("error", handleError);
+    ws?.addEventListener("message", onMessage);
+    return () => {
+      ws?.removeEventListener("open", handleOpen);
+      ws?.removeEventListener("close", handleClose);
+      ws?.removeEventListener("error", handleError);
+      ws?.removeEventListener("message", onMessage);
+    };
+  }, [ws]);
 
   return (
     <ChatsContext.Provider value={value}>{children}</ChatsContext.Provider>

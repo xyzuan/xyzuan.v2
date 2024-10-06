@@ -95,7 +95,7 @@ const BlogCommentInput = ({
       </Form>
     </div>
   ) : (
-    <AuthDialog msg="comment blog" />
+    <AuthDialog msg="comment this blog" />
   );
 };
 

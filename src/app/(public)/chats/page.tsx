@@ -1,11 +1,10 @@
 import BlurFade from "@/components/magicui/blur-fade";
-import Typography from "@/components/ui/typography";
 import ChatList from "./components/chats-list";
 import { Metadata } from "next";
 import { METADATA } from "@/commons/constants/metadata";
 import { getChats } from "@/services/chats";
 import ChatInput from "./components/chats-input";
-import { ChatsProvider } from "@/providers/chats-provider";
+import ChatsHeader from "./components/chats-header";
 
 export const metadata: Metadata = {
   title: `Chats ${METADATA.exTitle}`,
@@ -22,16 +21,9 @@ const ChatsPage = async () => {
 
   return (
     <BlurFade>
-      <div className="mb-6">
-        <Typography.H3>Chats</Typography.H3>
-        <Typography.P>
-          Leave whatever you like to say, suggestions, questions or anything!
-        </Typography.P>
-      </div>
-      <ChatsProvider>
-        <ChatList messages={chats?.data} />
-        <ChatInput />
-      </ChatsProvider>
+      <ChatsHeader />
+      <ChatList messages={chats?.data} />
+      <ChatInput />
     </BlurFade>
   );
 };

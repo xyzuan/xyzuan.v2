@@ -14,12 +14,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { postChat } from "@/services/chats";
 import { FaSpinner } from "react-icons/fa";
 import { useProfile } from "@/providers/profile-provider";
 import AuthDialog from "@/components/ui/auth-dialog";
 import { useChats } from "@/providers/chats-provider";
 import { Badge } from "@/components/ui/badge";
+import revalidate from "@/app/actions";
 
 const chatSchema = z.object({
   message: z.string().trim().min(1, "Message cannot be empty"),
@@ -27,7 +27,7 @@ const chatSchema = z.object({
 
 const ChatInput = () => {
   const { profile } = useProfile();
-  const { isReplying, setIsReplying, isSending, setIsSending } = useChats();
+  const { ws, isReplying, setIsReplying, isSending, setIsSending } = useChats();
 
   const form = useForm<z.infer<typeof chatSchema>>({
     resolver: zodResolver(chatSchema),
@@ -38,18 +38,40 @@ const ChatInput = () => {
 
   const onSubmit = (values: z.infer<typeof chatSchema>) => {
     setIsSending(true);
-    toast.promise(postChat(values.message, isReplying?.id), {
-      loading: "Sending message to Eden...",
-      success: () => {
-        form.reset();
-        return `Sended Successfuly.`;
-      },
-      error: (err) => err,
-      finally: () => {
+    try {
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        toast.promise(
+          new Promise((resolve) => {
+            form.reset();
+            ws.send(
+              JSON.stringify({
+                action: "CREATE",
+                message: values.message,
+                messageMentionId: isReplying?.id,
+              })
+            );
+            resolve("Message sent successfully");
+          }),
+          {
+            loading: "Sending message to Eden...",
+            success: "Message sent successfully",
+            error: (err) => err,
+            finally: () => {
+              revalidate("/chats");
+              setIsSending(false);
+              setIsReplying(undefined);
+            },
+          }
+        );
+      } else {
+        toast.error("Unable to send message. WebSocket not connected.");
         setIsSending(false);
-        setIsReplying(undefined);
-      },
-    });
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Error sending message.");
+      setIsSending(false);
+    }
   };
 
   return profile ? (
@@ -86,7 +108,7 @@ const ChatInput = () => {
       </form>
     </Form>
   ) : (
-    <AuthDialog />
+    <AuthDialog msg="use Realtime Chats" />
   );
 };
 

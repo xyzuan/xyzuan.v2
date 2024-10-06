@@ -5,7 +5,7 @@ import ChatItem from "./chats-item";
 import { ChatListProps } from "@/commons/types/chats.types";
 
 const ChatList = ({ messages }: ChatListProps) => {
-  const [chatListHeight, setChatListHeight] = useState("500px");
+  const [chatListHeight, setChatListHeight] = useState("580px");
   const [hasScrolledUp, setHasScrolledUp] = useState(false);
   const chatListRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,7 +41,7 @@ const ChatList = ({ messages }: ChatListProps) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const newHeight = `${window.innerHeight - 320}px`;
+      const newHeight = `${window.innerHeight - 260}px`;
       setChatListHeight(newHeight);
     };
 
@@ -54,7 +54,7 @@ const ChatList = ({ messages }: ChatListProps) => {
     };
   }, []);
   return (
-    <div className="rounded-lg">
+    <div className="bg-background/60 rounded-lg rounded-t-none border px-6">
       <div
         ref={chatListRef}
         className="space-y-5 overflow-y-auto py-4 scrollbar-hide"

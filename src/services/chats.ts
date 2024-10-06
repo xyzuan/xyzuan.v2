@@ -16,22 +16,6 @@ export const getChats = async () => {
   return await response.json();
 };
 
-export const postChat = async (message: string, messageMentionId?: string) => {
-  const response = await fetch(CHAT_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify({
-      message,
-      messageMentionId,
-    }),
-  });
-  revalidate("/chats");
-  return response;
-};
-
 export const deleteChat = async (id: string) => {
   const response = await fetch(`${CHAT_ENDPOINT}/${id}`, {
     method: "DELETE",
