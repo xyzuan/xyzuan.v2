@@ -54,7 +54,7 @@ const ChatList = ({ messages }: ChatListProps) => {
     };
   }, []);
   return (
-    <div className="bg-background/60 rounded-lg rounded-t-none border px-6">
+    <div className="bg-background/60 rounded-lg rounded-t-none border-t-0 border border-neutral-100 dark:border-neutral-800 px-6">
       <div
         ref={chatListRef}
         className="space-y-5 overflow-y-auto py-4 scrollbar-hide"
