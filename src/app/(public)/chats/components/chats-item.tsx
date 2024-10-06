@@ -13,6 +13,7 @@ import Image from "@/components/ui/image";
 import { useChats } from "@/providers/chats-provider";
 import { useWebSocket } from "next-ws/client";
 import revalidate from "@/app/actions";
+import { scrollToMessage } from "@/commons/helpers";
 
 const ChatItem = ({
   id,
@@ -51,20 +52,6 @@ const ChatItem = ({
     } catch (error) {
       console.error("Error deleting message:", error);
       toast.error("Error deleting message.");
-    }
-  };
-
-  const scrollToMessage = (messageId: string) => {
-    const element = document.getElementById(messageId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-      element.classList.add("border", "scale-110", "border-primary/30");
-      setTimeout(() => {
-        element.classList.remove("border", "scale-110", "border-primary/30");
-      }, 3000);
     }
   };
 

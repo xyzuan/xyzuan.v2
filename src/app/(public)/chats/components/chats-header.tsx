@@ -19,11 +19,6 @@ const ChatsHeader = () => {
           wscat -c wss://api.xyzuan.my.id/v2/messages
         </span>
       </Typography.P>
-      <div className="gap-3 md:flex hidden">
-        <div className="w-4 h-4 bg-red-300 rounded-full" />
-        <div className="w-4 h-4 bg-yellow-300 rounded-full" />
-        <div className="w-4 h-4 bg-green-300 rounded-full" />
-      </div>
     </div>
   );
 };

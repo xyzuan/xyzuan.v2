@@ -2,7 +2,9 @@
 
 import revalidate from "@/app/actions";
 import { MessageProps } from "@/commons/types/chats.types";
+import { MessageCircle, MessageSquareIcon } from "lucide-react";
 import { useWebSocket } from "next-ws/client";
+import { useRouter } from "next/navigation";
 import React, {
   createContext,
   useContext,
@@ -33,6 +35,7 @@ export const ChatsProvider = ({ children }: { children: ReactNode }) => {
     Partial<MessageProps> | undefined
   >(undefined);
   const [isSending, setIsSending] = useState(false);
+  const router = useRouter();
 
   const value = React.useMemo(
     () => ({
@@ -45,6 +48,24 @@ export const ChatsProvider = ({ children }: { children: ReactNode }) => {
     }),
     [ws, isWsReady, isReplying, setIsReplying, isSending, setIsSending]
   );
+
+  const showNotification = (title: string, options: NotificationOptions) => {
+    if (Notification.permission === "granted") {
+      new Notification(title, options);
+    } else {
+      console.log("Notification permission not granted.");
+    }
+  };
+
+  useEffect(() => {
+    if (Notification.permission === "default") {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          console.log("Notification permission granted.");
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const handleOpen = () => {
@@ -63,8 +84,16 @@ export const ChatsProvider = ({ children }: { children: ReactNode }) => {
     async function onMessage(event: MessageEvent) {
       const messageData = JSON.parse(event.data);
       revalidate("/chats");
-      toast.info(`New message received from ${messageData.user.name}`, {
+      showNotification(`New message from ${messageData.user.name}`, {
+        body: messageData.message,
+      });
+      toast(`New Chat from ${messageData.user.name}`, {
         description: messageData.message,
+        icon: <MessageSquareIcon size={19} />,
+        action: {
+          label: "Reply chat",
+          onClick: () => router.push("/chats"),
+        },
       });
     }
 

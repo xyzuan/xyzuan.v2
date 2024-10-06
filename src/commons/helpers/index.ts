@@ -77,3 +77,17 @@ export const getEmoteLabel = (emojiNode: string) => {
   const emote = emotes.find((e) => e.key === emojiNode);
   return emote ? emote.node : "Unknown";
 };
+
+export const scrollToMessage = (messageId: string) => {
+  const element = document.getElementById(messageId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+    element.classList.add("border", "scale-110", "border-primary/30");
+    setTimeout(() => {
+      element.classList.remove("border", "scale-110", "border-primary/30");
+    }, 3000);
+  }
+};

@@ -52,8 +52,13 @@ export const ProfileProvider = ({
     }
   }, []);
 
+  const contextValue = React.useMemo(
+    () => ({ profile, setProfile, loading, error }),
+    [profile, setProfile, loading, error]
+  );
+
   return (
-    <ProfileContext.Provider value={{ profile, setProfile, loading, error }}>
+    <ProfileContext.Provider value={contextValue}>
       {children}
     </ProfileContext.Provider>
   );

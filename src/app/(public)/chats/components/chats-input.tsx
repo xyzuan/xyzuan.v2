@@ -64,7 +64,10 @@ const ChatInput = () => {
           }
         );
       } else {
-        toast.error("Unable to send message. WebSocket not connected.");
+        toast.error("WS Eden Treaty are not connected.", {
+          description: "Unable to send message, please refresh the page.",
+        });
+        revalidate("/chats");
         setIsSending(false);
       }
     } catch (error) {

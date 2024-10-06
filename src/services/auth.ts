@@ -1,3 +1,4 @@
+import revalidate from "@/app/actions";
 import {
   AUTH_GITHUB_ENDPOINT,
   AUTH_GOOGLE_ENDPOINT,
